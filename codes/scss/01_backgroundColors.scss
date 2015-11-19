@@ -1,0 +1,15 @@
+@each $app-color in $app-colors {
+  //.stable-bg
+  .#{$app-color}-bg {
+    background-color: return-var-from-text($app-color) !important;
+  }
+  @for $i from 0 through 100 {
+    .#{$app-color}-bg#{$i} {
+      background-color: rgba(return-var-from-text($app-color), $i/100) !important;
+    }
+  }
+}
+
+.transparent-bg {
+  background: transparent !important;
+}

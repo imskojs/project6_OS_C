@@ -1,0 +1,24 @@
+@for $i from 0 through 300 {
+  // .m0, ..., .m300
+  .m#{$i} {
+    margin: #{$i}px #{$i}% !important;
+  }
+  // .m0p, ..., .m300p
+  .m#{$i}p {
+    margin: #{$i}% !important;
+  }
+  // .m0px, ..., .m300px
+  .m#{$i}px {
+    margin: #{$i}px !important;
+  }
+  @each $app-direction in $app-directions {
+    // .mt0px, ..., .ml300px
+    .m#{return-first-letter($app-direction)}#{$i}px{
+      margin-#{$app-direction}: #{$i}px !important;
+    }
+    // .mt0p, ..., .ml300p
+    .m#{return-first-letter($app-direction)}#{$i}p{
+      margin-#{$app-direction}: #{$i}% !important;
+    }
+  }
+}

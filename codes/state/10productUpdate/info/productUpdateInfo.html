@@ -1,0 +1,167 @@
+<ion-view id="product-update-info"
+  cache-view="true"
+  hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack('back')">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+       상품수정
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="product-register-content pt2px, has-subheader"
+    scrollbar-y="false"
+  >
+    <div class="light-grey-bg pl5p pr5p pb40px pt1px">
+      <div>
+        <p class="zero f16px center mt20px mb20px dark-grey">
+          <span>제품 정보를 수정해주세요</span>
+        </p>
+
+        <div class="positive-b pt15px pt10px stable-bg pb15px">
+          <p class="zero f20px mb15px positive center bold">
+             상품수정
+          </p>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                제품명
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px"
+                type="text"
+                ng-model="ProductUpdate.Model.product.name"
+              >
+            </div>
+          </div>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                품목
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px"
+                type="text"
+                ng-model="ProductUpdate.Model.product.productCategory"
+              >
+            </div>
+          </div>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                브랜드
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px"
+                type="text"
+                ng-model="ProductUpdate.Model.product.brand"
+              >
+            </div>
+          </div>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                구입시기
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px"
+                type="text"
+                ng-model="ProductUpdate.Model.product.boughtAt"
+              >
+            </div>
+          </div>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v"
+            ng-if="getParam('category') === 'pawnShop'"
+          >
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                가격
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px right"
+                type="number"
+                ng-model="ProductUpdate.Model.product.price"
+              >
+            </div>
+            <div class="col-auto">
+              <p class="zero f18px positive bold">원</p>
+            </div>
+          </div>
+
+          <div class="grey-b mb5px mt0px w90p auto pl5p pr5p">
+            <p class="zero positive f18px mt8px mb8px bold">
+              상태선택
+            </p>
+            <div class="row zero mb8px">
+
+              <button class="col button-icon zero flex-v"
+                ng-click="ProductUpdate.Model.product.condition = 'high'"
+              >
+                <div class="r50p w20px h20px dark-grey-b flex">
+                  <div class="w16px h16px r50p"
+                    ng-class="{
+                      'dark-grey-selected': ProductUpdate.Model.product.condition === 'high'
+                    }"
+                  ></div>
+                </div>
+                <p class="zero f16px ml5px">상</p>
+              </button>
+
+              <button class="col button-icon zero flex-v"
+                ng-click="ProductUpdate.Model.product.condition = 'medium'"
+              >
+                <div class="r50p w20px h20px dark-grey-b flex">
+                  <div class="w16px h16px r50p"
+                    ng-class="{
+                      'dark-grey-selected': ProductUpdate.Model.product.condition === 'medium'
+                    }"
+                  ></div>
+                </div>
+                <p class="zero f16px ml5px">중</p>
+              </button>
+
+              <button class="col button-icon zero flex-v"
+                ng-click="ProductUpdate.Model.product.condition = 'low'"
+              >
+                <div class="r50p w20px h20px dark-grey-b flex">
+                  <div class="w16px h16px r50p"
+                    ng-class="{
+                      'dark-grey-selected': ProductUpdate.Model.product.condition === 'low'
+                    }"
+                  ></div>
+                </div>
+                <p class="zero f16px ml5px">하</p>
+              </button>
+
+            </div>
+          </div>
+
+          <div class="grey-b mb5px mt0px w90p auto pl5p pr5p">
+            <p class="zero positive f18px mt8px mb8px bold">
+              특이사항 입력
+            </p>
+            <textarea class="placeholder-grey placeholder-f12px placeholder-para h150px f14px"
+              placeholder="[Hint!]\n스마트폰 액정 잔상\n맥북싸이클 수 00회\nDSLR 셔터수 00회\n금(GOLD)24K 2.5돈 등\n제품에 따른 상세정보 및 특이사항을 입력해주세요."
+              ng-model="ProductUpdate.Model.product.description"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+ </ion-view>

@@ -1,0 +1,27 @@
+<ion-view id="walk-through"
+    cache-view="true"
+    hide-nav-bar="true"
+>
+  <ion-content class="walk-through-content">
+
+    <ion-slide-box class="slide-container"
+      show-pager="true"
+      delegate-handle="walk-through-slide"
+      on-slide-changed="WalkThrough.onLastSlide($index)"
+    >
+      <ion-slide class="slide zero"
+        id="slide{{$index}}"
+        ng-repeat="path in WalkThrough.Model.imagePaths"
+        ng-style="{'background-image': 'url(' + path + ')'}"
+      >
+      </ion-slide>
+    </ion-slide-box>
+
+    <button class="button-icon skip-button absolute"
+      ng-click="WalkThrough.leaveWalkThrough();"
+    >
+      Skip
+    </button>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-modal-view id="request-account-termination-modal" class="common-modal">
+  <ion-content class="request-account-termination-content">
+    <div class="wrapper-80">
+      <section class="message-section">
+
+        <div class="row zero row-header">
+          <div class="col-60 flex col-header">
+            <p class="zero header-text">
+              알림
+            </p>
+          </div>
+          <div class="col-20 flex col-cross"
+            ng-click="Main.terminationModal.hide()"
+          >
+            <i class="cross-icon ion-ios-close-empty"></i>
+          </div>
+        </div>
+        <div class="request-content">
+          <p class="zero auto content-text center pre">
+            탈퇴신청을 하시겠습니까?
+            <span class="small yellow">*탈퇴 신청 후 3일이내 탈퇴처리를 해드립니다</span>
+          </p>
+          <div class="row zero row-button flex">
+            <div class="col-80 col-button radius"
+              ng-click="Main.terminationModal.hide()"
+            >
+              <p class="zero button-text center">
+                탈퇴신청
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </ion-content>
+</ion-modal-view>

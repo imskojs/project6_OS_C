@@ -1,0 +1,39 @@
+<ion-view id="product-register"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-header-bar class="zero bar-subheader">
+    <div class="row zero h44px stable-bg shadow">
+      <div class="col zero flex"
+        ng-class="{'tab-selected': getParam('section') === 'info'}"
+        ng-click="goToState('main.productUpdate.info', {category: 'pawnShop', method: 'update', step: 1, section: 'info'}, 'back')"
+      >
+        <p class="zero positive f18px center bold">
+          제품정보입력
+        </p>
+      </div>
+      <div class="col zero flex"
+        nav-direction="forward"
+        ng-class="{'tab-selected': getParam('section') === 'photo'}"
+        ng-click="goToState('main.productUpdate.photo', {category: 'pawnShop', method: 'update', step: 2, section: 'photo'}, 'forward')"
+      >
+        <p class="zero positive f18px center bold">
+          사진재등록
+        </p>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-nav-view name="productUpdate">
+  </ion-nav-view>
+
+  <ion-footer-bar class="bar-positive footer zero">
+    <div class="row zero flex h44px"
+      ng-click="ProductUpdate.sendUpdate()"
+    >
+      <p class="zero center stable f16px bold">
+        수정 완료
+      </p>
+    </div>
+  </ion-footer-bar>
+ </ion-view>

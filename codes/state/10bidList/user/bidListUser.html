@@ -1,0 +1,64 @@
+<ion-view id="bid-list-user"
+  cache-view="true"
+  hide-back-button="true"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack('back')"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      내 견적서
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="pt10px pb20px light-grey-bg has-header">
+    <ion-refresher
+      on-refresh="BidListUser.refreshBids()"
+    >
+    </ion-refresher>
+    <div class="zero"
+      ng-click="BidListUser.preloadToBidDetailUser(bid)"
+      collection-repeat="bid in BidListUser.Model.bids"
+      item-width="100%"
+      item-height="125"
+      item-render-buffer="20"
+    >
+      <div class="pt15px pb20px pl3p pr3p w90p auto radius shadow stable-bg">
+        <div class="row zero">
+          <div class="col-auto">
+            <p class="zero positive f18px bold mb5px">
+              {{bid.place.name}}
+            </p>
+          </div>
+          <div class="col zero">
+            <p class="zero right positive right f16px mb5px">
+              {{ bid.distanceFromCurrent | mToKm }}
+            </p>
+          </div>
+        </div>
+        <p class="zero f16px mb5px">
+          {{bid.name}}
+        </p>
+        <p class="zero f16px mb5px">
+          <span class="red">{{bid.price | number}} </span>원
+        </p>
+        <p class="zero f16px dark-grey">
+          {{bid.place.address}}
+        </p>
+      </div>
+    </div>
+
+    <ion-infinite-scroll
+        on-infinite="BidListUser.getOlderBids()"
+        immediate-check="false"
+        ng-if="BidListUser.Model.more"
+    >
+    </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

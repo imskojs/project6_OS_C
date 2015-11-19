@@ -1,0 +1,39 @@
+<ion-modal-view id="request-profile-modal" class="common-modal">
+  <ion-content class="request-login-content">
+    <div class="wrapper-80">
+      <section class="message-section">
+
+        <div class="row zero row-header">
+          <div class="col-60 flex col-header">
+            <p class="zero header-text">
+              알림
+            </p>
+          </div>
+<!--
+          <div class="col-20 flex col-cross"
+            ng-click="Main.profileModal.hide()"
+          >
+            <i class="cross-icon ion-ios-close-empty"></i>
+          </div>
+ -->
+        </div>
+        <div class="request-content">
+          <p class="zero auto content-text center pre">
+            프로필을 설정해주세요
+            <span class="small">(사진, 닉네임, 전화번호는 필수 등록 사항입니다)</span>
+          </p>
+          <div class="row zero row-button flex">
+            <div class="col-80 col-button radius"
+              ng-click="handleCloseEditProfileModal();"
+            >
+              <p class="zero button-text center">
+                확인
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </ion-content>
+</ion-modal-view>

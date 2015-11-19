@@ -1,0 +1,50 @@
+//====================================================
+//  Positions
+//====================================================
+
+@for $i from 0 through 300 {
+  @each $app-direction in $app-directions {
+    // .top0px, ..., .left300px
+    .#{$app-direction}#{$i}px {
+      #{$app-direction}: #{$i}px !important;
+    }
+    // .top0p, ..., left300p
+    .#{$app-direction}#{$i}p {
+      #{$app-direction}: #{$i}% !important;
+    }
+  }
+}
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.block {
+  display: block;
+}
+.inline {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.fixed {
+  display: fixed;
+}
+.table {
+  display: table;
+}
+.table-cell {
+  display: table-cell;
+}
+
+.zero {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

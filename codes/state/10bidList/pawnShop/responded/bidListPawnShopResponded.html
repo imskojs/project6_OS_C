@@ -1,0 +1,85 @@
+<ion-view id="bid-list-pawnShop-responded"
+  cache-view="true"
+  hide-back-button="false"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goToState('main.productList.market', {category: 'market'}, 'back')"
+    >
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <p class="zero">
+      보낸 견적
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="pt10px pb20px light-grey-bg">
+    <ion-refresher
+      on-refresh="BidListPawnShopResponded.refreshBids()"
+    >
+    </ion-refresher>
+
+    <div class="zero"
+      ng-click="BidListPawnShopResponded.preloadToBidDetailPawnShopResponded(bid)"
+      collection-repeat="bid in BidListPawnShopResponded.Model.bids"
+      item-width="100%"
+      item-height="125"
+      item-render-buffer="20"
+    >
+
+      <div class="row zero w95p auto radius stable-bg shadow">
+        <div class="col-40">
+          <img class="w100p h120px block"
+            ng-src="{{bid.photos[0].url | cloudinary200}}"
+          >
+        </div>
+        <div class="col zero pl5px">
+          <!-- row -->
+          <p class="zero positive bold f18px text-overflow mt5px">
+            {{ bid.name }}
+          </p>
+          <!-- row -->
+          <div class="row zero flex-v mt5px">
+            <p class="zero f16px dark-grey">
+              요청자
+            </p>
+            <p class="zero f16px ml5px">
+              {{bid.createdBy.nickname}}
+            </p>
+          </div>
+          <!-- row -->
+          <div class="row zero flex-v mt5px">
+            <p class="zero f16px dark-grey">
+              요청일
+            </p>
+            <p class="zero f16px ml5px">
+              {{bid.createdAt | date: 'yyyy.MM.dd'}}
+            </p>
+          </div>
+          <button class="button-icon stable flex w80px positive-bg mt10px pt5px pb5px radius"
+            ng-click="
+            BidListPawnShopResponded.deleteBid(bid, $index);
+            $event.stopPropagation();"
+          >
+            <i class="ion-trash-b f18px"></i>
+            <p class="zero ml5px f16px">
+              삭제
+            </p>
+          </button>
+        </div>
+      </div>
+
+    </div> <!-- collection repeat container -->
+
+        <!-- ng-if="BidListPawnShopResponded.checkForMore()" -->
+    <ion-infinite-scroll
+        on-infinite="BidListPawnShopResponded.getOlderBids()"
+        immediate-check="false"
+        ng-if="BidListPawnShopResponded.Model.more"
+    >
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,14 @@
+{
+  "name": "clientOhShop",
+  "app_id": "",
+  "gulpStartupTasks": [
+    "view",
+    "js",
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "codes/**/*",
+    "!codes/lib/**/*"
+  ]
+}

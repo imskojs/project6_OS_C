@@ -1,0 +1,68 @@
+//====================================================
+//  Functions
+//====================================================
+@function return-var-from-text($text){
+  @if $text == 'lighter'{
+    @return $lighter;
+  } @else if $text == 'light'{
+    @return $light;
+  } @else if $text == 'stable'{
+    @return $stable;
+  } @else if $text == 'positive'{
+    @return $positive;
+  } @else if $text == 'calm'{
+    @return $calm;
+  } @else if $text == 'balanced'{
+    @return $balanced;
+  } @else if $text == 'energized'{
+    @return $energized;
+  } @else if $text == 'assertive'{
+    @return $assertive;
+  } @else if $text == 'royal'{
+    @return $royal;
+  } @else if $text == 'dark'{
+    @return $dark;
+  } @else if $text == 'darker'{
+    @return $darker;
+  } @else if $text == 'lighter-grey'{
+    @return $lighter-grey;
+  } @else if $text == 'light-grey'{
+    @return $light-grey;
+  } @else if $text == 'grey'{
+    @return $grey;
+  } @else if $text == 'dark-grey'{
+    @return $dark-grey;
+  } @else if $text == 'darker-grey'{
+    @return $darker-grey;
+  } @else if $text == 'red'{
+    @return $red;
+  } @else if $text == 'green'{
+    @return $green;
+  } @else if $text == 'blue'{
+    @return $blue;
+  } @else if $text == 'color0'{
+    @return $color0;
+  } @else if $text == 'color1'{
+    @return $color1;
+  } @else if $text == 'color2'{
+    @return $color2;
+  } @else if $text == 'color3'{
+    @return $color3;
+  } @else if $text == 'color4'{
+    @return $color4;
+  } @else if $text == 'color5'{
+    @return $color5;
+  } @else if $text == 'color6'{
+    @return $color6;
+  } @else if $text == 'color7'{
+    @return $color7;
+  } @else if $text == 'color8'{
+    @return $color8;
+  } @else if $text == 'color9'{
+    @return $color9;
+  }
+}
+@function return-first-letter($text){
+  @return str-slice($text, 1, 1);
+}
+

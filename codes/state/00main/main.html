@@ -1,0 +1,157 @@
+<ion-view id="main"
+  cache-view="true"
+>
+  <ion-side-menus class="positive-bg">
+    <ion-side-menu-content class="positive-bg"
+      edge-drag-threshold="false"
+      drag-content="false"
+    >
+      <!-- Main View -->
+      <ion-nav-bar class="bar-positive" align-title="center">
+      </ion-nav-bar>
+      <ion-nav-view class="positive-bg"
+        name="main">
+      </ion-nav-view>
+
+    </ion-side-menu-content>
+
+    <!-- Side Menu -->
+    <ion-side-menu side="left">
+      <ion-content class="side-menu-content">
+
+        <div class="row zero pt10px pb10px flex-v positive-bg stable-bb"
+          ng-click="appStorage.user.role === 'user' ?
+            goToState('main.profile', {
+              category: 'user',
+              id: appStorage.user.id
+            }) :
+            goToState('main.profile', {
+              category: 'pawnShop',
+              id: appStorage.user.id
+            })"
+        >
+          <div class="col-20 flex">
+            <img  class="w70p"
+              src="img/slidemenu_icon01.png"
+            >
+          </div>
+          <div class="col zero ml5p">
+            <p class="zero f16px stable bold">
+              <span ng-if="appStorage.token && appStorage.user.role === 'user'">{{appStorage.user.nickname}}</span>
+              <span ng-if="appStorage.token && appStorage.user.role !== 'user'">{{appStorage.place.name}}</span>
+            </p>
+          </div>
+          <div class="col-20 flex">
+            <i class="ion-gear-b f18px stable"></i>
+          </div>
+        </div>
+
+        <div class="row zero positive-bg mt0px"
+          ng-if="appStorage.user.role === 'user'"
+        >
+          <div class="col zero flex pt20px pb20px"
+            ng-click="Main.preloadToMyProductListUser();"
+          >
+            <img class="w60p"
+              src="img/slidemenu_icon02.png"
+              alt="내 견적서"
+            >
+          </div>
+          <div class="col zero flex pt20px pb20px stable-bl"
+            ng-click="Main.preloadToFavoriteProductList();"
+          >
+            <img class="w60p"
+              src="img/slidemenu_icon03.png"
+              alt="찜한 내역"
+            >
+          </div>
+        </div>
+
+        <div class="shadow"
+          ng-if="appStorage.user.role === 'pawnShop'"
+        >
+          <div class="row zero positive-bg mt0px">
+            <div class="col zero flex pt20px pb20px"
+              ng-click="Main.preloadToBidListPawnShopPending()"
+            >
+              <img class="w60p"
+                src="img/seller_icon03.png"
+                alt="요청받은 견적"
+              >
+            </div>
+            <div class="col zero flex pt20px pb20px stable-bl"
+              ng-click="Main.preloadToBidListPawnShopResponded()"
+            >
+              <img class="w60p"
+                src="img/seller_icon04.png"
+                alt="보낸견적"
+              >
+            </div>
+          </div>
+
+          <div class="row zero positive-bg mt0px stable-bt">
+            <div class="col zero flex pt20px pb20px"
+              ng-click="goToState('main.productRegister.step1', {
+                category: 'pawnShop',
+                step: 1,
+                method: 'create'
+              });"
+            >
+              <img class="w60p"
+                src="img/seller_icon05.png"
+                alt="상품등록"
+              >
+            </div>
+            <div class="col zero flex pt20px pb20px stable-bl"
+              ng-click="Main.preloadToMyProductListPawnShop();"
+            >
+              <img class="w60p"
+                src="img/seller_icon06.png"
+                alt="물품내역"
+              >
+            </div>
+          </div>
+
+        </div>
+
+        <p class="zero f18px pt20px pb20px pl5p light-bb positive"
+          ng-click="goToState('main.announcementList')"
+        >
+          공지사항
+        </p>
+        <p class="zero f18px pt20px pb20px pl5p light-bb positive"
+          ng-click="goToState('main.faqList')"
+        >
+          자주 묻는 질문
+        </p>
+        <p class="zero f18px pt20px pb20px pl5p light-bb positive"
+          ng-click="goToState('main.customer')"
+        >
+          고객센터
+        </p>
+        <p class="zero f18px pt20px pb20px pl5p light-bb positive"
+          ng-click="goToState('main.term')"
+        >
+          이용약관
+        </p>
+
+      </ion-content>
+      <ion-footer-bar class="bar-stable zero">
+        <div class="row zero flex-v light-grey-bt"
+          ng-click="Main.logout('main.login');"
+        >
+          <div class="col zero">
+            <p class="zero right positive f16px bold">
+              로그아웃
+            </p>
+          </div>
+          <div class="col-20 flex">
+            <i class="ion-log-out f18px positive bold"></i>
+          </div>
+        </div>
+      </ion-footer-bar>
+    </ion-side-menu>
+  </ion-side-menus>
+
+</ion-view>
+

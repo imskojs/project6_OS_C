@@ -1,0 +1,44 @@
+//====================================================
+//  Borders
+//====================================================
+@each $app-color in $app-colors {
+  //.lighter-b, ..., .color9
+  .#{$app-color}-b {
+    border: 1px solid return-var-from-text($app-color) !important;
+  }
+  @each $app-direction in $app-directions {
+    //.ligher-bt, ..., .color9-bl
+    .#{$app-color}-b#{return-first-letter($app-direction)} {
+      border-#{$app-direction}: 1px solid return-var-from-text($app-color) !important;
+    }
+  }
+}
+
+@for $i from 0 through 50 {
+  @each $app-color in $app-colors {
+    //.ligher-b0px, ..., .color0-b50px
+    .#{$app-color}-b#{$i}px {
+      border: #{$i}px solid return-var-from-text($app-color) !important;
+    }
+    @each $app-direction in $app-directions {
+      //.lighter-bt0px, ..., .color0-bl50px
+      .#{$app-color}-b#{return-first-letter($app-direction)}#{$i}px {
+        border-#{$app-direction}: #{$i}px solid return-var-from-text($app-color) !important;
+      }
+    }
+  }
+}
+
+@for $i from 0 through 50 {
+  // .b0px, ..., .b50px
+  .b#{$i}px {
+    border-width: #{$i}px !important;
+  }
+  @each $app-direction in $app-directions {
+    // .bt0px, ..., bl50px
+    .b#{return-first-letter($app-direction)}#{$i}px {
+      border-#{$app-direction}-width: #{$i}px !important;
+    }
+  }
+
+}

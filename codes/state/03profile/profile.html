@@ -1,0 +1,280 @@
+<ion-view id="profile"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+        ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      <span ng-if="getParam('category') === 'user'">내 프로필</span>
+      <span ng-if="getParam('category') === 'pawnShop'">상인 프로필</span>
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="profile-content">
+
+    <ion-refresher
+      ng-if="!Profile.Model.loading"
+      on-refresh="Profile.refresh()"
+    >
+    </ion-refresher>
+
+    <div class="w100p h95vh flex light-grey-bg absolute" style="z-index: 2"
+      ng-if="Profile.Model.loading"
+    >
+      <ion-spinner class="spinner-40px mb88px" icon="ripple"></ion-spinner>
+    </div>
+
+    <div ng-if="getParam('category') === 'user'">
+      <div class="pt20px light-bg pb20px">
+        <img class="logo block auto w35p"
+          src="img/slidemenu_icon05.png"
+        >
+        <p class="zero center stable f18px mt20px">
+          닉네임: {{appStorage.user.nickname}}
+        </p>
+        <p class="zero mt10px f18px stable center">
+          이메일: {{appStorage.user.email}}
+        </p>
+      </div>
+
+      <div class="auto w90p pt20px">
+
+        <div class="row zero flex-v lighter-bg radius mb15px">
+          <div class="col-auto ml5p">
+            <p class="zero positive f18px">
+              닉네임 변경
+            </p>
+          </div>
+          <div class="col zero ml5p">
+            <input class="h45px f18px dark-grey"
+              type="text"
+              ng-model="Profile.Model.user.nickname"
+            >
+          </div>
+        </div>
+
+        <div class="row zero flex-v lighter-bg radius mb15px">
+          <div class="col-auto ml5p">
+            <p class="zero positive f18px">
+              이메일 변경
+            </p>
+          </div>
+          <div class="col zero ml5p">
+            <input class="h45px f18px dark-grey"
+              type="text"
+              ng-model="Profile.Model.user.email"
+            >
+          </div>
+        </div>
+
+        <div class="row zero flex-v lighter-bg radius mb15px h45px"
+          ng-click="goToState('main.resetPassword', {category: 'user'})"
+        >
+          <div class="col-auto ml5p">
+            <p class="zero positive f18px">
+              비밀번호 재설정
+            </p>
+          </div>
+          <div class="col zero ml5p pr5p right">
+            <i class="zero f18px positive ion-ios-arrow-forward"> </i>
+          </div>
+        </div>
+
+
+        <p class="zero center positive-bg radius f20px stable pt15px pb15px"
+          ng-click="Profile.sendFormUser();"
+        >
+          완료
+        </p>
+
+      </div>
+    </div>
+    <!-- user end -->
+
+
+    <!-- PawnShop -->
+    <!-- PawnShop -->
+    <!-- PawnShop -->
+    <div
+      ng-if="getParam('category') === 'pawnShop'"
+    >
+
+      <div class="app-slide-image flex light-bg"
+        ng-if="Profile.Model.place.photos.length === 0 && Profile.Model.dataUris.length === 0"
+      >
+        <img class="w40p"
+          src="img/slidemenu_icon05.png"
+        >
+      </div>
+      <ion-slide-box
+        show-pager="true"
+        ng-if="Profile.Model.place.photos.length > 0 && Profile.Model.dataUris.length === 0"
+      >
+        <ion-slide
+          ng-repeat="placePhoto in Profile.Model.place.photos"
+        >
+          <img class="app-slide-image"
+            ng-src="{{placePhoto.url | cloudinary350}}"
+          >
+        </ion-slide>
+      </ion-slide-box>
+
+      <ion-slide-box
+        ng-cloak
+        delegate-handle="update-slide"
+        show-pager="true"
+        ng-if="Profile.Model.dataUris.length > 0"
+      >
+        <ion-slide
+          ng-repeat="placePhoto in Profile.Model.dataUris"
+        >
+          <img class="app-slide-image"
+            ng-src="{{ placePhoto }}"
+          >
+        </ion-slide>
+      </ion-slide-box>
+
+        <img class="absolute top10px right10px w50px"
+          src="img/estimate_icon06.png"
+          ng-click="Profile.getImage('gallery');"
+        >
+
+      <div class="auto w95p pt20px">
+
+        <div class="row zero lighter-bg radius mb15px">
+          <div class="col-auto ml3p flex-v">
+            <p class="zero positive f18px">
+              점포명 변경
+            </p>
+          </div>
+          <div class="col zero ml5p mr3p">
+            <input class="h45px f18px dark-grey right"
+              type="text"
+              ng-model="Profile.Model.user.name"
+            >
+          </div>
+        </div>
+
+        <div class="row zero lighter-bg radius mb15px">
+          <div class="col-auto ml3p flex-v">
+            <p class="zero positive f18px">
+              이메일 변경
+            </p>
+          </div>
+          <div class="col zero ml5p mr3p">
+            <input class="h45px f18px dark-grey right"
+              type="text"
+              ng-model="Profile.Model.user.email"
+            >
+          </div>
+        </div>
+        <div class="row zero lighter-bg radius mb15px"
+          ng-click="comingSoon('비밀번호 재설정은');"
+        >
+          <div class="col-auto ml3p h45px flex-v">
+            <p class="zero positive f18px">
+              비밀번호 재설정
+            </p>
+          </div>
+          <div class="col zero ml5p mr3p flex-v">
+            <p class="zero right f20px w100p positive bold mb5px">
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero lighter-bg radius mb15px">
+          <div class="col-auto ml3p flex-v">
+            <p class="zero positive f18px">
+              핸드폰번호 변경
+            </p>
+          </div>
+          <div class="col zero ml5p mr3p">
+            <input class="h45px f18px dark-grey right"
+              type="number"
+              ng-model="Profile.Model.user.cellPhone"
+            >
+          </div>
+        </div>
+
+        <div class="row zero lighter-bg radius mb15px">
+          <div class="col-auto ml3p flex-v">
+            <p class="zero positive f18px">
+            전화번호
+            </p>
+          </div>
+          <div class="col zero ml5p mr3p">
+            <input class="h45px f18px dark-grey right"
+              type="number"
+              ng-model="Profile.Model.user.phone"
+            >
+          </div>
+        </div>
+
+        <div class="row zero lighter-bg radius mb15px">
+          <div class="col-auto ml3p flex-v">
+            <p class="zero positive f18px">
+              대부업등록번호
+            </p>
+          </div>
+          <div class="col zero ml5p mr3p">
+            <input class="h45px f18px dark-grey right"
+              type="text"
+              ng-model="Profile.Model.user.companyNumber"
+            >
+          </div>
+        </div>
+
+        <div class="row zero lighter-bg radius mb15px">
+          <div class="col-auto ml3p flex-v">
+            <p class="zero positive f18px">
+              주소
+            </p>
+          </div>
+          <div class="col zero ml5p mr3p">
+            <input class="h45px f18px dark-grey right"
+              type="text"
+              ng-model="Profile.Model.user.address"
+            >
+          </div>
+        </div>
+
+        <div class="zero lighter-bg radius mb15px pt10px pb10px">
+          <p class="ml3p zero positive f18px">
+            영업시간
+          </p>
+          <textarea class="h100px pl3p f16px placeholder-f16px placeholder-dark-grey dark-grey pre transparent-bg"
+            type="text"
+            placeholder="영업시간을 업데이트 해주세요."
+            ng-model="Profile.Model.user.openingHours"
+          >
+          </textarea>
+        </div>
+
+        <div class="zero w100p lighter-bg radius mb15px pt10px pb10px pl3p pr3p">
+          <p class="zero positive f18px">
+            취급물품
+          </p>
+          <textarea class="h150px transparent-bg dark-grey placeholder-dark-grey f16px para"
+            placeholder="취급물품들을 써주세요."
+            ng-model="Profile.Model.user.description"
+          ></textarea>
+        </div>
+
+        <p class="zero center positive-bg radius f20px stable pt15px pb15px mb30px"
+          ng-click="Profile.sendFormPlace();"
+        >
+          완료
+        </p>
+
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

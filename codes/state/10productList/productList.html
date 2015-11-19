@@ -1,0 +1,91 @@
+<ion-view id="product-list"
+    cache-view="true"
+    hide-back-button="true"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-navicon"
+      ng-click="toggleSideMenu(true)"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="zero bar-subheader positive-bg"
+    no-tap-scroll="true"
+    ng-if="!isState('main.productList.placeId')"
+  >
+    <div class="zero row w95p h36px mt4px auto flex stable-bg">
+      <div class="col-12 flex h36px"
+        ng-click="ProductList.searchProduct()"
+      >
+        <i class="ion-search f24px positive"></i>
+      </div>
+      <div class="col zero">
+        <input class="h33px placeholder-f16px placeholder-grey pt5px f16px pl5p"
+          id="search"
+          type="text"
+          placeholder="물품명을 검색해주세요"
+          ng-model="ProductList.Model.searchWord"
+          ng-enter="ProductList.searchProduct();"
+        >
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-header-bar class="zero h34px top88px positive-bg"
+    no-tap-scroll="true"
+    ng-if="!isState('main.productList.placeId')"
+  >
+    <div class="row zero h34px stable-bg shadow">
+      <div class="col zero flex"
+        ng-class="{'tab-selected': getParam('category') === 'market'}"
+        ng-click="ProductList.preloadToMarket();"
+      >
+        <p class="zero positive f16px center bold">
+          마켓
+        </p>
+      </div>
+      <div class="col zero flex"
+        ng-class="{'tab-selected': getParam('category') === 'pawnShop'}"
+        ng-click="ProductList.preloadToPawnShop();"
+      >
+        <p class="zero positive f16px center bold">
+          전당포
+        </p>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-nav-view name="productList">
+  </ion-nav-view>
+
+
+  <ion-footer-bar class="bar-positive footer zero">
+    <div class="row zero flex-v"
+      ng-if="getParam('category') === 'market'"
+    >
+      <div class="col zero ml5p">
+        <p class="zero f16px stable text-overflow bold">
+          {{appStorage.address || '서울시 강남구 역삼동'}}
+        </p>
+      </div>
+      <button class="button button-icon col-auto h34px flex-v pr10px pl10px stable-b mr5p stable radius"
+        ng-click="goToState('main.daumMap')"
+      >
+        <i class="ion-android-locate f20px"></i>
+        <p class="zero f16px bold ml10px">
+          지역 재설정
+        </p>
+      </button>
+    </div>
+
+    <div class="row zero flex"
+      ng-if="getParam('category') === 'pawnShop'"
+      ng-click="appStorage.user.role === 'user' ? ProductList.beforeRegisterModal.show() : ProductList.onlyForUser();"
+    >
+      <p class="zero f16px bold center">
+        견적 요청하기
+      </p>
+    </div>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,26 @@
+<ion-modal-view class="transparent-bg">
+  <ion-content class="darker-bg70">
+    <div class="auto w90p radius mt150px">
+      <p class="zero pt30px pb50px center stable-bg f18px radius-top dark-grey pre">
+        {{ProductRegister.Model.currentAddress}}
+        현재 위치로 등록 하시겠습니까?
+      </p>
+      <div class="row zero positive-bg mt0px radius-bottom">
+        <div class="col zero"
+          ng-click="ProductRegister.sendForm();"
+        >
+          <p class="zero center pt15px pb15px stable f18px">
+            확인
+          </p>
+        </div>
+        <div class="col zero">
+          <p class="zero center pt15px pb15px stable f18px stable-bl"
+            ng-click="ProductRegister.changeLocation();"
+          >
+            지역 재설정
+          </p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

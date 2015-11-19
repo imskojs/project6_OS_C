@@ -1,0 +1,221 @@
+<ion-view id="product-register-update"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="!isParam({method: 'create'}) ? goToState('main.myProductList.pawnShop', {category: 'pawnShop'}) : goBack();"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+
+      <span ng-if="getParam('category') === 'user'">견적 요청하기</span>
+
+      <span ng-if="getParam('category') === 'pawnShop' &&
+        getParam('method') === 'create'">상품등록</span>
+      <span ng-if="getParam('category') === 'pawnShop' &&
+        getParam('method') === 'update'">상품수정</span>
+    </p>
+  </ion-nav-title>
+
+
+  <ion-content class="product-register-content pt2px"
+    ng-class="{'has-subheader': getParam('method') === 'update'}"
+    scrollbar-y="false"
+  >
+    <div class="light-grey-bg pl5p pr5p pb40px pt1px">
+      <div>
+        <p class="zero f16px center mt20px mb20px dark-grey">
+          <span ng-if="getParam('method') === 'create'">제품 정보를 입력해주세요</span>
+          <span ng-if="getParam('method') === 'update'">제품 정보를 수정해주세요</span>
+        </p>
+
+        <div class="positive-b pt15px pt10px stable-bg pb15px">
+          <p class="zero f20px mb15px positive center bold">
+            <span ng-if="getParam('category') === 'user'">견적 요청서</span>
+            <span ng-if="getParam('category') === 'pawnShop' &&
+              getParam('method') === 'create'">상품등록</span>
+            <span ng-if="getParam('category') === 'pawnShop' &&
+              getParam('method') === 'update'">상품수정</span>
+          </p>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                제품명
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px"
+                type="text"
+                ng-model="ProductRegister.Model.form.name"
+              >
+            </div>
+          </div>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                품목
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px"
+                type="text"
+                ng-model="ProductRegister.Model.form.productCategory"
+              >
+            </div>
+          </div>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                브랜드
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px"
+                type="text"
+                ng-model="ProductRegister.Model.form.brand"
+              >
+            </div>
+          </div>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                구입시기
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px"
+                type="text"
+                ng-model="ProductRegister.Model.form.boughtAt"
+              >
+            </div>
+          </div>
+
+          <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v"
+            ng-if="getParam('category') === 'pawnShop'"
+          >
+            <div class="col-30">
+              <p class="zero positive f18px bold">
+                가격
+              </p>
+            </div>
+            <div class="col zero">
+              <input class="h33px f18px right"
+                type="number"
+                ng-model="ProductRegister.Model.form.price"
+              >
+            </div>
+            <div class="col-auto">
+              <p class="zero f18px positive bold">원</p>
+            </div>
+          </div>
+
+          <div class="grey-b mb5px mt0px w90p auto pl5p pr5p">
+            <p class="zero positive f18px mt8px mb8px bold">
+              상태선택
+            </p>
+            <div class="row zero mb8px">
+
+              <button class="col button-icon zero flex-v"
+                ng-click="ProductRegister.Model.form.condition = 'high'"
+              >
+                <div class="r50p w20px h20px dark-grey-b flex">
+                  <div class="w16px h16px r50p"
+                    ng-class="{
+                      'dark-grey-selected': ProductRegister.Model.form.condition === 'high'
+                    }"
+                  ></div>
+                </div>
+                <p class="zero f16px ml5px">상</p>
+              </button>
+
+              <button class="col button-icon zero flex-v"
+                ng-click="ProductRegister.Model.form.condition = 'medium'"
+              >
+                <div class="r50p w20px h20px dark-grey-b flex">
+                  <div class="w16px h16px r50p"
+                    ng-class="{
+                      'dark-grey-selected': ProductRegister.Model.form.condition === 'medium'
+                    }"
+                  ></div>
+                </div>
+                <p class="zero f16px ml5px">중</p>
+              </button>
+
+              <button class="col button-icon zero flex-v"
+                ng-click="ProductRegister.Model.form.condition = 'low'"
+              >
+                <div class="r50p w20px h20px dark-grey-b flex">
+                  <div class="w16px h16px r50p"
+                    ng-class="{
+                      'dark-grey-selected': ProductRegister.Model.form.condition === 'low'
+                    }"
+                  ></div>
+                </div>
+                <p class="zero f16px ml5px">하</p>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- User only -->
+          <div class="grey-b mb5px mt0px w90p auto pl5p pr5p"
+            ng-if="getParam('category') === 'user'"
+          >
+            <p class="zero positive f18px mt8px mb8px bold">
+              견적서 공개선택
+            </p>
+            <div class="row zero mb8px">
+
+              <button class="col button-icon zero flex-v"
+                ng-click="ProductRegister.Model.form.showBid = true"
+              >
+                <div class="r50p w20px h20px dark-grey-b flex">
+                  <div class="w16px h16px r50p"
+                    ng-class="{
+                      'dark-grey-selected': ProductRegister.Model.form.showBid === true
+                    }"
+                  ></div>
+                </div>
+                <p class="zero f16px ml5px">공개</p>
+              </button>
+
+              <button class="col button-icon zero flex-v mr33p"
+                ng-click="ProductRegister.Model.form.showBid = false"
+              >
+                <div class="r50p w20px h20px dark-grey-b flex">
+                  <div class="w16px h16px r50p"
+                    ng-class="{
+                      'dark-grey-selected': ProductRegister.Model.form.showBid === false
+                    }"
+                  ></div>
+                </div>
+                <p class="zero f16px ml5px">비공개</p>
+              </button>
+
+            </div>
+          </div>
+
+          <div class="grey-b mb5px mt0px w90p auto pl5p pr5p">
+            <p class="zero positive f18px mt8px mb8px bold">
+              특이사항 입력
+            </p>
+            <textarea class="placeholder-grey placeholder-f12px placeholder-para h150px f14px"
+              placeholder="[Hint!]\n스마트폰 액정 잔상\n맥북싸이클 수 00회\nDSLR 셔터수 00회\n금(GOLD)24K 2.5돈 등\n제품에 따른 상세정보 및 특이사항을 입력해주세요."
+              ng-model="ProductRegister.Model.form.description"
+            ></textarea>
+          </div>
+
+        </div>
+      </div>
+      <!-- STEP1 ENDS -->
+    </div>
+  </ion-content>
+ </ion-view>

@@ -1,0 +1,72 @@
+<ion-view id="login"
+    cache-view="true"
+    hide-nav-bar="true"
+>
+  <ion-content class="positive-bg pl13p pr13p">
+
+    <!-- Main logo -->
+    <img class="main-logo w80p auto block mt25px"
+      src="img/login_logo.png"
+    >
+
+    <!-- form.email -->
+    <div class="row zero flex stable-bb">
+      <div class="col-auto">
+        <i class="ion-email stable f25px"></i>
+      </div>
+      <div class="col zero ml5p">
+        <input  class="positive-bg stable f20px"
+          type="email"
+          placeholder="메일주소"
+          ng-model="Login.Model.form.email"
+        >
+      </div>
+    </div>
+
+    <!-- form.password -->
+    <div class="row zero flex mt15px stable-bb">
+      <div class="col-auto">
+        <i class="ion-locked stable f25px"></i>
+      </div>
+      <div class="col zero ml5p">
+        <input class="positive-bg stable f20px"
+          type="password"
+          placeholder="비밀번호 (6~15 영문, 숫자 조합)"
+          ng-model="Login.Model.form.password"
+        >
+      </div>
+    </div>
+
+    <button class="button-icon w100p zero center stable stable-b f20px pt10px pb10px mt20px radius bold"
+      ng-click="Login.login();"
+    >
+      로그인
+    </button>
+
+    <p class="zero f18px center stable mt20px"
+      ng-click="goToState('main.signUp', {category: 'user'})"
+    >
+      회원가입
+    </p>
+
+    <p class="zero f18px center stable mt20px"
+      ng-click="Login.lookAround();"
+    >
+      둘러보고 가입하기
+    </p>
+
+    <div class="row zero flex mt25px">
+      <div class="col-20 stable-bb"></div>
+      <div class="col-20">
+        <p class="zero center stable">or</p>
+      </div>
+      <div class="col-20 stable-bb"></div>
+    </div>
+
+    <p class="zero center dark bold dark-b f20px bw2px pt10px pb10px mt25px radius"
+      ng-click="goToState('main.signUp', {category: 'pawnShop'})"
+    >
+      점포 가입요청
+    </p>
+  </ion-content>
+</ion-view>

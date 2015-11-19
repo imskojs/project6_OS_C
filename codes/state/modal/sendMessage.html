@@ -1,0 +1,80 @@
+<ion-modal-view id="send-message-modal" class="common-modal">
+  <ion-content class="request-login-content">
+    <div class="wrapper-80">
+      <section class="message-section">
+
+        <div class="row zero row-header">
+          <div class="col-60 flex col-header">
+            <p class="zero header-text">
+              쪽지보내기
+            </p>
+          </div>
+          <div class="col-20 flex col-cross"
+            ng-click="PostDetail.sendMessageModal.hide()"
+          >
+            <i class="cross-icon ion-ios-close-empty"></i>
+          </div>
+        </div>
+        <div class="request-content">
+          <div class="row zero row-sender-input">
+            <div class="col-40 col-input-title">
+              <p class="input-title-text zero yellow">
+                받는사람
+              </p>
+            </div>
+            <div class="col zero">
+              <p class="zero to-text">
+                {{PostDetail.Model.post.createdBy.nickname}}
+              </p>
+            </div>
+          </div>
+          <div class="row zero row-sender-input">
+            <div class="col-40 col-input-title">
+              <p class="input-title-text zero yellow">
+                보내는사람
+              </p>
+            </div>
+            <div class="col zero">
+              <p class="zero from-text">
+              {{appStorage.user.nickname}}
+              </p>
+            </div>
+            <div class="col zero col-written-date">
+              <p class="zero written-date">
+                {{PostDetail.currentDate | date:'yyyy.MM.dd HH:mm'}}
+              </p>
+            </div>
+          </div>
+          <div class="row zero row-message-content">
+            <div class="col-40 col-input-title">
+              <p class="input-title-text zero yellow">
+                쪽지내용
+              </p>
+            </div>
+          </div>
+
+          <div class="row zero row-input flex">
+            <div class="col-90 zero col-input">
+              <input type="text" class="input-password input-field"
+                placeholder="보내실 내용을 입력해주세요"
+                ng-model="PostDetail.message"
+              >
+            </div>
+          </div>
+
+          <!-- send message button -->
+          <div class="row zero row-button flex">
+            <div class="col-80 col-button radius"
+              ng-click="PostDetail.postMessage()"
+            >
+              <p class="zero button-text center">
+                쪽지보내기
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,26 @@
+@for $i from 0 through 300 {
+  // .w0px, ..., .w300px
+  .w#{$i}px {
+    width: #{$i}px !important;
+  }
+  // .w0p, ..., .w300p
+  .w#{$i}p {
+    width: #{$i}% !important;
+  }
+  // .min-w0px, ..., .min-w300px
+  .min-w#{$i}px{
+    min-width: #{$i}px !important;
+  }
+  // .min-w0p, ..., .min-w300p
+  .min-w#{$i}p{
+    min-width: #{$i}% !important;
+  }
+  // .max-w0px, ..., .max-w300px
+  .max-w#{$i}px{
+    max-width: #{$i}px !important;
+  }
+  // .max-w0p, ..., .max-w300p
+  .max-w#{$i}p{
+    max-width: #{$i}% !important;
+  }
+}

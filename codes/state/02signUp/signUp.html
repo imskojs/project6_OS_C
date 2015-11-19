@@ -1,0 +1,190 @@
+<ion-view id="sign-up"
+  cache-view="true"
+  hide-back-button="true"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+        ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero"
+      ng-if="isParam({category: 'user'})"
+    >
+      일반 회원가입
+    </p>
+    <p class="zero"
+      ng-if="isParam({category: 'pawnShop'})"
+    >
+      점포 가입 요청서
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="pl7p pr7p pt1px">
+
+  <!-- USER ONLY -->
+    <div
+      ng-if="isParam({category: 'user'})"
+    >
+      <p class="zero grey f14px mt15px">닉네임 입력</p>
+      <div class="row zero flex grey-bb">
+        <div class="col zero">
+          <input class="positive f16px" type="text"
+            ng-model="SignUp.Model.form.nickname"
+          >
+        </div>
+
+        <div class="col-30"
+          ng-click=""
+        >
+<!--
+          <p class="zero positive-bg center stable pt3px pb3px mb3px radius ml5p">
+            중복확인
+          </p>
+ -->
+        </div>
+      </div>
+
+      <p class="zero grey f14px mt15px">이메일 입력</p>
+      <div class="row zero flex grey-bb">
+        <div class="col zero">
+          <input class="positive f16px" type="email"
+            ng-model="SignUp.Model.form.email"
+          >
+        </div>
+        <div class="col-30"
+          ng-click="SignUp.checkEmail();"
+        >
+          <p class="zero positive-bg center stable pt3px pb3px mb3px radius ml5p">
+            중복확인
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOP ONLY -->
+    <div
+      ng-if="isParam({category: 'pawnShop'})"
+    >
+      <p class="zero grey f14px mt15px">점포명</p>
+      <div class="row zero flex grey-bb">
+        <div class="col zero">
+          <input class="positive f16px" type="text"
+            ng-model="SignUp.Model.form.name"
+          >
+        </div>
+      </div>
+
+      <p class="zero grey f14px mt15px">메일주소</p>
+      <div class="row zero flex grey-bb">
+        <div class="col zero">
+          <input class="positive f16px" type="email"
+            ng-model="SignUp.Model.form.email"
+          >
+        </div>
+        <div class="col-30"
+          ng-click="SignUp.checkEmail();"
+        >
+          <p class="zero positive-bg center stable pt3px pb3px mb3px radius ml5p">
+            중복확인
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- SHOP ONLY ENDS -->
+
+    <p class="zero grey f14px mt15px">비밀번호 입력</p>
+    <div class="row zero flex grey-bb">
+      <div class="col zero">
+        <input class="positive f16px" type="password"
+          ng-model="SignUp.Model.form.password"
+        >
+      </div>
+    </div>
+
+    <p class="zero grey f14px mt15px">비밀번호 재입력</p>
+    <div class="row zero flex grey-bb">
+      <div class="col zero">
+        <input class="positive f16px" type="password"
+          ng-model="SignUp.Model.confirmPassword"
+        >
+      </div>
+    </div>
+
+    <!-- SHOP ONLY -->
+    <div class="for-shop"
+      ng-if="isParam({category: 'pawnShop'})"
+    >
+
+      <p class="zero grey f14px mt15px">핸드폰 번호</p>
+      <div class="row zero flex grey-bb">
+        <div class="col zero">
+          <input class="positive f16px" type="number"
+            ng-model="SignUp.Model.form.cellPhone"
+          >
+        </div>
+      </div>
+
+      <p class="zero grey f14px mt15px">전화번호</p>
+      <div class="row zero flex grey-bb">
+        <div class="col zero">
+          <input class="positive f16px" type="number"
+            ng-model="SignUp.Model.form.phone"
+          >
+        </div>
+      </div>
+
+      <p class="zero grey f14px mt15px">대부업등록번호</p>
+      <div class="row zero flex grey-bb">
+        <div class="col zero">
+          <input class="positive f16px" type="text"
+            ng-model="SignUp.Model.form.companyNumber"
+          >
+        </div>
+      </div>
+
+
+      <p class="zero grey f14px mt15px">주소</p>
+      <div class="row zero flex grey-bb">
+        <div class="col zero">
+          <input class="positive f16px placeholder-f13px" type="text"
+            placeholder="주소를 입력후 검색하셔서 골라주세요."
+            ng-model="SignUp.Model.form.address"
+            ng-enter="SignUp.searchPlace();"
+          >
+        </div>
+        <div class="col-10 flex"
+          ng-click="SignUp.searchPlace();"
+        >
+          <i class="ion-android-search f24px positive"></i>
+        </div>
+      </div>
+      <p class="zero f14px mt10px positive"
+        ng-if="SignUp.Model.places.length > 0"
+      >
+        장소를 골라주세요
+      </p>
+      <div class="row zero pt10px pb10px light-b mt0px"
+        ng-if="SignUp.Model.places.length > 0"
+        ng-repeat="place in SignUp.Model.places"
+        ng-click="SignUp.selectPlace(place);"
+      >
+        <div class="col zero flex">
+          <p class="zero f16px mt3px mb3px positive">
+            {{place.address}}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="zero center positive-bg radius f20px stable pt15px pb15px mt15px"
+      ng-click="SignUp.signUp( getParam('category') )"
+    >
+      완료
+    </p>
+  </ion-content>
+</ion-view>

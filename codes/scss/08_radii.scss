@@ -1,0 +1,84 @@
+//====================================================
+//  Radii
+//====================================================
+@for $i from 0 through 100 {
+  // .r0p, ..., .r100p
+  .r#{$i}p {
+    border-radius: #{$i}%;
+  }
+  // .r0px, ..., .r100px
+  .r#{$i}px {
+    border-radius: #{$i}px;
+  }
+  @each $app-direction-v in $app-directions-vertical {
+    // .rt0p, ..., .rb100p
+    .r#{return-first-letter($app-direction-v)}#{$i}p {
+      border-#{$app-direction-v}-left-radius: #{$i}%;
+      border-#{$app-direction-v}-right-radius: #{$i}%;
+    }
+    // .rt0px, ..., .rb100px
+    .r#{return-first-letter($app-direction-v)}#{$i}px {
+      border-#{$app-direction-v}-left-radius: #{$i}px;
+      border-#{$app-direction-v}-right-radius: #{$i}px;
+    }
+  }
+  @each $app-direction-h in $app-directions-horizontal {
+    // .rr0p, ..., .rl100p
+    .r#{return-first-letter($app-direction-h)}#{$i}p {
+      border-top-#{$app-direction-h}-radius: #{$i}%;
+      border-bottom-#{$app-direction-h}-radius: #{$i}%;
+    }
+    // .rr0px, ..., .rl100px
+    .r#{return-first-letter($app-direction-h)}#{$i}px {
+      border-top-#{$app-direction-h}-radius: #{$i}px;
+      border-bottom-#{$app-direction-h}-radius: #{$i}px;
+    }
+  }
+  @each $app-direction-v in $app-directions-vertical {
+    @each $app-direction-h in $app-directions-horizontal {
+      // .rtr0p, ..., .rbl100p
+      .r#{return-first-letter($app-direction-v)}#{return-first-letter($app-direction-h)}#{$i}p {
+        border-#{$app-direction-v}-#{$app-direction-h}-radius: #{$i}%;
+      }
+      // .rtr0px, ..., .rbl100px
+      .r#{return-first-letter($app-direction-v)}#{return-first-letter($app-direction-h)}#{$i}px {
+        border-#{$app-direction-v}-#{$app-direction-h}-radius: #{$i}px;
+      }
+    }
+  }
+}
+
+.circle {
+  radius: 50%;
+}
+.radius {
+    border-radius: 5px;
+}
+.radius-bottom {
+    border-bottom: {
+        left-radius: 5px;
+        right-radius: 5px;
+    }
+}
+.radius-top {
+    border-top: {
+        left-radius: 5px;
+        right-radius: 5px;
+    }
+}
+.radius-right {
+    border-top: {
+        right-radius: 5px;
+    }
+    border-bottom: {
+        right-radius: 5px;
+    }
+}
+.radius-left {
+    border-top: {
+        left-radius: 5px;
+    }
+    border-bottom: {
+        left-radius: 5px;
+    }
+}

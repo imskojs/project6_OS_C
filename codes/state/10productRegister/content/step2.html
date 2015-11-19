@@ -1,0 +1,214 @@
+<ion-view id="product-register-update"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goToState('main.productList.market', {category: 'market'})"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      <span ng-if="getParam('category') === 'user'">견적 요청하기</span>
+      <span ng-if="getParam('category') === 'pawnShop' &&
+        getParam('method') === 'create'">상품등록</span>
+      <span ng-if="getParam('category') === 'pawnShop' &&
+        getParam('method') === 'update'">상품수정</span>
+    </p>
+  </ion-nav-title>
+
+
+  <ion-content class="product-register-content pt2px"
+    ng-class="{'has-subheader': getParam('method') === 'update'}"
+    scrollbar-y="false"
+  >
+    <div class="light-grey-bg pl5p pr5p pb40px pt1px">
+      <!-- STEP2 -->
+        <!-- ng-if="getParam('step') === 2" -->
+      <div>
+        <p class="zero f16px center mt20px mb20px dark-grey">
+          제품 사진을 등록해주세요.
+        </p>
+
+        <div
+          ng-if="ProductRegister.Model.product.photos.length === 0"
+        >
+        <div class="light-bg relative radius">
+          <div class="row flex zero h60vw w100p radius"
+            ng-if="!ProductRegister.Model.dataUris[0]"
+          >
+            <img class="w30p block mb15p"
+              src="img/estimate_icon01.png"
+            >
+          </div>
+          <img class="w100p h60vw block radius"
+            ng-if="ProductRegister.Model.dataUris[0]"
+            ng-src="{{ProductRegister.Model.dataUris[0]}}"
+          >
+          <div class="absolute bottom0px w100p h44px positive-bg70 radius-bottom">
+            <div class="row zero flex-v h44px">
+              <div class="col zero ml5p">
+                <p class="zero stable f16px bold">
+                  전면 사진
+                </p>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-if="isParam({category: 'pawnShop'})"
+                ng-click="ProductRegister.getImage(1, 'gallery')"
+              >
+                <i class="ion-image f26px stable"></i>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-click="ProductRegister.getImage(1, 'camera')"
+              >
+                <i class="ion-camera f26px stable"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="light-bg relative radius mt10px">
+          <div class="row flex zero h60vw w100p radius"
+            ng-if="!ProductRegister.Model.dataUris[1]"
+          >
+            <img class="w30p block mb15p"
+              src="img/estimate_icon02.png"
+            >
+          </div>
+          <img class="w100p h60vw block radius"
+            ng-if="ProductRegister.Model.dataUris[1]"
+            ng-src="{{ProductRegister.Model.dataUris[1]}}"
+          >
+          <div class="absolute bottom0px w100p h44px positive-bg70 radius-bottom">
+            <div class="row zero flex-v h44px">
+              <div class="col zero ml5p">
+                <p class="zero stable f16px bold">
+                  측면 사진
+                </p>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-if="isParam({category: 'pawnShop'})"
+                ng-click="ProductRegister.getImage(2, 'gallery')"
+              >
+                <i class="ion-image f26px stable"></i>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-click="ProductRegister.getImage(2, 'camera')"
+              >
+                <i class="ion-camera f26px stable"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="light-bg relative radius mt10px">
+          <div class="row flex zero h60vw w100p radius"
+            ng-if="!ProductRegister.Model.dataUris[2]"
+          >
+            <img class="w30p block mb15p"
+              src="img/estimate_icon03.png"
+            >
+          </div>
+          <img class="w100p h60vw block radius"
+            ng-if="ProductRegister.Model.dataUris[2]"
+            ng-src="{{ProductRegister.Model.dataUris[2]}}"
+          >
+          <div class="absolute bottom0px w100p h44px positive-bg70 radius-bottom">
+            <div class="row zero flex-v h44px">
+              <div class="col zero ml5p">
+                <p class="zero stable f16px bold">
+                  일련번호(태그)
+                </p>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-if="isParam({category: 'pawnShop'})"
+                ng-click="ProductRegister.getImage(3, 'gallery')"
+              >
+                <i class="ion-image f26px stable"></i>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-click="ProductRegister.getImage(3, 'camera')"
+              >
+                <i class="ion-camera f26px stable"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="light-bg relative radius mt10px">
+          <div class="row flex zero h60vw w100p radius"
+            ng-if="!ProductRegister.Model.dataUris[3]"
+          >
+            <img class="w30p block mb15p"
+              src="img/estimate_icon04.png"
+            >
+          </div>
+          <img class="w100p h60vw block radius"
+            ng-if="ProductRegister.Model.dataUris[3]"
+            ng-src="{{ProductRegister.Model.dataUris[3]}}"
+          >
+          <div class="absolute bottom0px w100p h44px positive-bg70 radius-bottom">
+            <div class="row zero flex-v h44px">
+              <div class="col zero ml5p">
+                <p class="zero stable f16px bold">
+                  부속품 전체
+                </p>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-if="isParam({category: 'pawnShop'})"
+                ng-click="ProductRegister.getImage(4, 'gallery')"
+              >
+                <i class="ion-image f26px stable"></i>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-click="ProductRegister.getImage(4, 'camera')"
+              >
+                <i class="ion-camera f26px stable"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="light-bg relative radius mt10px">
+          <div class="row flex zero h60vw w100p radius"
+            ng-if="!ProductRegister.Model.dataUris[4]"
+          >
+            <img class="w30p block mb15p"
+              src="img/estimate_icon05.png"
+            >
+          </div>
+          <img class="w100p h60vw block radius"
+            ng-if="ProductRegister.Model.dataUris[4]"
+            ng-src="{{ProductRegister.Model.dataUris[4]}}"
+          >
+          <div class="absolute bottom0px w100p h44px positive-bg70 radius-bottom">
+            <div class="row zero flex-v h44px">
+              <div class="col zero ml5p">
+                <p class="zero stable f16px bold">
+                  파손부분
+                </p>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-if="isParam({category: 'pawnShop'})"
+                ng-click="ProductRegister.getImage(5, 'gallery')"
+              >
+                <i class="ion-image f26px stable"></i>
+              </div>
+              <div class="mr5p flex r50p w35px h35px stable-b"
+                ng-click="ProductRegister.getImage(5, 'camera')"
+              >
+                <i class="ion-camera f26px stable"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+      <!-- STEP2 ENDS -->
+    </div>
+  </ion-content>
+
+ </ion-view>

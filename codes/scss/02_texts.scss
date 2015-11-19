@@ -1,0 +1,190 @@
+//====================================================
+//  Texts
+//====================================================
+input {
+  width: 100%;
+  padding-top: 0 !important;
+  border: 0;
+  background-color: transparent;
+}
+textarea {
+  resize: none;
+  width: 100%;
+}
+
+.bar {
+  .title {
+    color: $stable !important;
+  }
+}
+.bold {
+  font-weight: bold;
+}
+.center {
+    text-align: center;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+.text-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.pre {
+    white-space: pre-line;
+    line-height: 125% !important;
+}
+.para {
+  line-height: 125% !important;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+::-webkit-input-placeholder {
+  color: $stable;
+  line-height: 138%;
+  font-size: 17px;
+}
+::-moz-placeholder {
+  color: $stable;
+  line-height: 138%;
+  font-size: 17px;
+}
+:-ms-input-placeholder {
+  color: $stable;
+  line-height: 138%;
+  font-size: 17px;
+}
+::placeholder {
+  color: $stable;
+  line-height: 138%;
+  font-size: 17px;
+}
+
+
+.placeholder-para {
+  &::-webkit-input-placeholder {
+    line-height: 125% !important;
+  }
+  &::-moz-placeholder {
+    line-height: 125% !important;
+  }
+  &:-ms-input-placeholder {
+    line-height: 125% !important;
+  }
+  &::placeholder {
+    line-height: 125% !important;
+  }
+}
+@each $app-color in $app-colors {
+  // .lighter, ..., .color9
+  .#{$app-color} {
+    color: return-var-from-text($app-color) !important;
+  }
+  // .placeholder-lighter, ..., .placeholder-color9
+  .placeholder-#{$app-color} {
+    &::-webkit-input-placeholder {
+      color: return-var-from-text($app-color);
+    }
+    &::-moz-placeholder {
+      color: return-var-from-text($app-color);
+    }
+    &:-ms-input-placeholder {
+      color: return-var-from-text($app-color);
+    }
+    &::placeholder {
+      color: return-var-from-text($app-color);
+    }
+  }
+}
+@for $i from 0 through 100 {
+  // .f0, ... .f100
+  .f#{$i}px {
+    font-size: #{$i}px !important;
+    line-height: 100%;
+  }
+  .f#{$i}rem {
+    font-size: #{$i}rem !important;
+    line-height: 100%;
+  }
+  // .placeholder-f-0, ... .placeholder-f-100
+  .placeholder-f#{$i}px {
+    &::-webkit-input-placeholder {
+      line-height: 100%;
+      font-size: #{$i}px;
+    }
+    &::-moz-placeholder {
+      line-height: 100%;
+      font-size: #{$i}px;
+    }
+    &:-ms-input-placeholder {
+      line-height: 100%;
+      font-size: #{$i}px;
+    }
+    &::placeholder {
+      line-height: 100%;
+      font-size: #{$i}px;
+    }
+  }
+  .placeholder-f#{$i}rem {
+    &::-webkit-input-placeholder {
+      line-height: 100%;
+      font-size: #{$i}rem;
+    }
+    &::-moz-placeholder {
+      line-height: 100%;
+      font-size: #{$i}rem;
+    }
+    &:-ms-input-placeholder {
+      line-height: 100%;
+      font-size: #{$i}rem;
+    }
+    &::placeholder {
+      line-height: 100%;
+      font-size: #{$i}rem;
+    }
+  }
+}
+.letter-spacing-1 {
+  letter-spacing: -1px;
+}
+.letter-spacing-09 {
+  letter-spacing: -0.9px;
+}
+.letter-spacing-08 {
+  letter-spacing: -0.8px;
+}
+.letter-spacing-07 {
+  letter-spacing: -0.7px;
+}
+.letter-spacing-06 {
+  letter-spacing: -0.6px;
+}
+.letter-spacing-05 {
+  letter-spacing: -0.5px;
+}
+.letter-spacing-04 {
+  letter-spacing: -0.4px;
+}
+.letter-spacing-03 {
+  letter-spacing: -0.3px;
+}
+.letter-spacing-02 {
+  letter-spacing: -0.2px;
+}
+.letter-spacing-01 {
+  letter-spacing: -0.1px;
+}
+.letter-spacing-0 {
+  letter-spacing: 0;
+}

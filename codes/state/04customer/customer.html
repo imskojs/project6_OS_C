@@ -1,0 +1,98 @@
+<ion-view id="customer"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+        ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      고객센터
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="light-grey-bg">
+
+    <div class="pt20px light-bg pb20px">
+      <img class="block auto w35p"
+        src="img/slidemenu_icon06.png"
+      >
+      <p class="zero center stable f18px mt20px">
+        마켓이나 전당포 이용에 관한
+      </p>
+      <p class="zero mt5px f18px stable center">
+        문의사항이 있으시면 연락 바랍니다.
+      </p>
+    </div>
+
+    <div class="auto w90p pt8px">
+
+      <div class="row zero flex-v mb5px">
+        <div class="col-18">
+          <p class="zero positive f14px right dark-grey">
+            이메일
+          </p>
+        </div>
+        <div class="col zero ml2p">
+          <input class="pl2p h30px f14px dark-grey stable-bg grey-b"
+            type="text"
+            ng-model="Customer.Model.form.email"
+          >
+        </div>
+      </div>
+
+      <div class="row zero flex-v mb5px mt0px">
+        <div class="col-18">
+          <p class="zero positive f14px right dark-grey">
+            전화번호
+          </p>
+        </div>
+        <div class="col zero ml2p">
+          <input class="pl2p h30px f14px dark-grey stable-bg grey-b"
+            type="text"
+            ng-model="Customer.Model.form.phone"
+          >
+        </div>
+      </div>
+
+      <div class="row zero flex-v mb5px mt0px">
+        <div class="col-18">
+          <p class="zero positive f14px right dark-grey">
+            제목
+          </p>
+        </div>
+        <div class="col zero ml2p">
+          <input class="pl2p h30px f14px dark-grey stable-bg grey-b"
+            type="text"
+            ng-model="Customer.Model.form.title"
+          >
+        </div>
+      </div>
+
+      <div class="row zero mb5px mt0px">
+        <div class="col-18">
+          <p class="zero positive f14px right dark-grey">
+          내용
+          </p>
+        </div>
+        <div class="col zero ml2p">
+          <textarea class="pl2p h130px w100p grey-b"
+            ng-model="Customer.Model.form.content"
+          ></textarea>
+        </div>
+      </div>
+
+      <p class="zero center positive-bg radius auto w80p f20px stable mt20px pt10px pb10px"
+        ng-click=""
+      >
+        문의하기
+      </p>
+
+    </div>
+
+  </ion-content>
+</ion-view>

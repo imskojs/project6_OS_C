@@ -1,0 +1,77 @@
+<ion-view id="bid-list-pawnShop"
+  cache-view="true"
+  hide-back-button="false"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <p class="zero">
+      요청받은 견적
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="pt10px pb20px light-grey-bg">
+    <ion-refresher
+      on-refresh="BidListPawnShopPending.refreshBids();"
+    >
+    </ion-refresher>
+
+    <div class="zero"
+      ng-click="BidListPawnShopPending.preloadToBidDetailPawnShopPending(bid);"
+      collection-repeat="bid in BidListPawnShopPending.Model.bids"
+      item-width="100%"
+      item-height="125"
+      item-render-buffer="20"
+    >
+      <div class="row zero w95p auto radius stable-bg shadow">
+        <div class="col-40">
+          <img class="w100p h120px block"
+            ng-src="{{bid.photos[0].url | cloudinary200}}"
+          >
+        </div>
+        <div class="col zero pl5px">
+          <p class="zero positive bold f18px text-overflow mt5px">
+            {{ bid.name }}
+          </p>
+          <div class="row zero flex-v mt5px">
+            <p class="zero f16px dark-grey">
+              요청자
+            </p>
+            <p class="zero f16px ml5px">
+              {{bid.createdBy.nickname}}
+            </p>
+          </div>
+          <div class="row zero flex-v mt5px">
+            <p class="zero f16px dark-grey">
+              요청일
+            </p>
+            <p class="zero f16px ml5px">
+              {{bid.createdAt | date: 'yyyy.MM.dd'}}
+            </p>
+          </div>
+          <button class="button-icon stable flex w80px positive-bg mt10px pt5px pb5px radius"
+            ng-click="
+            BidListPawnShopPending.deleteBid(bid, $index);
+            $event.stopPropagation();"
+          >
+            <i class="ion-trash-b f18px"></i>
+            <p class="zero ml5px f16px">
+              삭제
+            </p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <ion-infinite-scroll
+        on-infinite="BidListPawnShopPending.getOlderBids()"
+        immediate-check="false"
+        ng-if="BidListPawnShopPending.Model.more"
+    >
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

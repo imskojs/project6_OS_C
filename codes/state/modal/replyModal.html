@@ -1,0 +1,76 @@
+<ion-modal-view id="send-message-modal" class="common-modal">
+  <ion-content class="request-login-content">
+    <div class="wrapper-80">
+      <section class="message-section">
+
+        <div class="row zero row-header">
+          <div class="col-60 flex col-header">
+            <p class="zero header-text">
+              답글쓰기
+            </p>
+          </div>
+          <div class="col-20 flex col-cross"
+            ng-click="PostDetail.replyModal.hide()"
+          >
+            <i class="cross-icon ion-ios-close-empty"></i>
+          </div>
+        </div>
+        <div class="request-content">
+          <div class="row zero row-sender-input">
+            <div class="col-40 col-input-title">
+              <p class="input-title-text zero yellow">
+                받는사람
+              </p>
+            </div>
+            <div class="col zero">
+              <p class="zero to-text">
+                {{PostDetail.Model.commentToReply.createdBy.nickname}}
+              </p>
+            </div>
+          </div>
+          <div class="row zero row-sender-input">
+            <div class="col-30 col-input-title">
+              <p class="input-title-text zero yellow">
+                댓글내용
+              </p>
+            </div>
+            <div class="col zero">
+              <p class="zero from-text">
+                {{PostDetail.Model.commentToReply.content}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row zero row-message-content">
+            <div class="col-40 col-input-title">
+              <p class="input-title-text zero yellow">
+                답글쓰기
+              </p>
+            </div>
+          </div>
+
+          <div class="row zero row-input flex">
+            <div class="col-90 zero col-input">
+              <input type="text" class="input-password input-field"
+                placeholder="보내실 내용을 입력해주세요"
+                ng-model="PostDetail.commentReply"
+              >
+            </div>
+          </div>
+
+          <!-- send message button -->
+          <div class="row zero row-button flex">
+            <div class="col-80 col-button radius"
+              ng-click="PostDetail.reply()"
+            >
+              <p class="zero button-text center">
+                답글쓰기
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </ion-content>
+</ion-modal-view>

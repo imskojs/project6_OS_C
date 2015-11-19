@@ -1,0 +1,73 @@
+<ion-view id="announcement-list"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      공지사항
+    </p>
+  </ion-nav-title>
+
+
+  <ion-content class="pt2px">
+
+    <ion-refresher
+      ng-if="!AnnouncementList.Model.loading"
+      on-refresh="AnnouncementList.refresh()"
+    >
+    </ion-refresher>
+
+    <div class="w100p h95vh flex light-grey-bg absolute"
+      style="z-index: 2"
+      ng-if="AnnouncementList.Model.loading"
+    >
+      <ion-spinner class="spinner-40px mb88px" icon="ripple">
+      </ion-spinner>
+    </div>
+
+
+    <!-- row -->
+    <div class="row zero pl5p flex-v grey-bb mt0px"
+      ng-click="goToState('main.announcementDetail', {id: post.id })"
+      collection-repeat="post in AnnouncementList.Model.posts"
+      item-width="100%"
+      item-height="60"
+    >
+      <div class="flex-container w100p">
+        <!-- row -->
+        <div class="row zero">
+          <div class="col-auto">
+            <p class="zero positive f18px">
+              [공지]
+            </p>
+          </div>
+          <div class="col zero ml3p">
+            <p class="zero dark-grey f18px">
+              {{post.title}}
+            </p>
+          </div>
+        </div>
+        <p class="zero left f12px mt5px dark-grey">
+          {{post.createdAt | date: 'yyyy.MM.dd'}}
+        </p>
+      </div>
+    </div>
+    <ion-infinite-scroll
+        on-infinite="AnnouncementList.loadMore()"
+        immediate-check="true"
+        ng-if="AnnouncementList.Model.more"
+    >
+    </ion-infinite-scroll>
+    <button class="button"
+      ng-if="devMode"
+      ng-click="goToState('main.announcementDetail', {id: 'test1'})"
+    ></button>
+  </ion-content>
+</ion-view>

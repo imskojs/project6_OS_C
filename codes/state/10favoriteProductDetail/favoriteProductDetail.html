@@ -1,0 +1,144 @@
+<ion-view id="favorite-product-detail"
+  cache-view="true"
+  hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      {{ FavoriteProductDetail.Model.product.place.name }}
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="product-detail-content light-grey-bg">
+
+    <ion-slide-box
+      show-pager="true"
+    >
+      <ion-slide
+        ng-repeat="productPhoto in FavoriteProductDetail.Model.product.photos"
+      >
+        <img class="app-slide-image"
+          ng-src="{{productPhoto.url | cloudinary400}}"
+        >
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="relative pl5p pt20px pb20px shadow stable-bg">
+      <p class="zero f20px">
+        {{FavoriteProductDetail.Model.product.name}}
+      </p>
+      <p class="zero mt5px red f18px">
+        {{FavoriteProductDetail.Model.product.price | number}} 원
+      </p>
+      <div class="absolute top0px right5p">
+        <img class="w40px"
+          src="img/productinfo_icon03.png"
+          ng-if="FavoriteProductDetail.isFavorite(FavoriteProductDetail.Model.product.id)"
+          ng-click="FavoriteProductDetail.toggleProduct(FavoriteProductDetail.Model.product.id)"
+        >
+        <img class="w40px"
+          src="img/productinfo_icon02.png"
+          ng-if="!FavoriteProductDetail.isFavorite(FavoriteProductDetail.Model.product.id)"
+          ng-click="FavoriteProductDetail.toggleProduct(FavoriteProductDetail.Model.product.id)"
+        >
+      </div>
+    </div>
+
+    <div class="w95p auto mt10px pt10px pb10px pl5p pr5p stable-bg radius shadow">
+      <div>
+        <p class="zero positive mb20px f20px bold">
+          상세정보
+        </p>
+
+        <div class="row zero mt0px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              구입일
+            </p>
+          </div>
+          <div class="col zero f16px">
+            <p class="zero text-overflow">
+              {{FavoriteProductDetail.Model.product.boughtAt}}
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              품목
+            </p>
+          </div>
+          <div class="col zero f16px">
+            <p class="zero text-overflow">
+              {{FavoriteProductDetail.Model.product.productCategory}}
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              브랜드
+            </p>
+          </div>
+          <div class="col zero f16px">
+            <p class="zero text-overflow">
+              {{FavoriteProductDetail.Model.product.brand}}
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              상태
+            </p>
+          </div>
+          <div class="col zero f16px">
+            <p class="zero text-overflow">
+              {{FavoriteProductDetail.Model.product.condition | appText}}
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              특이사항
+            </p>
+          </div>
+          <div class="col zero f16px">
+            <p class="zero pre"> {{ FavoriteProductDetail.Model.product.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+    <ion-footer-bar class="bar-positive footer zero">
+      <div class="row zero">
+        <div class="col zero stable-br flex"
+          ng-click="FavoriteProductDetail.call(FavoriteProductDetail.Model.product.place.cellPhone)"
+        >
+          <i class="ion-ios-telephone f28px stable"></i>
+          <p class="zero stable f20px bold ml10px">
+            전화하기
+          </p>
+        </div>
+        <div class="col zero flex"
+          ng-click="FavoriteProductDetail.preloadToPlaceDetail();"
+        >
+          <p class="zero stable f20px bold ml10px">
+            업체정보
+          </p>
+        </div>
+      </div>
+    </ion-footer-bar>
+</ion-view>

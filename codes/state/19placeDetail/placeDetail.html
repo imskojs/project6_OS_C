@@ -1,0 +1,170 @@
+<ion-view id="place-detail"
+  cache-view="true"
+  hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">{{ PlaceDetail.Model.place.name }}</p>
+  </ion-nav-title>
+
+  <ion-content class="light-grey-bg"
+    scrollbar-y="false"
+  >
+
+    <div class="app-slide-image flex light-bg"
+      ng-if="PlaceDetail.Model.place.photos.length === 0"
+    >
+      <img class="w35p"
+        src="img/slidemenu_icon05.png"
+      >
+    </div>
+    <ion-slide-box
+      show-pager="true"
+      ng-if="PlaceDetail.Model.place.photos.length > 0"
+    >
+      <ion-slide
+        ng-repeat="placePhoto in PlaceDetail.Model.place.photos"
+      >
+        <img class="app-slide-image"
+          ng-src="{{placePhoto.url | cloudinary400}}"
+        >
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="relative pl5p pt20px pb20px shadow stable-bg">
+      <p class="zero f20px positive bold">
+        {{PlaceDetail.Model.place.name}}
+      </p>
+    </div>
+
+    <div class="w95p auto mt10px pt10px pb10px pl5p pr5p stable-bg radius shadow">
+      <div class="row zero flex-v mb10px">
+        <div class="col zero">
+          <p class="zero positive f20px bold">
+            업체정보
+          </p>
+        </div>
+        <button class="button-icon col-auto flex pr10px pl10px pt2px pb2px positive-bg radius"
+          ng-click="PlaceDetail.pinSelectedPlace()"
+        >
+          <i class="ion-map f20px stable"></i>
+          <p class="zero f14px stable ml5px">
+            지도보기
+          </p>
+        </button>
+      </div>
+
+      <div class="row zero mt0px">
+        <div class="col-25 f16px dark-grey">
+          <p class="zero">
+            점포주소
+          </p>
+        </div>
+        <div class="col zero f16px ml5p">
+          <p class="zero para">
+            {{PlaceDetail.Model.place.address}}
+          </p>
+        </div>
+      </div>
+
+      <div class="row zero mt10px">
+        <div class="col-25 f16px dark-grey">
+          <p class="zero">
+            핸드폰번호
+          </p>
+        </div>
+        <div class="col zero f16px ml5p">
+          <p class="zero para">
+            {{PlaceDetail.Model.place.cellPhone}}
+          </p>
+        </div>
+      </div>
+
+      <div class="row zero mt10px">
+        <div class="col-25 f16px dark-grey">
+          <p class="zero">
+            전화번호
+          </p>
+        </div>
+        <div class="col zero f16px ml5p">
+          <p class="zero para">
+            {{PlaceDetail.Model.place.phone}}
+          </p>
+        </div>
+      </div>
+
+      <div class="row zero mt10px">
+        <div class="col-25 f16px dark-grey">
+          <p class="zero">
+            영업시간
+          </p>
+        </div>
+        <div class="col zero f16px">
+          <p class="zero para"
+            ng-repeat="hour in PlaceDetail.Model.place.openingHours | groupByOpeningHours"
+          >
+            {{hour}}
+          </p>
+        </div>
+      </div>
+
+      <div class="row zero mt10px">
+        <div class="col-25 f16px dark-grey">
+          <p class="zero">
+            출장유무
+          </p>
+        </div>
+        <div class="col zero f16px">
+          <p class="zero"
+            ng-if="PlaceDetail.Model.place.canPickUp === true"
+          >
+            출장가능
+          </p>
+          <p class="zero"
+            ng-if="PlaceDetail.Model.place.canPickUp === false"
+          >
+            출장불가능
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="w95p auto mt10px mb20px pt10px pl5p pb10px pr5p stable-bg radius shadow">
+      <p class="zero positive f20px bold">
+        취급물품
+      </p>
+      <p class=" f16px pre">
+        {{PlaceDetail.Model.place.description}}
+      </p>
+    </div>
+
+  </ion-content>
+    <ion-footer-bar class="bar-positive footer zero">
+      <div class="row zero">
+        <div class="col zero stable-br flex"
+          ng-if="PlaceDetail.Model.place.showPhone"
+          ng-click=""
+        >
+          <i class="ion-ios-telephone f28px stable"></i>
+          <p class="zero stable f20px bold ml10px">
+            전화하기
+          </p>
+        </div>
+        <div class="col zero flex"
+          ng-click="PlaceDetail.preloadToProductListByPlace()"
+        >
+          <p class="zero stable f20px bold ml10px">
+            품매물품 <span ng-if="!PlaceDetail.Model.place.showPhone">보러가기</span>
+          </p>
+        </div>
+      </div>
+    </ion-footer-bar>
+</ion-view>

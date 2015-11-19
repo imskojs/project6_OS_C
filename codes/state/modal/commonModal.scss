@@ -1,0 +1,128 @@
+.prompt-like-modal {
+
+}
+
+.request-login-content {
+  background-color: rgba(0,0,0,0.7);
+}
+.common-modal {
+  background: transparent;
+  .request-login-content {
+    background: rgba(200, 200, 200, 0.9);
+  }
+  .message-section {
+    margin-top: 150px;
+  }
+  .row-header {
+    height: 50px;
+    background: $positive;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    .col-header {
+      margin-left: 20%;
+    }
+    .ion-ios-close-empty::before {
+      font-size: 50px;
+    }
+  }
+  .request-content {
+    background: $stable;
+    padding:{
+      top: 20px;
+      bottom: 18px;
+    }
+    .content-text {
+      font-size: 18px;
+      color: white;
+      margin: {
+        bottom: 30px;
+      }
+      .small {
+        font-size: 14px;
+      }
+    }
+    .col-button {
+      background: $stable;
+      .button-text {
+        font-size: 18px;
+        color: white;
+        padding: {
+          top: 13px;
+          bottom: 13px;
+        }
+      }
+    }
+  }
+}
+
+#send-message-modal {
+  .request-content {
+    padding: {
+      top: 5px;
+    }
+  }
+  .row-sender-input {
+    margin: {
+      top: 5px;
+      bottom: 5px;
+    }
+  }
+  .input-title-text {
+    font-size: 16px;
+    font-weight: bold;
+    padding: {
+      left: 10%;
+    }
+  }
+  .to-text, .from-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+  }
+  .col-written-date {
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    .written-date {
+      font-size: 11px;
+      color: $light-grey;
+      letter-spacing: -1px;
+    }
+  }
+
+  .row-message-content {
+    margin-top: 10px;
+    padding-top: 10px;
+    border: {
+      top: 5px solid #2b3d41;
+    }
+  }
+  // Common input
+  .row-input {
+    margin: {
+      bottom: 40px;
+    }
+    .col-input {
+      border: {
+        bottom: 1px solid white;
+      }
+      .input-field {
+        width: 100%;
+        background: transparent;
+        font-size: 14px;
+        color: white;
+        &::-webkit-input-placeholder {
+          font-size: 14px;
+          line-height: 14px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+

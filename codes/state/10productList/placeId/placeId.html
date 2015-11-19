@@ -1,0 +1,66 @@
+<ion-view id="product-list-placeId"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack();"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      판매물품
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="has-header"
+    scrollbar-y="false"
+  >
+
+    <ion-refresher
+      on-refresh="ProductList.getNewerProducts()"
+    >
+    </ion-refresher>
+
+    <!-- row -->
+    <div class="row zero mt0px pb30px">
+      <div class="col zero"
+        ng-click="ProductList.preloadToMarketProductDetail(product.id)"
+        collection-repeat="product in ProductList.Model.placeId.products"
+        item-render-buffer="20"
+        item-width="50%"
+        item-height="250"
+      >
+        <div class="zero mt5px mr2p mb10px ml3p stable-bg shadow">
+          <img class="w100p h150px block"
+            ng-src="{{(product.photos[0].url | cloudinary200) || 'http://placehold.it/500x400'}}"
+          >
+          <p class="zero pl5p mt8px dark-grey f14px text-overflow bold">
+            {{product.name}}
+          </p>
+          <div>
+            <p class="zero pl5p mt8px dark-grey f14px text-overflow">
+              <span class="red">{{product.price | number}} 원</span>
+            </p>
+            <p class="zero pl5p mt20px pb15px f16px text-overflow">
+              {{product.place.name}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="h30px"></div>
+
+    <ion-infinite-scroll class="top200px"
+        on-infinite="ProductList.getOlderProducts()"
+        immediate-check="false"
+        ng-if="ProductList.Model.placeId.more"
+    >
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,23 @@
+//====================================================
+//  Touched
+//====================================================
+.platform-ios, .platform-android {
+  .activated {
+      opacity: 0.7 !important;
+  }
+}
+
+.tab-selected {
+  @extend .positive-bb3px;
+  @extend .pt3px
+}
+
+.dark-grey-selected {
+  @extend .dark-grey-bg;
+}
+
+.loading {
+  & > .scroll {
+    height: 100%;
+  }
+}

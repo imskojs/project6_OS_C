@@ -1,0 +1,17 @@
+<ion-modal-view id="full-slide-box-modal">
+  <ion-content>
+    <ion-slide-box class="slide-box relative" show-pager="true"
+      ng-click="PostDetail.slideBoxModal.hide();"
+    >
+      <ion-slide class="slides"
+        ng-repeat="photo in PostDetail.Model.post.photos"
+      >
+        <div>
+          <img class="post-image radius-top"
+              ng-src="{{photo.url}}"
+          >
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-modal-view>

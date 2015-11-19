@@ -1,0 +1,25 @@
+<ion-modal-view id="request-login-modal" class="prompt-like-modal">
+  <ion-content class="request-login-content pt-70">
+    <div class="message-container auto w-90 radius mt-100">
+      <p class="zero pt-70 pb-70 center stable-bg f-18 radius-top dark-grey">
+        로그인이 필요한 메뉴입니다.
+      </p>
+      <div class="row zero positive-bg mt-0 radius-bottom">
+        <div class="col zero"
+          ng-click="requestLoginModal.hide()"
+        >
+          <p class="zero center pt-15 pb-15 stable f-18">
+            확인
+          </p>
+        </div>
+        <div class="col zero">
+          <p class="zero center pt-15 pb-15 stable f-18 stable-bl"
+            ng-click="requestLoginModal.hide(); goToState('main.login');"
+          >
+            로그인하기
+          </p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

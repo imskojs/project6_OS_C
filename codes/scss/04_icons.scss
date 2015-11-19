@@ -1,0 +1,56 @@
+//====================================================
+//  Icons
+//====================================================
+.ion-android-arrow-back {
+    padding: {
+        left: 10px !important;
+        right: 8px !important;
+    }
+} .ion-android-arrow-back::before{
+    font-size: 24px !important;
+    color: $stable;
+}
+.ion-close-round::before {
+  font-size: 24px !important;
+  color: $stable;
+}
+.ion-android-share-alt::before {
+    font-size: 24px !important;
+    color: $stable;
+}
+.ion-pinpoint::before {
+  font-size: 24px !important;
+  color: $stable;
+}
+.ion-home::before {
+    font-size: 24px !important;
+    color: $stable;
+}
+.ion-navicon::before {
+    color: $stable;
+}
+.ion-ios-search-strong::before {
+    font-size: 20px !important;
+    color: $stable;
+}
+.icon.ion-record {
+    color: $stable;
+}
+.spinner {
+  svg {
+    fill: $positive;
+    stroke: $positive;
+  }
+}
+.loading {
+  background-color: $stable;
+}
+
+@for $i from 20 through 200 {
+  .spinner-#{$i}px {
+    &.spinner svg {
+      width: #{$i}px;
+      height: #{$i}px;
+    }
+  }
+}

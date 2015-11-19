@@ -1,0 +1,222 @@
+<ion-view id="bid-detail"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      견적보내기
+    </p>
+  </ion-nav-title>
+
+
+  <ion-content class="bid-detail-content pt2px">
+
+    <ion-slide-box
+      show-pager="true"
+    >
+      <ion-slide
+        ng-repeat="productPhoto in BidRespond.Model.bid.product.photos"
+      >
+        <img class="app-slide-image"
+          ng-src="{{productPhoto.url}}"
+        >
+      </ion-slide>
+    </ion-slide-box>
+
+    <p class="zero f18px pl5p mt10px mb10px">
+      {{ BidRespond.Model.bid.product.name }}
+    </p>
+
+    <div class="row zero w90p auto mb7px mt0px">
+      <div class="col-30">
+        <p class="zero dark-grey f16px">
+          견적 요청자
+        </p>
+      </div>
+      <div class="col zero">
+        <p class="zero f16px">
+          {{ BidRespond.Model.bid.createdBy.nickname }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row zero w90p auto mb7px mt0px">
+      <div class="col-30">
+        <p class="zero dark-grey f16px">
+          견적 요청일
+        </p>
+      </div>
+      <div class="col zero">
+        <p class="zero f16px">
+          {{ BidRespond.Model.bid.createdAt }}
+        </p>
+      </div>
+    </div>
+    <div class="row zero w90p auto mb7px mt0px">
+      <div class="col-30">
+        <p class="zero dark-grey f16px">
+          브랜드
+        </p>
+      </div>
+      <div class="col zero">
+        <p class="zero f16px">
+          {{ BidRespond.Model.bid.product.brand }}
+        </p>
+      </div>
+    </div>
+    <div class="row zero w90p auto mb7px mt0px">
+      <div class="col-30">
+        <p class="zero dark-grey f16px">
+          구입시기
+        </p>
+      </div>
+      <div class="col zero">
+        <p class="zero f16px">
+          {{ BidRespond.Model.bid.product.boughtAt }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row zero w90p auto mb17px mt0px">
+      <div class="col-30">
+        <p class="zero dark-grey f16px">
+          상태
+        </p>
+      </div>
+      <div class="col zero">
+        <p class="zero f16px">
+          {{ BidRespond.Model.bid.product.condition }}
+        </p>
+      </div>
+    </div>
+
+    <div class="bid-detail light-grey-bg pt15px pl5p pr5p pb40px">
+      <p class="zero f16px mb15px dark-grey center">
+        보낼 견적서를 작성해주세요.
+      </p>
+      <div class="positive-b pt15px stable-bg pb15px">
+        <p class="zero f20px mb15px positive center bold">
+          견적서
+        </p>
+
+        <div class="row zero flex-v grey-b mb5px mt0px w90p auto pl5p pr5p">
+          <div class="col-25 pt8px pb8px">
+            <p class="zero positive f18px">
+              금액
+            </p>
+          </div>
+          <div class="col zero ml5p">
+            <input class="f18px h34px right"
+              type="number"
+              ng-model="BidRespond.Model.form.price"
+            >
+          </div>
+          <p class="zero f18px pl2px">
+            원
+          </p>
+        </div>
+
+        <div class="row zero flex-v grey-b mb5px mt0px w90p auto pl5p pr5p">
+          <div class="col-25 pt8px pb8px">
+            <p class="zero positive f18px">
+              월이율
+            </p>
+          </div>
+          <div class="col zero ml5p">
+            <input class="f18px h34px right"
+              type="number"
+              ng-model="BidRespond.Model.form.monthlyInterest"
+            >
+          </div>
+          <p class="zero f18px pl2px">
+            %
+          </p>
+        </div>
+
+        <div class="row zero flex-v grey-b mb5px mt0px w90p auto pl5p pr5p">
+          <div class="col-25 pt8px pb8px">
+            <p class="zero positive f18px">
+              기간
+            </p>
+          </div>
+          <div class="col zero ml5p">
+            <input class="f18px h34px right"
+              type="number"
+              ng-model="BidRespond.Model.form.duration"
+            >
+          </div>
+          <p class="zero f18px pl2px">
+            개월
+          </p>
+        </div>
+
+        <div class="zero grey-b mb5px mt0px w90p auto pl5p pr5p">
+          <div class="col-auto pt8px pb8px">
+            <p class="zero positive f18px">
+              출장서비스 유무 선택
+            </p>
+          </div>
+
+          <div class="row zero">
+
+            <button class="col button-icon zero flex-v"
+              ng-click="BidRespond.Model.form.canPickUp = true"
+            >
+              <div class="r50p w20px h20px dark-grey-b flex">
+                <div class="w16px h16px r50p"
+                  ng-class="{
+                    'dark-grey-bg': BidRespond.Model.form.canPickUp === true
+                  }"
+                ></div>
+              </div>
+              <p class="zero f16px ml5px">출장가능</p>
+            </button>
+
+            <button class="col button-icon zero flex-v"
+              ng-click="BidRespond.Model.form.canPickUp = false"
+            >
+              <div class="r50p w20px h20px dark-grey-b flex">
+                <div class="w16px h16px r50p"
+                  ng-class="{
+                    'dark-grey-bg': BidRespond.Model.form.canPickUp === false
+                  }"
+                ></div>
+              </div>
+              <p class="zero f16px ml5px">출장불가능</p>
+            </button>
+
+          </div>
+
+          <div class="col zero pt8px pb8px">
+            <p class="zero f18px right">
+              {{BidRespond.Model.bid.canPickUp}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
+
+  <ion-footer-bar class="bar-positive footer zero">
+      <div class="row zero h44px flex"
+        ng-click="BidRespond.respondToBid();"
+      >
+        <img class="w26px"
+          src="img/seller_icon01.png"
+        >
+        <p class="zero f18px bold ml10px">
+          견적보네기
+        </p>
+      </div>
+  </ion-footer-bar>
+
+
+</ion-view>

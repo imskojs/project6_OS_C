@@ -1,0 +1,110 @@
+<ion-view id="product-detail"
+  cache-view="true"
+  hide-back-button="true"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack('back')"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <p class="zero">
+      견적서 정보
+    </p>
+  </ion-nav-title>
+
+  <ion-content class="product-detail-content light-grey-bg">
+
+    <ion-slide-box
+      show-pager="true"
+    >
+      <ion-slide
+        ng-repeat="productPhoto in ProductDetail.Model.pawnShop.product.photos"
+      >
+        <img class="app-slide-image"
+          ng-src="{{productPhoto.url | cloudinary600}}"
+        >
+      </ion-slide>
+    </ion-slide-box>
+
+
+    <div class="w95p auto mt10px pt10px pb10px pl5p pr5p stable-bg radius shadow">
+      <div>
+        <p class="zero f20px">
+          {{ProductDetail.Model.pawnShop.product.name}}
+        </p>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              견적 요청자
+            </p>
+          </div>
+          <div class="col zero f16px ml5p">
+            <p class="zero text-overflow">
+              {{ProductDetail.Model.pawnShop.product.createdBy.nickname ||
+                ProductDetail.Model.pawnShop.product.createdBy.name }}
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              견적 요청일
+            </p>
+          </div>
+          <div class="col zero f16px ml5p">
+            <p class="zero text-overflow">
+              {{ProductDetail.Model.pawnShop.product.createdAt | date: 'yyyy.MM.dd'}}
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              브랜드
+            </p>
+          </div>
+          <div class="col zero f16px ml5p">
+            <p class="zero text-overflow">
+              {{ProductDetail.Model.pawnShop.product.brand}}
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              구입시기
+            </p>
+          </div>
+          <div class="col zero f16px ml5p">
+            <p class="zero text-overflow">
+              {{ProductDetail.Model.pawnShop.product.boughtAt}}
+            </p>
+          </div>
+        </div>
+
+        <div class="row zero mt10px">
+          <div class="col-25 f16px dark-grey">
+            <p class="zero">
+              상태
+            </p>
+          </div>
+          <div class="col zero f16px ml5p">
+            <p class="zero text-overflow">
+              {{ProductDetail.Model.pawnShop.product.condition | appText}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

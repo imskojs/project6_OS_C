@@ -1,0 +1,15 @@
+//====================================================
+//  Images
+//====================================================
+.app-slide-image {
+  display: block;
+  height: 66.6666666vw;
+  width: 100%;
+}
+@for $i from 0 through 300 {
+  .app-slide-image#{$i}vw {
+    display: block;
+    height: #{$i}vw;
+    width: 100%;
+  }
+}

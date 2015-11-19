@@ -1,0 +1,37 @@
+<ion-modal-view class="transparent-bg">
+  <ion-content class="darker-bg70">
+    <div class="auto w90p radius mt150px">
+
+      <div class="pt30px stable-bg radius-top">
+        <p class="zero bold f20px positive center">
+          상태변경
+        </p>
+        <p class="zero pb30px center stable-bg f18px radius-top dark-grey pre">
+          제품 상태를 변경해주세요.
+          현재상태 <span class="red">[ {{ MyProductListPawnShop.Model.selectedProduct.status | appText }} ]</span>
+        </p>
+      </div>
+
+      <div class="row zero positive-bg mt0px radius-bottom">
+
+        <div class="col zero"
+          ng-click="MyProductListPawnShop.changeState('selling')"
+        >
+          <p class="zero center pt15px pb15px stable f18px">
+            판매중
+          </p>
+        </div>
+
+        <div class="col zero"
+          ng-click="MyProductListPawnShop.changeState('sold')"
+        >
+          <p class="zero center pt15px pb15px stable f18px stable-bl">
+            판매완료
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </ion-content>
+</ion-modal-view>
