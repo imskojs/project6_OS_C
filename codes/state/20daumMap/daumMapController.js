@@ -29,6 +29,17 @@
       var latitude = DaumMapModel.currentPosition.latitude;
       appStorage.geoJSON.coordinates[0] = longitude;
       appStorage.geoJSON.coordinates[1] = latitude;
+      console.log("---------- $state.params.prev ----------");
+      console.log($state.params.prev);
+      console.log("HAS TYPE: " + typeof $state.params.prev);
+
+      if ($state.params.prev === 'main.productRegister.step2') {
+        return $state.go('main.productRegister.step2', {
+          category: 'user',
+          method: 'create',
+          step: 2
+        });
+      }
       return Preload.stateWithProducts('main.productList.market', {
         category: 'market'
       }, true, 'forward');

@@ -9,7 +9,12 @@
   function CustomerModel() {
 
     var model = {
-
+      form: {
+        email: '',
+        phone: '',
+        title: '',
+        content: ''
+      }
     };
     return model;
   }

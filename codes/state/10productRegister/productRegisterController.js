@@ -44,7 +44,7 @@
       ProductRegister.stepTwoModal.hide();
       return $timeout(function() {
         return $state.go('main.daumMap', {
-          prev: 'productRegister'
+          prev: 'main.productRegister.step2'
         });
       }, 150);
     }
@@ -79,7 +79,18 @@
       return true;
     }
 
+    function validateStep2Form() {
+      if (!ProductRegisterModel.dataUris[0]) {
+        return false;
+      }
+      return true;
+    }
+
     function sendForm() {
+      if (!validateStep2Form()) {
+        return Message.alert('상품등록 알림', '사진을 최소한 1개이상 등록해주셔야합니다.');
+      }
+
       if ($state.params.category === 'user') {
         Message.loading();
         ProductRegister.stepTwoModal.hide();
@@ -116,7 +127,7 @@
             console.log(err);
             if (err.data.numberOfBidsSent === 0) {
               Message.hide();
-              return Message.alert('주위에 견적을 보넬 전당포가 없습니다', '지역을 다시 설정해주십시요.')
+              return Message.alert('주위에 전당포가 없습니다', '지역을 다시 설정해주십시요.')
                 .then(U.goToState.bind(null, 'main.daumMap'));
             }
             Message.hide();

@@ -1,6 +1,7 @@
 //====================================================
 // createdBy;
 // Seunghoon Ko (imskojs@gmail.com)
+// Gush... I'm not goint to use preload... just look at those injected Models!!!
 //====================================================
 (function() {
   'use strict';
@@ -56,6 +57,10 @@
     //====================================================
     function stateWithBids(state, params, moveToStateBool, navDirection) {
       Message.loading();
+      console.log("---------- params.product ----------");
+      console.log(params.product);
+      console.log("HAS TYPE: " + typeof params.product);
+
       var promise;
       if (state === 'main.bidListUser') {
         promise = Bids.find({
@@ -217,9 +222,14 @@
           longitude: appStorage.geoJSON.coordinates[0],
           latitude: appStorage.geoJSON.coordinates[1],
           distance: appStorage.marketDistance,
+          status: 'selling',
           limit: 10,
           populates: ['photos', 'place']
         };
+        console.log("---------- query ----------");
+        console.log(query);
+        console.log("HAS TYPE: " + typeof query);
+
         if (appStorage.address === '전체보기') {
           console.log('전체보기');
           query.sort = {
@@ -303,6 +313,10 @@
         };
         onData = function(product) {
           ProductDetailModel.market.product = product;
+          console.log("---------- product ----------");
+          console.log(product);
+          console.log("HAS TYPE: " + typeof product);
+
           console.log(ProductDetailModel.market.product);
           return photos(ProductDetailModel.market.product, 'cloudinary600', false);
         };

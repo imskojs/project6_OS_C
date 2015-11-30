@@ -78,7 +78,7 @@
           Message.loading();
           $cordovaGeolocation.getCurrentPosition({
             maximumAge: 10000,
-            timeout: 5000
+            timeout: 6000
           })
             .then(function success(position) {
               Message.hide();

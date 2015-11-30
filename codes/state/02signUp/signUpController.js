@@ -205,6 +205,9 @@
         if (!form.nickname) {
           alert('닉네임을 입력해주세요.');
           return false;
+        } else if (form.nickname.length < 4) {
+          alert('닉네임은 4자 이상이여야합니다.');
+          return false;
         } else if (!form.email) {
           alert('이메일을 입력해주세요.');
           return false;

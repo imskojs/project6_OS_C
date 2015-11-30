@@ -105,7 +105,7 @@ gulp.task('img', function(done) {
 
 
 
-gulp.task('view', function() {
+gulp.task('view', function(done) {
   return gulp.src(paths.view)
     .pipe(ngTemplate({
       standalone: true,

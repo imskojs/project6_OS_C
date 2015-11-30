@@ -84,6 +84,10 @@
     }
 
     function preloadToMarketProductDetail(id) {
+      console.log("---------- id ----------");
+      console.log(id);
+      console.log("HAS TYPE: " + typeof id);
+
       return Preload.stateWithProducts('main.productDetail.market', {
           category: 'market',
           id: id
@@ -135,6 +139,7 @@
           longitude: appStorage.geoJSON.coordinates[0],
           latitude: appStorage.geoJSON.coordinates[1],
           distance: distance,
+          status: 'selling',
           limit: 10,
           populates: ['photos', 'place']
         };
@@ -182,6 +187,7 @@
           latitude: appStorage.geoJSON.coordinates[1],
           distance: distance,
           limit: 10,
+          status: 'selling',
           skip: currentModel.products.length,
           populates: ['photos', 'place']
         };

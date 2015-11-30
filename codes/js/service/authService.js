@@ -10,20 +10,16 @@
 
     return {
       request: function(req) {
-
-        // var token = LocalService.get(appName + '_auth_token');
         var token = appStorage.token;
-
-        // if (token) {
-        //     token = angular.fromJson(LocalService.get(appName + '_auth_token')).token;
-        // }
-
         if (token) {
-          // req.headers['Content-Type'] = 'application/json';
           req.headers.Authorization = 'Bearer ' + token;
         }
         return req;
       }
+
+
+
+
       // , responseError: function(response) {
       //     if (response.status === 401 || response.status === 403 || response.status === 405 || response.status === 498) {
 

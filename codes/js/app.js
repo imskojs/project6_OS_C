@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('app', ['ionic', 'ngCordova', 'ngResource', 'ngTemplates', 'ngStorage', 'ngFileUpload'])
+  angular.module('app', ['ionic', 'ngCordova', 'ngResource', 'ngTemplates', 'ngStorage', 'ngFileUpload', 'ngGeolocation'])
 
-  .run(['$ionicPlatform', '$rootScope', '$state', '$window', 'Message', 'rootScopeService', 'appStorage', 'devMode',
-    function($ionicPlatform, $rootScope, $state, $window, Message, rootScopeService, appStorage, devMode) {
+  .run(['$ionicPlatform', '$rootScope', '$state', '$window', '$ionicHistory', 'Message', 'rootScopeService', 'appStorage', 'devMode',
+    function($ionicPlatform, $rootScope, $state, $window, $ionicHistory, Message, rootScopeService, appStorage, devMode) {
 
       angular.extend($rootScope, rootScopeService);
       $ionicPlatform.ready(onIonicPlatformReady);
@@ -21,6 +21,18 @@
         if ($window.StatusBar) {
           $window.StatusBar.styleDefault();
         }
+        $ionicPlatform.registerBackButtonAction(function(e) {
+          e.preventDefault();
+          if ($rootScope.areStates([
+            'main.productList.market',
+            'main.productList.pawnShop',
+            'main.walkThrough',
+            'main.login'
+          ])) {
+            return ionic.Platform.exitApp();
+          }
+          $ionicHistory.goBack();
+        }, 101);
         setInitialState();
       }
       //====================================================
@@ -42,9 +54,9 @@
         } else if (!$rootScope.appStorage.token) {
           $state.go('main.login');
         } else {
-          $state.go('main.signUp', {
+          $state.go('main.productList.pawnShop', {
             // $state.go('main.announcementList', {
-            category: 'user',
+            category: 'pawnShop',
             status: 'responded',
             product: '',
             to: '',

@@ -10,5 +10,12 @@
   "watchPatterns": [
     "codes/**/*",
     "!codes/lib/**/*"
+  ],
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "14.42.334.0"
+    }
   ]
 }
