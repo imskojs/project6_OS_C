@@ -52,6 +52,9 @@
           map.relayout();
           DaumMapModel.domMap = map;
           daum.maps.event.addListener(map, 'click', function(mouseEvent) {
+            if ($state.params.id) {
+              return false;
+            }
             geocoder.coord2addr(mouseEvent.latLng, function(status, result) {
               appStorage.address = result[0].fullName;
             });
