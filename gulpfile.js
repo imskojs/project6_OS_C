@@ -40,7 +40,6 @@ var paths = {
     './codes/scss/30_touched.scss',
     // './codes/scss/common.scss',
     './codes/scss/ngTagsInput.scss',
-    './codes/lib/ionRadioFix/ionRadioFix.scss',
     './codes/state/**/*.scss'
   ],
   js: [
@@ -59,6 +58,7 @@ var paths = {
     // './codes/lib/jquery/dist/jquery.js',
     './codes/lib/lodash/lodash.js',
     './codes/lib/moment/moment.js',
+    './codes/lib/Geolib/dist/geolib.js',
     // Ionic/Angular Core
     './codes/lib/ionic/js/ionic.bundle.js',
     // Angular 3rd Party Libraries
@@ -70,9 +70,7 @@ var paths = {
     './codes/lib/ngGeolocation/ngGeolocation.js',
     './codes/lib/ng-file-upload//ng-file-upload.js',
     './codes/lib/ng-tags-input/ng-tags-input.js',
-    './codes/lib/angular-fcsa-number/src/fcsaNumber.js',
-    './codes/lib/ngIOS9UIWebViewPatch/ngIOS9UIWebViewPatch.js',
-    './codes/lib/ionRadioFix/ionRadioFix.js'
+    './codes/lib/angular-fcsa-number/src/fcsaNumber.js'
   ]
 };
 

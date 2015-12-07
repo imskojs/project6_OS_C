@@ -4,18 +4,23 @@
     .controller('ProductRegisterController', ProductRegisterController);
 
   ProductRegisterController.$inject = [
-    'U', '$scope', 'Products', 'ProductRegisterModel', 'Message', '$stateParams',
-    '$state', '$ionicModal', '$timeout', 'ImageService', 'appStorage', 'Preload', '$q'
+    '$scope', '$stateParams', '$state', '$ionicModal', '$timeout', '$q',
+    '$cordovaGeolocation',
+    'U', 'Products', 'ProductRegisterModel', 'Message', 'ImageService',
+    'appStorage', 'Preload', 'DaumMapModel'
   ];
 
   function ProductRegisterController(
-    U, $scope, Products, ProductRegisterModel, Message, $stateParams,
-    $state, $ionicModal, $timeout, ImageService, appStorage, Preload, $q
+    $scope, $stateParams, $state, $ionicModal, $timeout, $q,
+    $cordovaGeolocation,
+    U, Products, ProductRegisterModel, Message, ImageService,
+    appStorage, Preload, DaumMapModel
   ) {
 
     var ProductRegister = this;
     ProductRegister.Model = ProductRegisterModel;
 
+    ProductRegister.setCurrentLocation = setCurrentLocation;
     ProductRegister.setStepOne = setStepOne;
     ProductRegister.changeLocation = changeLocation;
     ProductRegister.getImage = getImage;
@@ -24,6 +29,42 @@
     //====================================================
     //  Implementation
     //====================================================
+
+    function setCurrentLocation() {
+      return $cordovaGeolocation.getCurrentPosition({
+          maximumAge: 10000,
+          timeout: 6000
+        })
+        .then(function success(position) {
+          Message.hide();
+          if (position.coords == null) {
+            Message.alert(
+              '위치 공유가 꺼져있습니다.',
+              '위치 공유를 켜주세요.'
+            );
+            return false;
+          }
+          DaumMapModel.currentPosition = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          };
+          appStorage.geoJSON.coordinates = [
+            position.coords.longitude,
+            position.coords.latitude
+          ];
+          ProductRegisterModel.locationSelected = true;
+          ProductRegister.stepTwoModal.hide();
+          Message.alert('현재위치 알림', '현재위치로 장소가 설정되었습니다. 완료버튼을 눌러주세요.');
+        })
+        .catch(function error(err) {
+          console.log(err);
+          return Message.alert(
+            '위치 공유가 꺼져있습니다.',
+            '위치 공유를 켜주세요.'
+          );
+        });
+    }
+
     function setStepOne() {
       console.log($state.params.category);
       if (!ProductRegisterModel.validate()) {
@@ -115,10 +156,12 @@
           .then(function(photos) {
             console.log(photos);
             Message.hide();
+            ProductRegisterModel.locationSelected = false;
             return Message.alert('견적등록이 완료 되었습니다.', '등록된 견적은 내견적서에서 확인 하실수 있습니다.');
           })
           .then(function(alertResponse) {
             console.log(alertResponse);
+            ProductRegisterModel.reset();
             return U.goToState('main.myProductListUser', {
               category: 'user'
             });
@@ -132,9 +175,6 @@
             }
             Message.hide();
             return Message.alert();
-          })
-          .finally(function() {
-            return ProductRegisterModel.reset();
           });
         // Pawnshop
       } else if ($state.params.category === 'pawnShop') {
@@ -145,11 +185,11 @@
         ProductRegisterModel.form.place = appStorage.place.id;
         ProductRegisterModel.form.geoJSON = appStorage.place.geoJSON;
 
-        ImageService.post({
-          url: '/product',
-          dataUris: ProductRegisterModel.dataUris,
-          fields: ProductRegisterModel.form
-        })
+        return ImageService.post({
+            url: '/product',
+            dataUris: ProductRegisterModel.dataUris,
+            fields: ProductRegisterModel.form
+          })
           .then(function(productData) {
             console.log(productData);
             return Preload.stateWithProducts('main.myProductListPawnShop', {

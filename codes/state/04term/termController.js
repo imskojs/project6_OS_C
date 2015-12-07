@@ -22,28 +22,28 @@
     // Initial Loading of a state;
     //====================================================
     function onBeforeEnter() {
-      TermDetailModel.loading = true;
+      // TermDetailModel.loading = true;
     }
 
     function onAfterEnter() {
-      return findOne()
-        .then(function(post) {
-          console.log(post);
-          U.bindData(post, TermDetailModel, 'post');
-        })
-        .catch(U.error);
+      // return findOne()
+      //   .then(function(post) {
+      //     console.log(post);
+      //     U.bindData(post, TermDetailModel, 'post');
+      //   })
+      //   .catch(U.error);
     }
 
     function refresh() {
-      return findOne()
-        .then(function(post) {
-          console.log(post);
-          U.bindData(post, TermDetailModel, 'post');
-        })
-        .catch(U.error)
-        .finally(function() {
-          U.broadcast($scope);
-        });
+      // return findOne()
+      //   .then(function(post) {
+      //     console.log(post);
+      //     U.bindData(post, TermDetailModel, 'post');
+      //   })
+      //   .catch(U.error)
+      //   .finally(function() {
+      //     U.broadcast($scope);
+      //   });
     }
 
     //====================================================

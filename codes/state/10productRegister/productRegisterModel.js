@@ -35,6 +35,7 @@
       reset: function() {
         U.reset(this.form);
         U.reset(this.product);
+        this.form.showBid = true;
         this.product.photos = [];
         this.dataUris = [];
         this.fileUris = [];

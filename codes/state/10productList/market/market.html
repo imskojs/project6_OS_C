@@ -39,7 +39,7 @@
     <div class="row zero mt0px pb30px">
       <div class="col zero"
         ng-click="ProductList.preloadToMarketProductDetail(product.id)"
-        collection-repeat="product in ProductList.Model.market.products"
+        collection-repeat="product in ProductList.Model.market.products | orderBy:'id':true"
         item-render-buffer="20"
         item-width="50%"
         item-height="250"

@@ -17,7 +17,8 @@
 
       },
       confirmPassword: null,
-      checkedEmail: false
+      checkedEmail: false,
+      termsAgreed: false
     };
 
     return model;

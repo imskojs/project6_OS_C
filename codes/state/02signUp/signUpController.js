@@ -220,6 +220,9 @@
         } else if (form.password !== SignUpModel.confirmPassword) {
           alert('비밀번호가 다릅니다 다시 입력해주세요.');
           return false;
+        } else if (!SignUpModel.termsAgreed) {
+          alert('약관 동의를 해주세요');
+          return false;
         } else {
           return true;
         }
@@ -253,6 +256,9 @@
           return false;
         } else if (!form.geoJSON) {
           alert('주소를 검색하여 골라주세요.');
+          return false;
+        } else if (!SignUpModel.termsAgreed) {
+          alert('약관 동의를 해주세요');
           return false;
         } else {
           return true;

@@ -9,11 +9,7 @@
   function TermDetailModel() {
 
     var model = {
-      post: {
-        title: 'test',
-        content: 'test test',
-        createdAt: null,
-      }
+      post: {}
     };
     return model;
   }

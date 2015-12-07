@@ -23,7 +23,7 @@ $red:                             red !default;
 $green:                           green !default;
 $blue:                            blue !default;
 
-$color0:                          pink !default;
+$color0:                          white !default;
 $color1:                          pink !default;
 $color2:                          pink !default;
 $color3:                          pink !default;
@@ -834,6 +834,12 @@ progress[value]::-webkit-progress-bar{
   }
 }
 
+.terms-agreed {
+  .check-box{
+    background-color: $positive !important;
+  }
+}
+
 //====================================================
 //  tags-input scss
 //====================================================
@@ -1009,6 +1015,19 @@ tags-input .autocomplete .suggestion-item em {
 }
 
 
+#main {
+  .side-menu-content {
+
+  }
+
+  .row-side-menu-header {
+
+  }
+}
+
+#login {
+}
+
 #walk-through {
   .walk-through-content {
 
@@ -1037,28 +1056,15 @@ tags-input .autocomplete .suggestion-item em {
   }
 }
 
-#main {
-  .side-menu-content {
-
-  }
-
-  .row-side-menu-header {
-
-  }
-}
-
-#login {
-}
-
 #reset-password {
 
 }
 
-#profile {
+#sign-up {
 
 }
 
-#sign-up {
+#profile {
 
 }
 
@@ -1105,11 +1111,11 @@ tags-input .autocomplete .suggestion-item em {
 
 }
 
-#place-detail {
+#place-list {
 
 }
 
-#place-list {
+#place-detail {
 
 }
 

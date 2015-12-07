@@ -69,9 +69,10 @@
 
     <div class="row zero flex h44px"
       ng-if="getParam('step') === 2 && getParam('method') === 'create'"
-      ng-click=" getParam('category') === 'user' ?
-       ProductRegister.stepTwoModal.show() :
-       ProductRegister.sendForm() "
+      ng-click="
+        getParam('category') === 'user' && !ProductRegister.Model.locationSelected ?
+        ProductRegister.stepTwoModal.show() : ProductRegister.sendForm()
+      "
     >
       <p class="zero center stable f16px bold">
         완료

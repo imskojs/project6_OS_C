@@ -180,6 +180,24 @@
       </div>
 
     </div>
+    <div class="row zero mt20px">
+      <div class="row zero col-40 flex-v"
+        ng-click="SignUp.Model.termsAgreed = !SignUp.Model.termsAgreed"
+        ng-class="{'terms-agreed': SignUp.Model.termsAgreed}"
+      >
+        <div class="positive-b w40px h40px check-box flex r5px">
+          <i class="ion-checkmark f24px color0"></i>
+        </div>
+        <p class="zero ml10px">약관 동의하기</p>
+      </div>
+      <div class="col zero flex-v">
+        <p class="right w100p f18px"
+          ng-click="goToState('main.term')"
+        >
+          약관 보기 >
+        </p>
+      </div>
+    </div>
 
     <p class="zero center positive-bg radius f20px stable pt15px pb15px mt15px"
       ng-click="SignUp.signUp( getParam('category') )"

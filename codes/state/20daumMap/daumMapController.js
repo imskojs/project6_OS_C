@@ -4,9 +4,15 @@
   angular.module('app')
     .controller('DaumMapController', DaumMapController);
 
-  DaumMapController.$inject = ['DaumMapModel', '$ionicModal', '$scope', '$state', '$stateParams', '$timeout', 'Message', 'appStorage', 'Preload'];
+  DaumMapController.$inject = [
+    '$ionicModal', '$scope', '$state', '$stateParams', '$timeout',
+    'DaumMapModel', 'Message', 'appStorage', 'Preload', 'ProductRegisterModel'
+  ];
 
-  function DaumMapController(DaumMapModel, $ionicModal, $scope, $state, $stateParams, $timeout, Message, appStorage, Preload) {
+  function DaumMapController(
+    $ionicModal, $scope, $state, $stateParams, $timeout,
+    DaumMapModel, Message, appStorage, Preload, ProductRegisterModel
+  ) {
 
     var DaumMap = this;
     DaumMap.Model = DaumMapModel;
@@ -34,6 +40,7 @@
       console.log("HAS TYPE: " + typeof $state.params.prev);
 
       if ($state.params.prev === 'main.productRegister.step2') {
+        ProductRegisterModel.locationSelected = true;
         return $state.go('main.productRegister.step2', {
           category: 'user',
           method: 'create',

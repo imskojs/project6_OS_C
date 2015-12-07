@@ -1,10 +1,25 @@
 (function() {
   'use strict';
 
-  angular.module('app', ['ionic', 'ngCordova', 'ngResource', 'ngTemplates', 'ngStorage', 'ngFileUpload', 'ngGeolocation'])
+  angular.module('app', [
+    'ionic',
+    'applicat.push.service',
+    'ngCordova',
+    'ngResource',
+    'ngTemplates',
+    'ngStorage',
+    'ngFileUpload',
+    'ngGeolocation'
+  ])
 
-  .run(['$ionicPlatform', '$rootScope', '$state', '$window', '$ionicHistory', 'Message', 'rootScopeService', 'appStorage', 'devMode',
-    function($ionicPlatform, $rootScope, $state, $window, $ionicHistory, Message, rootScopeService, appStorage, devMode) {
+  .run([
+    '$ionicPlatform', '$rootScope', '$state', '$window', '$ionicHistory',
+    'Message', 'rootScopeService', 'appStorage', 'devMode', 'PushService',
+
+    function(
+      $ionicPlatform, $rootScope, $state, $window, $ionicHistory,
+      Message, rootScopeService, appStorage, devMode, PushService
+    ) {
 
       angular.extend($rootScope, rootScopeService);
       $ionicPlatform.ready(onIonicPlatformReady);
@@ -20,6 +35,9 @@
         }
         if ($window.StatusBar) {
           $window.StatusBar.styleDefault();
+        }
+        if ($window.cordova) {
+          PushService.registerDevice();
         }
         $ionicPlatform.registerBackButtonAction(function(e) {
           e.preventDefault();
