@@ -15,7 +15,7 @@
     'ProductListModel', 'ProductDetailModel', 'PlaceDetailModel', 'BidDetailUserModel',
     'BidDetailPawnShopRespondedModel', 'FavoriteProductListModel', 'FavoriteProductDetailModel',
     'MyProductListUserModel', 'BidListUserModel', 'MyProductListPawnShopModel',
-    'U', '$q', '$filter', '_', 'Message', 'appStorage', '$timeout'
+    'U', '$q', '$filter', '_', 'Message', 'appStorage', '$timeout', '$state'
   ];
 
   function Preload(
@@ -24,7 +24,8 @@
     ProductListModel, ProductDetailModel, PlaceDetailModel, BidDetailUserModel,
     BidDetailPawnShopRespondedModel, FavoriteProductListModel, FavoriteProductDetailModel,
     MyProductListUserModel, BidListUserModel, MyProductListPawnShopModel,
-    U, $q, $filter, _, Message, appStorage, $timeout) {
+    U, $q, $filter, _, Message, appStorage, $timeout, $state
+  ) {
 
     var service = {
       photos: photos,
@@ -64,12 +65,12 @@
       var promise;
       if (state === 'main.bidListUser') {
         promise = Bids.find({
-          product: params.product,
-          limit: 10,
-          status: 'responded',
-          sort: 'updatedAt DESC',
-          populates: ['photos', 'owner', 'place', 'createdBy']
-        }).$promise
+            product: params.product,
+            limit: 10,
+            status: 'responded',
+            sort: 'updatedAt DESC',
+            populates: ['photos', 'owner', 'place', 'createdBy']
+          }).$promise
           .then(function(bidsWrapper) {
             BidListUserModel.bids = bidsWrapper.bids;
             BidListUserModel.more = bidsWrapper.more;
@@ -84,9 +85,9 @@
         return promise;
       } else if (state === 'main.bidDetailUser') {
         promise = Bids.findOne({
-          id: params.id,
-          populates: ['photos', 'createdBy', 'owner']
-        }).$promise
+            id: params.id,
+            populates: ['photos', 'createdBy', 'owner']
+          }).$promise
           .then(function(bid) {
             BidDetailUserModel.bid = bid;
             console.log("---------- BidDetailUserModel.bid ----------");
@@ -104,12 +105,12 @@
         return promise;
       } else if (state === 'main.bidListPawnShopPending') {
         promise = Bids.find({
-          owner: appStorage.place.owner,
-          limit: 10,
-          status: 'pending',
-          sort: 'id DESC',
-          populates: ['photos', 'createdBy']
-        }).$promise
+            owner: appStorage.place.owner,
+            limit: 10,
+            status: 'pending',
+            sort: 'id DESC',
+            populates: ['photos', 'createdBy']
+          }).$promise
           .then(function(bidsWrapper) {
             $timeout(function() {
               BidListPawnShopPendingModel.bids = bidsWrapper.bids;
@@ -126,9 +127,9 @@
         return promise;
       } else if (state === 'main.bidDetailPawnShopPending') {
         promise = Bids.findOne({
-          id: params.id,
-          populates: ['photos', 'createdBy']
-        }).$promise
+            id: params.id,
+            populates: ['photos', 'createdBy']
+          }).$promise
           .then(function(bid) {
             BidDetailPawnShopPendingModel.bid = bid;
             console.log(BidDetailPawnShopPendingModel.bid);
@@ -142,12 +143,12 @@
         return promise;
       } else if (state === 'main.bidListPawnShopResponded') {
         promise = Bids.find({
-          owner: appStorage.place.owner,
-          limit: 10,
-          status: 'responded',
-          sort: 'id DESC',
-          populates: ['photos', 'createdBy']
-        }).$promise
+            owner: appStorage.place.owner,
+            limit: 10,
+            status: 'responded',
+            sort: 'id DESC',
+            populates: ['photos', 'createdBy']
+          }).$promise
           .then(function(bidsWrapper) {
             BidListPawnShopRespondedModel.bids = bidsWrapper.bids;
             BidListPawnShopRespondedModel.more = bidsWrapper.more;
@@ -162,9 +163,9 @@
         return promise;
       } else if (state === 'main.bidDetailPawnShopResponded') {
         promise = Bids.findOne({
-          id: params.id,
-          populates: ['photos', 'createdBy']
-        }).$promise
+            id: params.id,
+            populates: ['photos', 'createdBy']
+          }).$promise
           .then(function(bid) {
             BidDetailPawnShopRespondedModel.bid = bid;
             console.log(BidDetailPawnShopRespondedModel.bid);
@@ -188,9 +189,9 @@
       var promise;
       if (state === 'main.placeDetail') {
         promise = Places.getPlace({
-          id: params.id,
-          populates: ['photos']
-        }).$promise
+            id: params.id,
+            populates: ['photos']
+          }).$promise
           .then(function(place) {
             PlaceDetailModel.place = place;
             console.log(PlaceDetailModel.place);
@@ -305,7 +306,11 @@
       } else if (state === 'main.productDetail.market') {
         if (appStorage.user.lookAround) {
           Message.hide();
-          return Message.alert('둘러보기 알림.', '로그인을 하셔야 보실수있는 내용입니다.');
+          return Message.alert('둘러보기 알림.', '로그인을 하셔야 보실수있는 내용입니다.')
+            .then(function() {
+              $state.go('main.login');
+            });
+
         }
         query = {
           id: params.id,
@@ -331,12 +336,15 @@
       } else if (state === 'main.productDetail.pawnShop') {
         if (appStorage.user.lookAround) {
           Message.hide();
-          return Message.alert('둘러보기 알림.', '로그인을 하셔야 보실수있는 내용입니다.');
+          return Message.alert('둘러보기 알림.', '로그인을 하셔야 보실수있는 내용입니다.')
+            .then(function() {
+              $state.go('main.login');
+            });
         }
         promise = Products.getProduct({
-          id: params.id,
-          populates: ['photos', 'place', 'createdBy']
-        }).$promise
+            id: params.id,
+            populates: ['photos', 'place', 'createdBy']
+          }).$promise
           .then(function(product) {
             ProductDetailModel.pawnShop.product = product;
             return photos(ProductDetailModel.pawnShop.product, 'cloudinary600', false);
@@ -349,12 +357,12 @@
         return promise;
       } else if (state === 'main.myProductListUser') {
         promise = Products.getProducts({
-          createdBy: appStorage.user.id,
-          category: 'pawnShop',
-          limit: 10,
-          sort: 'id DESC',
-          populates: ['photos']
-        }).$promise
+            createdBy: appStorage.user.id,
+            category: 'pawnShop',
+            limit: 10,
+            sort: 'id DESC',
+            populates: ['photos']
+          }).$promise
           .then(function(productsWrapper) {
             $timeout(function() {
               MyProductListUserModel.products = productsWrapper.products;
@@ -370,12 +378,12 @@
         return promise;
       } else if (state === 'main.myProductListPawnShop') {
         promise = Products.getProducts({
-          createdBy: appStorage.user.id,
-          category: 'market',
-          limit: 10,
-          sort: 'id DESC',
-          populates: ['photos']
-        }).$promise
+            createdBy: appStorage.user.id,
+            category: 'market',
+            limit: 10,
+            sort: 'id DESC',
+            populates: ['photos']
+          }).$promise
           .then(function(productsWrapper) {
             MyProductListPawnShopModel.products = productsWrapper.products;
             MyProductListPawnShopModel.more = productsWrapper.more;
@@ -389,9 +397,9 @@
         return promise;
       } else if (state === 'main.productUpdate.info') {
         promise = Products.getProduct({
-          id: params.id,
-          populates: ['photos']
-        }).$promise
+            id: params.id,
+            populates: ['photos']
+          }).$promise
           .then(function(product) {
             product.price = Number(product.price);
             ProductUpdateModel.product = product;
@@ -410,11 +418,11 @@
           favoriteIds = 'none';
         }
         promise = Products.getProducts({
-          id: favoriteIds,
-          limit: 10,
-          sort: 'id DESC',
-          populates: ['photos', 'place']
-        }).$promise
+            id: favoriteIds,
+            limit: 10,
+            sort: 'id DESC',
+            populates: ['photos', 'place']
+          }).$promise
           .then(function(productsWrapper) {
             FavoriteProductListModel.products = productsWrapper.products;
             FavoriteProductListModel.more = productsWrapper.more;
@@ -428,9 +436,9 @@
         return promise;
       } else if (state === 'main.favoriteProductDetail') {
         promise = Products.getProduct({
-          id: params.id,
-          populates: ['photos', 'place', 'createdBy']
-        }).$promise
+            id: params.id,
+            populates: ['photos', 'place', 'createdBy']
+          }).$promise
           .then(function(product) {
             FavoriteProductDetailModel.product = product;
             return photos(FavoriteProductDetailModel.product, 'cloudinary400', false);

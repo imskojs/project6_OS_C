@@ -3,9 +3,14 @@
   angular.module('app')
     .controller('ProductListController', ProductListController);
 
-  ProductListController.$inject = ['U', '$scope', 'Products', 'ProductListModel', 'Message', '$ionicHistory', '$stateParams', '$ionicModal', '$timeout', '$state', 'AppService', 'Preload', 'Dom', 'appStorage'];
+  ProductListController.$inject = [
+    'U', '$scope', 'Products', 'ProductListModel', 'Message', '$ionicHistory', '$stateParams', '$ionicModal', '$timeout', '$state', 'AppService', 'Preload', 'Dom', 'appStorage', 'Photos', '$ionicSlideBoxDelegate'
+  ];
 
-  function ProductListController(U, $scope, Products, ProductListModel, Message, $ionicHistory, $stateParams, $ionicModal, $timeout, $state, AppService, Preload, Dom, appStorage) {
+  function ProductListController(
+    U, $scope, Products, ProductListModel, Message, $ionicHistory, $stateParams, $ionicModal, $timeout, $state, AppService, Preload, Dom, appStorage, Photos,
+    $ionicSlideBoxDelegate
+  ) {
 
     var ProductList = this;
     ProductList.Model = ProductListModel;
@@ -246,12 +251,12 @@
     //====================================================
     function getNewerProducts() {
       Products.getProducts({
-        newerThan: ProductListModel.placeId.products[0].id,
-        place: ProductListModel.placeId.products[0].place.id,
-        category: 'market',
-        limit: 10,
-        populates: ['photos']
-      }).$promise
+          newerThan: ProductListModel.placeId.products[0].id,
+          place: ProductListModel.placeId.products[0].place.id,
+          category: 'market',
+          limit: 10,
+          populates: ['photos']
+        }).$promise
         .then(function(productsWrapper) {
           console.log(productsWrapper);
           if (productsWrapper.products && productsWrapper.products.length === 0) {
@@ -274,13 +279,13 @@
     function getOlderProducts() {
       var last = ProductListModel.placeId.products.length - 1;
       Products.getProducts({
-        olderThan: ProductListModel.placeId.products[last].id,
-        place: ProductListModel.placeId.products[0].place.id,
-        category: 'market',
-        sort: 'id DESC',
-        limit: 10,
-        populates: ['photos']
-      }).$promise
+          olderThan: ProductListModel.placeId.products[last].id,
+          place: ProductListModel.placeId.products[0].place.id,
+          category: 'market',
+          sort: 'id DESC',
+          limit: 10,
+          populates: ['photos']
+        }).$promise
         .then(function(productsWrapper) {
           console.log(productsWrapper);
           angular.forEach(productsWrapper.products, function(product) {
@@ -304,7 +309,38 @@
     }
 
     function onAfterEnter() {
-      ProductList.showPhotos = true;
+      console.log("---------- $state.params.category ----------");
+      console.log($state.params.category);
+      console.log("HAS TYPE: " + typeof $state.params.category);
+
+      if ($state.params.category === 'pawnShop') {
+        console.log("---------- 'test' ----------");
+        console.log('test');
+        console.log("HAS TYPE: " + typeof 'test');
+
+        Photos.getPhotos({
+            tags: 'BANNER'
+          }).$promise
+          .then(function(photos) {
+            photos = angular.fromJson(angular.toJson(photos));
+            console.log("---------- photos ----------");
+            console.log(photos);
+            console.log("HAS TYPE: " + typeof photos);
+            ProductListModel.advertisements = photos;
+            $ionicSlideBoxDelegate.update();
+            $timeout(function() {
+              ProductList.showPhotos = true;
+              $ionicSlideBoxDelegate.update();
+            }, 200);
+
+          })
+          .catch(function(err) {
+            console.log("---------- err ----------");
+            console.log(err);
+            console.log("HAS TYPE: " + typeof err);
+
+          });
+      }
     }
 
     function onAfterLeave() {

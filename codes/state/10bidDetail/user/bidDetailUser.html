@@ -22,7 +22,7 @@
       show-pager="true"
     >
       <ion-slide
-        ng-repeat="productPhoto in BidDetailUser.Model.bid.product.photos"
+        ng-repeat="productPhoto in BidDetailUser.Model.bid.photos"
       >
         <img class="app-slide-image"
           ng-src="{{productPhoto.url | cloudinary400}}"
@@ -162,4 +162,16 @@
       </div>
     </div>
   </ion-content>
+  <ion-footer-bar class="bar-positive footer zero">
+    <div class="row zero">
+      <div class="col zero flex"
+        ng-click="BidDetailUser.preloadToPlaceDetail();"
+      >
+        <p class="zero stable f20px bold ml10px">
+          업체정보
+        </p>
+      </div>
+    </div>
+  </ion-footer-bar>
+
 </ion-view>

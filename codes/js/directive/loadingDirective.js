@@ -18,7 +18,7 @@
   loading.$inject = [];
 
   function loading() {
-    return {
+    return  {
       replace: true,
       template: '<div class="w100p h100vh flex light-grey-bg absolute"style="z-index: 2">' +
         '<ion-spinner class="spinner-40px mb88px" icon="ripple"></ion-spinner>' +

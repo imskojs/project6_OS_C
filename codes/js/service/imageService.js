@@ -16,7 +16,8 @@
     var service = {
       get: get,
       post: post,
-      clean: clean
+      clean: clean,
+
     };
 
     return service;
@@ -32,14 +33,19 @@
     // Output:
     //arrayToSaveFiles.push(filePath);
     //arrayToSaveBase64Data.push(base64Data);
-    function get(params) {
+    function get(params, index) {
       if (!$window.cordova) return false;
 
       return $cordovaCamera.getPicture(setOptions())
 
       .then(function success(filePath) {
         // Save file path (binary data).
-        params.fileUris.push(filePath);
+        if (index >= 0) {
+          params.fileUris.splice(index, 1, null);
+          params.fileUris.splice(index, 1, filePath);
+        } else {
+          params.fileUris.push(filePath);
+        }
         // Read data(base64) from file path
         var name = filePath.substr(filePath.lastIndexOf('/') + 1);
         var namePath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
@@ -49,7 +55,12 @@
       .then(function success(dataUri) {
         // Save data(base64)
         $timeout(function() {
-          params.dataUris.push(dataUri);
+          if (index >= 0) {
+            params.dataUris.splice(index, 1, null);
+            params.dataUris.splice(index, 1, dataUri);
+          } else {
+            params.dataUris.push(dataUri);
+          }
         }, 0);
       })
 
@@ -113,8 +124,14 @@
       // Convert base64 image to file
       var filesToSend = [];
       angular.forEach(dataUris, function(base64Data) {
-        filesToSend.push(base64ToFile(base64Data));
+        if (base64Data != null) {
+          filesToSend.push(base64ToFile(base64Data));
+        }
       });
+
+      console.log("---------- filesToSend ----------");
+      console.log(filesToSend);
+      console.log("HAS TYPE: " + typeof filesToSend);
 
       var promise = Upload.upload({
         url: governorUrl + url,
@@ -123,7 +140,7 @@
         fields: fields,
         header: {
           enctype: "multipart/form-data"
-          // Authoriztion: "Bearer " + appStorage.token
+            // Authoriztion: "Bearer " + appStorage.token
         }
       });
       return promise;

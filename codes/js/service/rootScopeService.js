@@ -127,7 +127,10 @@
     function toggleSideMenu(requireLoggedIn) {
       if (requireLoggedIn) {
         if (!appStorage.token) {
-          return Message.alert('둘러보기 알림', '로그인을 하셔야 볼수있는 내용입니다.');
+          return Message.alert('둘러보기 알림', '로그인을 하셔야 볼수있는 내용입니다.')
+            .then(function() {
+              $state.go('main.login');
+            });
         }
       }
       $ionicSideMenuDelegate.toggleLeft();

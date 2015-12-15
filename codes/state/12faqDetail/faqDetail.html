@@ -51,7 +51,7 @@
         </div>
         <!-- row -->
         <p class="zero left f12px mt5px dark-grey">
-          {{FaqDetail.Model.post.createdAt || '1999.09.09'}}
+          {{FaqDetail.Model.post.createdAt | date: 'yyyy.MM.dd HH:mm'}}
         </p>
       </div>
     </div>

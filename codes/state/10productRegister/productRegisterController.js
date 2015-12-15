@@ -91,34 +91,44 @@
     }
 
     function getImage(length, sourceType) {
-      if (validateImage(length)) {
-        ImageService.get({
-          from: sourceType,
-          fileUris: ProductRegisterModel.fileUris,
-          dataUris: ProductRegisterModel.dataUris,
-        });
-      }
+
+      console.log("---------- ProductRegisterModel.fileUris ----------");
+      console.log(ProductRegisterModel.fileUris);
+      console.log("HAS TYPE: " + typeof ProductRegisterModel.fileUris);
+
+      console.log("---------- ProductRegisterModel.dataUris ----------");
+      console.log(ProductRegisterModel.dataUris);
+      console.log("HAS TYPE: " + typeof ProductRegisterModel.dataUris);
+
+
+      // if (validateImage(length)) {
+      ImageService.get({
+        from: sourceType,
+        fileUris: ProductRegisterModel.fileUris,
+        dataUris: ProductRegisterModel.dataUris,
+      }, length - 1);
+      // }
     }
 
-    function validateImage(length) {
-      var alert = Message.alert.bind(null, '사진등록 알림');
-      if (length !== 1 && !ProductRegisterModel.dataUris[length - 2]) {
-        if (length === 2) {
-          alert('전면사진을 먼저 등록해주세요.');
-          return false;
-        } else if (length === 3) {
-          alert('측면사진을 먼저 등록해주세요.');
-          return false;
-        } else if (length === 4) {
-          alert('일련번호(태그)를 먼저 등록해주세요.');
-          return false;
-        } else if (length === 5) {
-          alert('부속품 전체를 먼저 등록해주세요.');
-          return false;
-        }
-      }
-      return true;
-    }
+    // function validateImage(length) {
+    //   var alert = Message.alert.bind(null, '사진등록 알림');
+    //   if (length !== 1 && !ProductRegisterModel.dataUris[length - 2]) {
+    //     if (length === 2) {
+    //       alert('전면사진을 먼저 등록해주세요.');
+    //       return false;
+    //     } else if (length === 3) {
+    //       alert('측면사진을 먼저 등록해주세요.');
+    //       return false;
+    //     } else if (length === 4) {
+    //       alert('일련번호(태그)를 먼저 등록해주세요.');
+    //       return false;
+    //     } else if (length === 5) {
+    //       alert('부속품 전체를 먼저 등록해주세요.');
+    //       return false;
+    //     }
+    //   }
+    //   return true;
+    // }
 
     function validateStep2Form() {
       if (!ProductRegisterModel.dataUris[0]) {
@@ -180,7 +190,7 @@
       } else if ($state.params.category === 'pawnShop') {
         Message.loading();
         ProductRegisterModel.form.category = 'market';
-        ProductRegisterModel.form.showBids = null;
+        ProductRegisterModel.form.showBid = null;
         ProductRegisterModel.form.status = 'selling';
         ProductRegisterModel.form.place = appStorage.place.id;
         ProductRegisterModel.form.geoJSON = appStorage.place.geoJSON;

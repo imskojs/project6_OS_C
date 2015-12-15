@@ -1,89 +1,78 @@
 <ion-view id="product-list-market"
     cache-view="true"
     hide-back-button="true"
->
-
-  <ion-nav-buttons side="left">
-    <button class="button button-icon icon ion-navicon"
-      ng-click="toggleSideMenu(true)"
     >
-    </button>
-  </ion-nav-buttons>
-
-  <ion-nav-title>
-    <p class="zero">
-      OhShop
-    </p>
-  </ion-nav-title>
-
-  <ion-content class="has-footer top124px"
-    scrollbar-y="false"
-  >
-
-    <ion-refresher
-      on-refresh="ProductList.refreshProducts()"
-    >
-    </ion-refresher>
-
-    <div class="w100p h50vw flex"
-      ng-if="!ProductList.showPhotos"
-    >
-      <ion-spinner class="spinner-40px" icon="ripple">
-      </ion-spinner>
-    </div>
-    <ion-slide-box
-      show-pager="true"
-      ng-if="ProductList.showPhotos"
-    >
-      <ion-slide
-        ng-repeat="ad in ProductList.Model.advertisements | filter: true"
-      >
-        <img class="app-slide-image h50vw"
-          ng-src="{{ ad.photos[0].url | cloudinary400 }}"
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-navicon"
+        ng-click="toggleSideMenu(true)"
         >
-      </ion-slide>
-    </ion-slide-box>
-
-    <!-- row -->
-    <div class="row zero mt0px"
-      on-swipe-right="ProductList.preloadToMarket();"
-    >
-      <div class="col zero"
-        ng-click="ProductList.preloadToPawnShopProductDetail(product.id)"
-        collection-repeat="product in ProductList.Model.pawnShop.products"
-        item-render-buffer="20"
-        item-width="50%"
-        item-height="250"
-      >
-        <div class="zero mt5px mr2p mb10px ml3p stable-bg shadow">
-          <img class="w100p h150px block"
-            ng-src="{{ product.photos[0].url | cloudinary200 }}"
-          >
-          <p class="zero pl5p mt8px dark-grey f14px text-overflow bold">
-            {{product.name}}
-          </p>
-
-          <div>
-            <p class="zero pl5p mt8px dark-grey f14px text-overflow bold">
-              상태: <span class="red">{{product.condition | appText}}</span>
-            </p>
-            <p class="zero pl5p mt20px pb15px f12px text-overflow dark-grey">
-              구입시기: {{product.boughtAt}}
-            </p>
-          </div>
-
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <p class="zero">
+        OhShop
+        </p>
+    </ion-nav-title>
+    <ion-content class="has-footer top124px"
+        scrollbar-y="false"
+        >
+        <ion-refresher
+            on-refresh="ProductList.refreshProducts()"
+            >
+        </ion-refresher>
+        <div class="w100p h50vw flex"
+            ng-if="!ProductList.showPhotos"
+            >
+            <ion-spinner class="spinner-40px" icon="ripple">
+            </ion-spinner>
         </div>
-
-      </div>
-    </div>
-
-    <div class="h30px"></div>
-    <ion-infinite-scroll
-      on-infinite="ProductList.getOlderPawnShopProducts()"
-      immediate-check="false"
-      ng-if="ProductList.Model.pawnShop.more"
-    >
-    </ion-infinite-scroll>
-  </ion-content>
-
+        <ion-slide-box
+            show-pager="true"
+            ng-if="ProductList.showPhotos"
+            >
+            <ion-slide
+                ng-repeat="photo in ProductList.Model.advertisements"
+                >
+                <img class="app-slide-image h50vw"
+                ng-src="{{ photo.url | cloudinary400 }}"
+                >
+            </ion-slide>
+        </ion-slide-box>
+        <!-- row -->
+        <div class="row zero mt0px"
+            on-swipe-right="ProductList.preloadToMarket();"
+            >
+            <div class="col zero"
+                ng-click="ProductList.preloadToPawnShopProductDetail(product.id)"
+                collection-repeat="product in ProductList.Model.pawnShop.products"
+                item-render-buffer="20"
+                item-width="50%"
+                item-height="250"
+                >
+                <div class="zero mt5px mr2p mb10px ml3p stable-bg shadow">
+                    <img class="w100p h150px block"
+                    ng-src="{{ product.photos[0].url | cloudinary200 }}"
+                    >
+                    <p class="zero pl5p mt8px dark-grey f14px text-overflow bold">
+                    {{product.name}}
+                    </p>
+                    <div>
+                        <p class="zero pl5p mt8px dark-grey f14px text-overflow bold">
+                        상태: <span class="red">{{product.condition | appText}}</span>
+                        </p>
+                        <p class="zero pl5p mt20px pb15px f12px text-overflow dark-grey">
+                        구입시기: {{product.boughtAt}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h30px"></div>
+        <ion-infinite-scroll
+            on-infinite="ProductList.getOlderPawnShopProducts()"
+            immediate-check="false"
+            ng-if="ProductList.Model.pawnShop.more"
+            >
+        </ion-infinite-scroll>
+    </ion-content>
 </ion-view>

@@ -10,8 +10,8 @@
 
     var model = {
       // product properties
-      dataUris: [],
-      fileUris: [],
+      dataUris: [null, null, null, null, null],
+      fileUris: [null, null, null, null, null],
       form: {
         name: null,
         productCategory: null,
@@ -37,8 +37,8 @@
         U.reset(this.product);
         this.form.showBid = true;
         this.product.photos = [];
-        this.dataUris = [];
-        this.fileUris = [];
+        this.dataUris = [null, null, null, null, null];
+        this.fileUris = [null, null, null, null, null];
       },
       validate: function() {
         var alert = Message.alert.bind(null, '상품등록 알림');

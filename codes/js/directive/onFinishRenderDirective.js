@@ -1,23 +1,23 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular.module('app')
-        .directive('onFinishRender', onFinishRender);
+  angular.module('app')
+    .directive('onFinishRender', onFinishRender);
 
-    onFinishRender.$inject = ['$timeout'];
+  onFinishRender.$inject = ['$timeout'];
 
-    function onFinishRender($timeout) {
-        return {
-            restrict: 'A',
-            link: link
-        };
+  function onFinishRender($timeout) {
+    return {
+      restrict: 'A',
+      link: link
+    };
 
-        function link(scope) {
-            if (scope.$last === true) {
-                $timeout(function() {
-                    scope.$emit('ngRepeatFinished');
-                });
-            }
-        }
+    function link(scope) {
+      if (scope.$last === true) {
+        $timeout(function() {
+          scope.$emit('ngRepeatFinished');
+        });
+      }
     }
+  }
 })();
