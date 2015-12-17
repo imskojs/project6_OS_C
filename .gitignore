@@ -4,3 +4,7 @@
 node_modules/
 platforms/
 plugins/
+www/css
+www/js
+www/view
+codes/scss/ionic.app.all.scss

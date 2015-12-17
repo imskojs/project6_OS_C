@@ -328,10 +328,7 @@
             console.log("HAS TYPE: " + typeof photos);
             ProductListModel.advertisements = photos;
             $ionicSlideBoxDelegate.update();
-            $timeout(function() {
-              ProductList.showPhotos = true;
-              $ionicSlideBoxDelegate.update();
-            }, 200);
+            ProductList.showPhotos = true;
 
           })
           .catch(function(err) {

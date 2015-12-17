@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
   angular.module('app')
     .controller('BidDetailPawnShopPendingController', BidDetailPawnShopPendingController);
@@ -20,20 +20,19 @@
       query.status = 'responded';
 
       return Bids
-        .update({}, query)
-        .$promise
-        .then(function(bid) {
+        .update({}, query).$promise
+        .then(function (bid) {
           console.log(bid);
           return Preload.stateWithBids('main.bidListPawnShopResponded', {
             category: 'pawnShop',
             status: 'responded'
           }, false);
         })
-        .then(function() {
+        .then(function () {
           Message.hide();
           return Message.alert('견적보내기 알림', '견적을 성공적으로 보냈습니다.');
         })
-        .then(function() {
+        .then(function () {
           U.goToState('main.bidListPawnShopResponded', {
             category: 'pawnShop',
             status: 'responded'
@@ -42,7 +41,6 @@
         })
         .catch(U.error);
     }
-
 
   } //end
 })();

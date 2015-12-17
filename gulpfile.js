@@ -39,7 +39,6 @@ var paths = {
     './codes/scss/20_popUpModalAnimations.scss',
     './codes/scss/30_touched.scss',
     // './codes/scss/common.scss',
-    './codes/scss/ngTagsInput.scss',
     './codes/state/**/*.scss'
   ],
   js: [
@@ -69,8 +68,7 @@ var paths = {
     './codes/lib/ngCordova/dist/ng-cordova.js',
     './codes/lib/ngGeolocation/ngGeolocation.js',
     './codes/lib/ng-file-upload//ng-file-upload.js',
-    './codes/lib/ng-tags-input/ng-tags-input.js',
-    './codes/lib/angular-fcsa-number/src/fcsaNumber.js'
+    './codes/lib/ng-tags-input/ng-tags-input.js'
   ]
 };
 
@@ -100,9 +98,6 @@ gulp.task('img', function(done) {
     .on('end', done);
 });
 
-
-
-
 gulp.task('view', function(done) {
   return gulp.src(paths.view)
     .pipe(ngTemplate({
@@ -123,11 +118,11 @@ gulp.task('sass', function(done) {
     .pipe(sass({
       errLogToConsole: true
     }))
-  // .pipe(purify(purifyTargets))
-  // .pipe(gulpif(argv.production, purify(purifyTargets)))
-  .pipe(gulpif(argv.production, minifyCss({
-    keepSpecialComments: 0
-  })))
+    // .pipe(purify(purifyTargets))
+    .pipe(gulpif(argv.production, purify(purifyTargets)))
+    .pipe(gulpif(argv.production, minifyCss({
+      keepSpecialComments: 0
+    })))
     .pipe(rename({
       extname: '.min.css'
     }))

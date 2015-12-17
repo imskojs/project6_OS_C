@@ -31,9 +31,10 @@
             ng-if="ProductList.showPhotos"
             >
             <ion-slide
+            class="h50vw"
                 ng-repeat="photo in ProductList.Model.advertisements"
                 >
-                <img class="app-slide-image h50vw"
+                <img class="app-slide-image h100p block"
                 ng-src="{{ photo.url | cloudinary400 }}"
                 >
             </ion-slide>
