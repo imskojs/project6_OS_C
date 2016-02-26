@@ -32,11 +32,12 @@
     </div>
   </ion-header-bar>
 
-  <ion-header-bar class="zero h34px top88px positive-bg"
+  <ion-header-bar class="zero h34px positive-bg"
+    top="88"
     no-tap-scroll="true"
     ng-if="!isState('main.productList.placeId')"
   >
-    <div class="row zero h34px stable-bg shadow">
+    <div class="row zero h34px stable-bg shadow mt0px">
       <div class="col zero flex"
         ng-class="{'tab-selected': getParam('category') === 'market'}"
         ng-click="ProductList.preloadToMarket();"
