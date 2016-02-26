@@ -17950,6 +17950,9 @@ a.button {
 .transparent-bg {
   background: transparent !important; }
 
+[nav-view-transition] {
+  background-color: #d8edfe !important; }
+
 input {
   width: 100%;
   padding-top: 0 !important;

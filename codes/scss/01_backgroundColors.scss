@@ -13,3 +13,8 @@
 .transparent-bg {
   background: transparent !important;
 }
+
+// remove black background
+[nav-view-transition] {
+  background-color: $lighter !important;
+}

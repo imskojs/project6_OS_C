@@ -99,7 +99,7 @@
 
       $stateProvider
 
-      .state('main', {
+        .state('main', {
         url: '/main',
         templateUrl: 'state/00main/main.html',
         controller: 'MainController as Main'
@@ -337,15 +337,15 @@
       })
 
       .state('main.productList', {
-        abstract: true,
-        url: '/productList',
-        views: {
-          main: {
-            templateUrl: 'state/10productList/productList.html',
-            controller: 'ProductListController as ProductList'
+          // abstract: true,
+          url: '/productList',
+          views: {
+            main: {
+              templateUrl: 'state/10productList/productList.html',
+              controller: 'ProductListController as ProductList'
+            }
           }
-        }
-      })
+        })
         .state('main.productList.market', {
           params: {
             category: '', // pawnShop, market
@@ -389,15 +389,15 @@
 
 
       .state('main.productRegister', {
-        abstract: true,
-        url: '/productRegister',
-        views: {
-          main: {
-            templateUrl: 'state/10productRegister/productRegister.html',
-            controller: 'ProductRegisterController as ProductRegister'
+          // abstract: true,
+          url: '/productRegister',
+          views: {
+            main: {
+              templateUrl: 'state/10productRegister/productRegister.html',
+              controller: 'ProductRegisterController as ProductRegister'
+            }
           }
-        }
-      })
+        })
         .state('main.productRegister.step1', {
           params: {
             category: '',
@@ -436,15 +436,15 @@
 
 
       .state('main.productUpdate', {
-        abstract: true,
-        url: '/productUpdate',
-        views: {
-          main: {
-            templateUrl: 'state/10productUpdate/productUpdate.html',
-            controller: 'ProductUpdateController as ProductUpdate'
+          // abstract: true,
+          url: '/productUpdate',
+          views: {
+            main: {
+              templateUrl: 'state/10productUpdate/productUpdate.html',
+              controller: 'ProductUpdateController as ProductUpdate'
+            }
           }
-        }
-      })
+        })
         .state('main.productUpdate.info', {
           params: {
             category: '',
@@ -486,15 +486,15 @@
 
 
       .state('main.productDetail', {
-        abstract: true,
-        url: '/productDetail',
-        views: {
-          main: {
-            templateUrl: 'state/10productDetail/productDetail.html',
-            controller: 'ProductDetailController as ProductDetail'
+          // abstract: true,
+          url: '/productDetail',
+          views: {
+            main: {
+              templateUrl: 'state/10productDetail/productDetail.html',
+              controller: 'ProductDetailController as ProductDetail'
+            }
           }
-        }
-      })
+        })
         .state('main.productDetail.market', {
           params: {
             category: '',

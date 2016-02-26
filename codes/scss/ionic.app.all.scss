@@ -135,6 +135,11 @@ $ionicons-font-path: "../fonts" !default;
   background: transparent !important;
 }
 
+// remove black background
+[nav-view-transition] {
+  background-color: $lighter !important;
+}
+
 //====================================================
 //  Texts
 //====================================================
@@ -840,16 +845,6 @@ progress[value]::-webkit-progress-bar{
   }
 }
 
-#main {
-  .side-menu-content {
-
-  }
-
-  .row-side-menu-header {
-
-  }
-}
-
 #walk-through {
   .walk-through-content {
 
@@ -878,14 +873,24 @@ progress[value]::-webkit-progress-bar{
   }
 }
 
+#main {
+  .side-menu-content {
+
+  }
+
+  .row-side-menu-header {
+
+  }
+}
+
 #login {
 }
 
-#sign-up {
+#reset-password {
 
 }
 
-#reset-password {
+#sign-up {
 
 }
 
@@ -893,11 +898,11 @@ progress[value]::-webkit-progress-bar{
 
 }
 
-#home {
+#customer {
 
 }
 
-#customer {
+#home {
 
 }
 
@@ -937,10 +942,6 @@ progress[value]::-webkit-progress-bar{
 }
 
 #place-detail {
-
-}
-
-#place-list {
 
 }
 
@@ -1047,6 +1048,10 @@ progress[value]::-webkit-progress-bar{
             }
         }
     }
+}
+
+#place-list {
+
 }
 
 .prompt-like-modal {

@@ -13,8 +13,12 @@
             </ion-nav-view>
         </ion-side-menu-content>
         <!-- Side Menu -->
-        <ion-side-menu side="left">
-            <ion-content class="side-menu-content">
+        <ion-side-menu class="positive-bg"
+            side="left"
+        >
+            <ion-content class="side-menu-content color0-bg"
+                top="0"
+            >
                 <div class="row zero pt10px pb10px flex-v positive-bg stable-bb"
                     ng-click="appStorage.user.role === 'user' ?
                     goToState('main.profile', {
