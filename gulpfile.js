@@ -4,7 +4,7 @@ var bower = require('bower');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
-var purify = require('gulp-purifycss');
+// var purify = require('gulp-purifycss');
 var uglify = require('gulp-uglify');
 var ngTemplate = require('gulp-ng-template');
 var imageop = require('gulp-image-optimization');
@@ -98,7 +98,7 @@ gulp.task('img', function(done) {
     .on('end', done);
 });
 
-gulp.task('view', function(done) {
+gulp.task('view', function() {
   return gulp.src(paths.view)
     .pipe(ngTemplate({
       standalone: true,
@@ -108,8 +108,8 @@ gulp.task('view', function(done) {
 });
 
 
-var purifyTargets = paths.lib.concat(paths.js)
-  .concat(paths.view);
+// var purifyTargets = paths.lib.concat(paths.js)
+//   .concat(paths.view);
 
 gulp.task('sass', function(done) {
   gulp.src(paths.sass)
@@ -119,7 +119,7 @@ gulp.task('sass', function(done) {
       errLogToConsole: true
     }))
     // .pipe(purify(purifyTargets))
-    .pipe(gulpif(argv.production, purify(purifyTargets)))
+    // .pipe(gulpif(argv.production, purify(purifyTargets)))
     .pipe(gulpif(argv.production, minifyCss({
       keepSpecialComments: 0
     })))

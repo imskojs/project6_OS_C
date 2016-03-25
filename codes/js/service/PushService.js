@@ -7,13 +7,13 @@
   PushService.$inject = [
     '$http', '$log', '$q', '$cordovaDialogs', '$window',
     '$timeout', '$rootScope', '$cordovaMedia',
-    'googlePushSenderID', 'governorUrl'
+    'googlePushSenderID', 'governorUrl', 'appStorage', 'Devices'
   ];
 
   function PushService(
     $http, $log, $q, $cordovaDialogs, $window,
     $timeout, $rootScope, $cordovaMedia,
-    googlePushSenderID, governorUrl
+    googlePushSenderID, governorUrl, appStorage, Devices
   ) {
     var deviceId = null;
 
@@ -93,10 +93,25 @@
         .then(function(dataWrapper) {
           $log.info("PushService - registered to server: " + JSON.stringify(dataWrapper));
           deviceId = dataWrapper.data.device.deviceId;
+          appStorage.deviceId = deviceId;
+          if (appStorage.user && appStorage.user.id && !appStorage.deviceUpdateDone) {
+            return Devices.update({
+              deviceId: appStorage.deviceId,
+              user: appStorage.user.id
+            });
+          } else {
+            return false;
+          }
         })
-        .catch(function(err) {
-          $log.info("PushService - error: " + JSON.stringify(err));
-        });
+        .then(function(devices) {
+          if (devices !== false) {
+            appStorage.deviceUpdateDone = true;
+          }
+        })
+
+      .catch(function(err) {
+        $log.info("PushService - error: " + JSON.stringify(err));
+      });
     }
 
 

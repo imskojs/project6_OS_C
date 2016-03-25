@@ -3,9 +3,9 @@
   angular.module('app')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', 'Users', 'Places', 'LoginModel', 'Message', 'appStorage', '$state', '$q', 'Preload', 'U'];
+  LoginController.$inject = ['$scope', 'Users', 'Places', 'LoginModel', 'Message', 'appStorage', '$state', '$q', 'Preload', 'U', 'Devices'];
 
-  function LoginController($scope, Users, Places, LoginModel, Message, appStorage, $state, $q, Preload, U) {
+  function LoginController($scope, Users, Places, LoginModel, Message, appStorage, $state, $q, Preload, U, Devices) {
 
     var Login = this;
     Login.Model = LoginModel;
@@ -55,6 +55,15 @@
           }
           return Preload.stateWithProducts('main.productList' + '.' + params.category,
             params, false);
+        })
+        .then(function() {
+          return Devices.update(null, {
+            deviceId: appStorage.deviceId || 'nil',
+            user: appStorage.user.id
+          });
+        })
+        .then(function() {
+          appStorage.deviceUpdateDone = true;
         })
         .then(function() {
           var params = {};

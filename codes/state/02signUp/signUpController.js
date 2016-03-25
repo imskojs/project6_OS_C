@@ -6,13 +6,13 @@
   SignUpController.$inject = [
     '$scope', 'Users', 'Places', 'SignUpModel', 'Message', 'U',
     '$state', 'daum', '$ionicScrollDelegate', 'appStorage', '$q',
-    'Preload'
+    'Preload', 'Devices'
   ];
 
   function SignUpController(
     $scope, Users, Places, SignUpModel, Message, U,
     $state, daum, $ionicScrollDelegate, appStorage, $q,
-    Preload
+    Preload, Devices
   ) {
 
     var SignUp = this;
@@ -168,6 +168,15 @@
           }
           return Preload.stateWithProducts('main.productList' + '.' + params.category,
             params, false);
+        })
+        .then(function() {
+          return Devices.update(null, {
+            deviceId: appStorage.deviceId || 'nil',
+            user: appStorage.user.id
+          });
+        })
+        .then(function() {
+          appStorage.deviceUpdateDone = true;
         })
         .then(function() {
           var params = {};

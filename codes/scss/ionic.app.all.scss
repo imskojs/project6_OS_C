@@ -845,6 +845,16 @@ progress[value]::-webkit-progress-bar{
   }
 }
 
+#main {
+  .side-menu-content {
+
+  }
+
+  .row-side-menu-header {
+
+  }
+}
+
 #walk-through {
   .walk-through-content {
 
@@ -870,16 +880,6 @@ progress[value]::-webkit-progress-bar{
     right: 5px;
     color: white;
     font-size: 20px;
-  }
-}
-
-#main {
-  .side-menu-content {
-
-  }
-
-  .row-side-menu-header {
-
   }
 }
 
@@ -921,11 +921,11 @@ progress[value]::-webkit-progress-bar{
 
 }
 
-#product-detail {
+#product-list {
 
 }
 
-#product-list {
+#product-detail {
 
 }
 
@@ -942,6 +942,10 @@ progress[value]::-webkit-progress-bar{
 }
 
 #place-detail {
+
+}
+
+#place-list {
 
 }
 
@@ -1048,10 +1052,6 @@ progress[value]::-webkit-progress-bar{
             }
         }
     }
-}
-
-#place-list {
-
 }
 
 .prompt-like-modal {
