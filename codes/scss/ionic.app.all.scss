@@ -120,24 +120,24 @@ $ionicons-font-path: "../fonts" !default;
 
 
 @each $app-color in $app-colors {
-  //.stable-bg
-  .#{$app-color}-bg {
-    background-color: return-var-from-text($app-color) !important;
-  }
-  @for $i from 0 through 100 {
-    .#{$app-color}-bg#{$i} {
-      background-color: rgba(return-var-from-text($app-color), $i/100) !important;
+    //.stable-bg
+    .#{$app-color}-bg {
+        background-color: return-var-from-text($app-color) !important;
     }
-  }
+    @for $i from 0 through 100 {
+        .#{$app-color}-bg#{$i} {
+            background-color: rgba(return-var-from-text($app-color), $i/100) !important;
+        }
+    }
 }
 
 .transparent-bg {
-  background: transparent !important;
+    background: transparent !important;
 }
 
 // remove black background
 [nav-view-transition] {
-  background-color: $lighter !important;
+    background-color: $lighter !important;
 }
 
 //====================================================
@@ -894,11 +894,11 @@ progress[value]::-webkit-progress-bar{
 
 }
 
-#profile {
+#customer {
 
 }
 
-#customer {
+#profile {
 
 }
 
@@ -925,11 +925,11 @@ progress[value]::-webkit-progress-bar{
 
 }
 
-#product-list {
+#product-register {
 
 }
 
-#product-register {
+#product-list {
 
 }
 
@@ -942,10 +942,6 @@ progress[value]::-webkit-progress-bar{
 }
 
 #place-detail {
-
-}
-
-#place-list {
 
 }
 
@@ -1052,6 +1048,10 @@ progress[value]::-webkit-progress-bar{
             }
         }
     }
+}
+
+#place-list {
+
 }
 
 .prompt-like-modal {

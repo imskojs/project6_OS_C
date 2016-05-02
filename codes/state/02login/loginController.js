@@ -3,15 +3,24 @@
   angular.module('app')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', 'Users', 'Places', 'LoginModel', 'Message', 'appStorage', '$state', '$q', 'Preload', 'U', 'Devices'];
+  LoginController.$inject = [
+    '$scope', '$state', '$q', '$ionicModal',
+    'Users', 'Places', 'LoginModel', 'Message', 'appStorage',
+    'Preload', 'U', 'Devices'
+  ];
 
-  function LoginController($scope, Users, Places, LoginModel, Message, appStorage, $state, $q, Preload, U, Devices) {
+  function LoginController(
+    $scope, $state, $q, $ionicModal,
+    Users, Places, LoginModel, Message, appStorage,
+    Preload, U, Devices
+  ) {
 
     var Login = this;
     Login.Model = LoginModel;
 
     Login.login = login;
     Login.lookAround = lookAround;
+    Login.selectLanguage = selectLanguage;
 
     $scope.$on('$ionicView.enter', onEnter);
     //====================================================
@@ -99,8 +108,27 @@
         .catch(U.error);
     }
 
+    function selectLanguage(language) {
+      Login.languageModal.hide();
+    }
+
     function onEnter() {
       LoginModel.form = {};
+      var promise = $q.resolve();
+      if (!Login.languageModal) {
+        promise = promise.then(function() {
+            return $ionicModal.fromTemplateUrl('state/modal/selectLanguage.html', {
+              scope: $scope,
+              animation: 'slide-in-up'
+            });
+          })
+          .then(function(modal) {
+            Login.languageModal = modal;
+          });
+      }
+      promise.then(function() {
+        Login.languageModal.show();
+      });
     }
 
     //====================================================

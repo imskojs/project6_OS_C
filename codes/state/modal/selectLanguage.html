@@ -1,0 +1,51 @@
+<ion-modal-view id="select-language">
+  <ion-content>
+
+    <div class="row mt200px title-row positive-bg">
+      <div class="col">
+        <p class="title center">Language setting</p>
+      </div>
+    </div>
+
+    <div class="row mt1px h44px flex-v"
+      ng-click="Login.selectLanguage('korea')"
+    >
+      <div class="col-25 ml20p zero">
+        <img class="w30px"
+          src="img/ic_ko.png" alt="Korean flag"
+        >
+      </div>
+      <div class="col zero">
+        <p class="zero  bold">
+          대한민국
+        </p>
+      </div>
+    </div>
+  
+    <div class="row h44px flex-v light-bg"
+      ng-click="Login.selectLanguage('vietnam')"
+    >
+      <div class="col-25 ml20p zero">
+        <img class="block w30px"
+          src="img/ic_vt.png" alt="Vietname flag"
+        >
+      </div>
+      <div class="col zero">
+        <p class="zero bold">
+          Vietnam
+        </p>
+      </div>
+    </div>
+<!-- 
+    <div class="row h44px flex mt1px"
+      ng-click="Login.languageModal.hide()"
+    >
+      <div class="col">
+        <p class="zero center">
+          Ok
+        </p>
+      </div>
+    </div>
+ -->
+  </ion-content>
+</ion-modal-view>
