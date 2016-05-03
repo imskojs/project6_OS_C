@@ -68,7 +68,8 @@ var paths = {
     './codes/lib/ngCordova/dist/ng-cordova.js',
     './codes/lib/ngGeolocation/ngGeolocation.js',
     './codes/lib/ng-file-upload//ng-file-upload.js',
-    './codes/lib/ng-tags-input/ng-tags-input.js'
+    './codes/lib/ng-tags-input/ng-tags-input.js',
+    './codes/lib/angular-translate/angular-translate.js'
   ]
 };
 

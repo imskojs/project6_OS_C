@@ -17,7 +17,7 @@
       <div class="col zero ml5p">
         <input  class="positive-bg stable f20px"
           type="email"
-          placeholder="메일주소"
+          placeholder="ID (E-mail)"
           ng-model="Login.Model.form.email"
         >
       </div>
@@ -31,28 +31,29 @@
       <div class="col zero ml5p">
         <input class="positive-bg stable f20px"
           type="password"
-          placeholder="비밀번호 (6~15 영문, 숫자 조합)"
+          placeholder="password"
           ng-model="Login.Model.form.password"
         >
       </div>
     </div>
 
+      <!-- 로그인 -->
     <button class="button-icon w100p zero center stable stable-b f20px pt10px pb10px mt20px radius bold"
       ng-click="Login.login();"
     >
-      로그인
+      {{'LOGIN' | translate }}
     </button>
 
     <p class="zero f18px center stable mt20px"
       ng-click="goToState('main.signUp', {category: 'user'})"
     >
-      회원가입
+      {{'SIGNUP' | translate}}
     </p>
 
     <p class="zero f18px center stable mt20px"
       ng-click="Login.lookAround();"
     >
-      둘러보고 가입하기
+      {{ 'LOOK_AROUND' | translate }}
     </p>
 
     <div class="row zero flex mt25px">
@@ -66,7 +67,7 @@
     <p class="zero center dark bold dark-b f20px bw2px pt10px pb10px mt25px radius"
       ng-click="goToState('main.signUp', {category: 'pawnShop'})"
     >
-      점포 가입요청
+      {{ 'SIGNUP_PAWNSHOP' | translate }}
     </p>
   </ion-content>
 </ion-view>

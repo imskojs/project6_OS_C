@@ -4,13 +4,13 @@
     .controller('LoginController', LoginController);
 
   LoginController.$inject = [
-    '$scope', '$state', '$q', '$ionicModal',
+    '$scope', '$state', '$q', '$ionicModal', '$translate',
     'Users', 'Places', 'LoginModel', 'Message', 'appStorage',
     'Preload', 'U', 'Devices'
   ];
 
   function LoginController(
-    $scope, $state, $q, $ionicModal,
+    $scope, $state, $q, $ionicModal, $translate,
     Users, Places, LoginModel, Message, appStorage,
     Preload, U, Devices
   ) {
@@ -109,6 +109,7 @@
     }
 
     function selectLanguage(language) {
+      $translate.use(language);
       Login.languageModal.hide();
     }
 

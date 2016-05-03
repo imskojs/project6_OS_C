@@ -11,7 +11,7 @@
 
   <ion-nav-title>
     <p class="zero">
-      고객센터
+      {{'CUSTOMER_CENTER' | translate}}
     </p>
   </ion-nav-title>
 
@@ -22,10 +22,10 @@
         src="img/slidemenu_icon06.png"
       >
       <p class="zero center stable f18px mt20px">
-        마켓이나 전당포 이용에 관한
+        {{'CUSTOMER_TEXT_ONE' | translate}}
       </p>
       <p class="zero mt5px f18px stable center">
-        문의사항이 있으시면 연락 바랍니다.
+        {{'CUSTOMER_TEXT_TWO' | translate}}
       </p>
     </div>
 
@@ -34,7 +34,7 @@
       <div class="row zero flex-v mb5px">
         <div class="col-18">
           <p class="zero positive f14px right dark-grey">
-            이메일
+            {{'EMAIL' | translate}}
           </p>
         </div>
         <div class="col zero ml2p">
@@ -48,7 +48,7 @@
       <div class="row zero flex-v mb5px mt0px">
         <div class="col-18">
           <p class="zero positive f14px right dark-grey">
-            전화번호
+            {{ 'PHONE_NUMBER' | translate }}
           </p>
         </div>
         <div class="col zero ml2p">
@@ -62,7 +62,7 @@
       <div class="row zero flex-v mb5px mt0px">
         <div class="col-18">
           <p class="zero positive f14px right dark-grey">
-            제목
+            {{'TITLE' | translate}}
           </p>
         </div>
         <div class="col zero ml2p">
@@ -76,7 +76,7 @@
       <div class="row zero mb5px mt0px">
         <div class="col-18">
           <p class="zero positive f14px right dark-grey">
-          내용
+            {{'CONTENT' | translate}}
           </p>
         </div>
         <div class="col zero ml2p">
@@ -89,7 +89,7 @@
       <p class="zero center positive-bg radius auto w80p f20px stable mt20px pt10px pb10px"
         ng-click="Customer.sendForm();"
       >
-        문의하기
+        {{'ASK' | translate}}
       </p>
 
     </div>

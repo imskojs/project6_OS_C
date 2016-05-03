@@ -9,7 +9,8 @@
     'ngTemplates',
     'ngStorage',
     'ngFileUpload',
-    'ngGeolocation'
+    'ngGeolocation',
+    'pascalprecht.translate'
   ])
 
   .run([
@@ -93,23 +94,154 @@
     }
   ])
 
-  .config(['$stateProvider', '$httpProvider',
-    function($stateProvider, $httpProvider) {
+  .config(['$stateProvider', '$httpProvider', '$translateProvider',
+    function($stateProvider, $httpProvider, $translateProvider) {
 
-      // $ionicConfigProvider.scrolling.jsScrolling(false);
-      // //Security handler
       $httpProvider.interceptors.push('AuthInterceptor');
 
-      // //Allow session
-      // $httpProvider.defaults.withCredentials = true;
+      $translateProvider
+        .translations('ko', {
+          LOGIN: '로그인',
+          SIGNUP: '회원가입',
+          LOOK_AROUND: '둘러보고 가입하기',
+          SIGNUP_PAWNSHOP: '점포 가입요청',
+          NICKNAME_INSERT: '닉네임 입력',
+          INSERT_EMAIL: '이메일 입력',
+          INSERT_PASSWORD: '비밀번호 입력',
+          REINSERT_PASSWORD: '비밀번호 재입력',
+          CHECK_DUPLICATE: '중복확인',
+          PAWNSHOP_NAME: '점포명',
+          EMAIL_ADDRESS: '이메일 주소',
+          MOBILE_NUMBER: '핸드폰 번호',
+          PHONE_NUMBER: '전화번호',
+          COMPANY_NUMBER: '대부업등록번호',
+          ADDRESS: '주소',
+          SELECT_PLACE: '장소를 골라주세요',
+          AGREE_TERMS: '약관 동의하기',
+          READ_TERMS: '약관 보기',
+          COMPLETE: '완료',
+          SEARCH_PRODUCT_NAME: '물품명 검색',
+          MARKET: '마켓',
+          PAWNSHOP: '전당포',
+          SET_LOCATION: '지역 재설정',
+          REQUEST_BID: '견적 요청하기',
+          SELLING_PRODUCT: '판매물품',
+          NOTICE: '공지사항',
+          FAQ: '자주 묻는 질문',
+          CUSTOMER_CENTER: '고객센터',
+          TERMS: '이용약관',
+          LOGOUT: '로그아웃',
+          MY_PROFILE: '내 프로필',
+          PAWNSHOP_PROFILE: '상인 프로필',
+          NICKNAME: '닉네임',
+          EMAIL: '이메일',
+          CHANGE_NICKNAME: '닉네임 변경',
+          CHANGE_EMAIL: '이메일 변경',
+          RESET_PASSWORD: '비밀번호 재설정',
+          CUSTOMER_TEXT_ONE: '마켓이나 전당포 이용에 관한',
+          CUSTOMER_TEXT_TWO: '문의사항이 있으시면 연락 바랍니다.',
+          TITLE: '제목',
+          CONTENT: '내용',
+          ASK: '문의하기',
+          RECEIEVED_BID: '받은견적',
+          BID_REQUESTED_BY: '견적요청자',
+          BID_REQUESTED_AT: '견적 요청일',
+          BRAND: '브랜드',
+          BOUGHT_AT: '구입시기',
+          CONDITION: '상태',
+          RECEIVED_BID_CONTENT: '받은 견적 내역',
+          QUOTE: '견적서',
+          PRICE: '금액',
+          MONTHLY_INTEREST: '월이율',
+          DURATION: '기간',
+          MONTHS: '개월',
+          CAN_PICKUP: '출장서비스 유무',
+
+          SEND_BID: '견적보내기',
+          WRITE_BID_TO_SEND: '보낼견적서를 작성해주세요',
+          PICKUP_OK: '출장가능',
+          PICKUP_NO: '출장불가능',
+
+
+        })
+        .translations('vi', {
+          LOGIN: 'đăng nhập',
+          SIGNUP: 'Đăng ký',
+          LOOK_AROUND: 'Lên đến xung quanh báo cáo',
+          SIGNUP_PAWNSHOP: 'công ty Đăng ký',
+          NICKNAME_INSERT: 'nhập nickname',
+          INSERT_EMAIL: 'nhập email của bạn',
+          INSERT_PASSWORD: 'mật khẩu',
+          REINSERT_PASSWORD: 'lặp lại mật khẩu',
+          CHECK_DUPLICATE: 'kiểm tra tính sẵn sàng',
+          PAWNSHOP_NAME: 'cửa hàng Tên',
+          EMAIL_ADDRESS: 'E -mail địa chỉ',
+          MOBILE_NUMBER: 'Số điện thoại di động',
+          PHONE_NUMBER: 'số điện thoại',
+          COMPANY_NUMBER: 'Số đăng ký cho vay',
+          ADDRESS: 'địa chỉ',
+          SELECT_PLACE: 'Vui lòng chọn một vị trí',
+          AGREE_TERMS: 'Đồng ý với các Điều khoản và Điều kiện',
+          READ_TERMS: 'Xem Điều khoản và Điều kiện',
+          COMPLETE: 'hoàn toàn',
+          SEARCH_PRODUCT_NAME: 'Tìm kiếm mulpummyeong',
+          MARKET: 'thị trường',
+          PAWNSHOP: 'tiệm cầm đồ',
+          SET_LOCATION: 'thiết lập lại địa phương',
+          REQUEST_BID: 'Yêu cầu một Trích dẫn',
+          SELLING_PRODUCT: 'hàng hóa bán',
+          NOTICE: 'thông báo',
+          FAQ: 'Câu hỏi thường gặp',
+          CUSTOMER_CENTER: 'Liên hệ',
+          TERMS: 'Điều khoản sử dụng',
+          LOGOUT: 'Thoát',
+          MY_PROFILE: 'Hồ sơ của tôi',
+          PAWNSHOP_PROFILE: 'Trader hồ sơ',
+          NICKNAME: 'biệt danh',
+          EMAIL: 'E -mail',
+          CHANGE_NICKNAME: 'thay đổi Nickname',
+          CHANGE_EMAIL: 'thay đổi email',
+          RESET_PASSWORD: 'Thiết lập lại mật khẩu của bạn',
+          CUSTOMER_TEXT_ONE: 'Vui lòng liên hệ với chúng tôi nếu bạn có bất kỳ thắc mắc về',
+          CUSTOMER_TEXT_TWO: 'thị trường hoặc cầm đồ sử dụng bốn cao .',
+          TITLE: 'vấn đề',
+          CONTENT: 'Nội dung',
+          ASK: 'Liên hệ',
+
+          RECEIEVED_BID: 'Ai ước tính',
+          BID_REQUESTED_BY: 'Trích Yêu Cầu',
+          BID_REQUESTED_AT: 'Ngày Quote',
+          BRAND: 'Thương hiệu',
+          BOUGHT_AT: 'Thời điểm mua hàng',
+          CONDITION: 'Gangtae',
+          RECEIVED_BID_CONTENT: 'Ai ước tính lịch sử',
+          QUOTE: 'Trích dẫn',
+          PRICE: 'số tiền',
+          MONTHLY_INTEREST: 'lãi suất hàng tháng',
+          DURATION: 'thời gian',
+          MONTHS: 'tháng',
+          CAN_PICKUP: 'Hiện diện trong khuôn viên',
+
+          SEND_BID: 'Gửi Quote',
+          WRITE_BID_TO_SEND: 'Xin vui lòng gửi một báo bằng văn bản',
+          PICKUP_OK: 'có thể đi du lịch',
+          PICKUP_NO: 'đi du lịch không thể',
+
+        });
+      $translateProvider.preferredLanguage('ko');
+
+      // {{ 'PROPERTY' | translate }}
+      // <button ng-click="test('de')" translate="BUTTON_TEXT_DE">
+
+      // $translate.use('ko');
+
 
       $stateProvider
-
         .state('main', {
-        url: '/main',
-        templateUrl: 'state/00main/main.html',
-        controller: 'MainController as Main'
-      })
+          url: '/main',
+          templateUrl: 'state/00main/main.html',
+          controller: 'MainController as Main'
+        })
 
       .state('main.walkThrough', {
         url: '/walkThrough',

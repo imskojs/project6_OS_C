@@ -10,9 +10,8 @@
   </ion-nav-buttons>
 
   <ion-nav-title>
-    <p class="zero"
-    >
-      받은견적
+    <p class="zero">
+      {{ 'RECEIVED_BID' | translate}}
     </p>
   </ion-nav-title>
 
@@ -43,7 +42,7 @@
     <div class="row zero w90p auto mb7px mt0px">
       <div class="col-30">
         <p class="zero dark-grey f16px">
-          견적 요청자
+        {{'BID_REQUESTED_BY' | translate}}
         </p>
       </div>
       <div class="col zero">
@@ -56,7 +55,7 @@
     <div class="row zero w90p auto mb7px mt0px">
       <div class="col-30">
         <p class="zero dark-grey f16px">
-          견적 요청일
+        {{'BID_REQUESTED_AT' | translate}}
         </p>
       </div>
       <div class="col zero">
@@ -68,7 +67,7 @@
     <div class="row zero w90p auto mb7px mt0px">
       <div class="col-30">
         <p class="zero dark-grey f16px">
-          브랜드
+        {{'BRAND' | translate}}
         </p>
       </div>
       <div class="col zero">
@@ -80,7 +79,7 @@
     <div class="row zero w90p auto mb7px mt0px">
       <div class="col-30">
         <p class="zero dark-grey f16px">
-          구입시기
+        {{'BOOUGHT_AT' | translate}}
         </p>
       </div>
       <div class="col zero">
@@ -93,7 +92,7 @@
     <div class="row zero w90p auto mb17px mt0px">
       <div class="col-30">
         <p class="zero dark-grey f16px">
-          상태
+        {{'CONDITION' | translate}}
         </p>
       </div>
       <div class="col zero">
@@ -106,17 +105,17 @@
     <div class="light-grey-bg pt15px pl5p pr5p pb40px">
       <p class="zero f16px mb15px dark-grey center">
         <span class="positive">{{BidDetail.Model.bid.place.name}}</span>
-        로부터 받은 견적 내역입니다
+        {{ 'RECEIVED_BID_CONTENT' | translate }}
       </p>
       <div class="positive-b pt15px stable-bg pb15px">
         <p class="zero f20px mb15px positive center bold">
-          견적서
+        {{'QUOTE' | translate}}
         </p>
 
         <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p">
           <div class="col-auto pt8px pb8px">
             <p class="zero positive f18px">
-              금액
+            {{'PRICE' | translate}}
             </p>
           </div>
           <div class="col zero pt8px pb8px">
@@ -129,7 +128,7 @@
         <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p">
           <div class="col-auto pt8px pb8px">
             <p class="zero positive f18px">
-              월이율
+            {{'MONTHLY_INTEREST' | translate}}
             </p>
           </div>
           <div class="col zero pt8px pb8px">
@@ -142,12 +141,12 @@
         <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p">
           <div class="col-auto pt8px pb8px">
             <p class="zero positive f18px">
-              기간
+            {{'DURATION' | translate}}
             </p>
           </div>
           <div class="col zero pt8px pb8px">
             <p class="zero f18px right">
-              {{BidDetail.Model.bid.duration}} 개월
+              {{BidDetail.Model.bid.duration}} {{'MONTHS' | translate}}
             </p>
           </div>
         </div>
@@ -155,7 +154,7 @@
         <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p">
           <div class="col-auto pt8px pb8px">
             <p class="zero positive f18px">
-              출장서비스 유무
+            {{'CAN_PICKUP' | translate}}
             </p>
           </div>
           <div class="col zero pt8px pb8px">

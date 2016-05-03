@@ -24,7 +24,7 @@
         <input class="h33px placeholder-f16px placeholder-grey pt5px f16px pl5p"
           id="search"
           type="text"
-          placeholder="물품명을 검색해주세요"
+          placeholder="{{ 'SEARCH_PRODUCT_NAME' | translate }}"
           ng-model="ProductList.Model.searchWord"
           ng-enter="ProductList.searchProduct();"
         >
@@ -43,7 +43,7 @@
         ng-click="ProductList.preloadToMarket();"
       >
         <p class="zero positive f16px center bold">
-          마켓
+          {{'MARKET' | translate}}
         </p>
       </div>
       <div class="col zero flex"
@@ -51,7 +51,7 @@
         ng-click="ProductList.preloadToPawnShop();"
       >
         <p class="zero positive f16px center bold">
-          전당포
+          {{'PAWNSHOP' | translate}}
         </p>
       </div>
     </div>
@@ -75,7 +75,7 @@
       >
         <i class="ion-android-locate f20px"></i>
         <p class="zero f16px bold ml10px">
-          지역 재설정
+          {{ 'SET_LOCATION' | translate }}
         </p>
       </button>
     </div>
@@ -85,7 +85,7 @@
       ng-click="appStorage.user.role === 'user' ? ProductList.beforeRegisterModal.show() : ProductList.onlyForUser();"
     >
       <p class="zero f16px bold center">
-        견적 요청하기
+      {{ 'REQUEST_BID' | translate }}
       </p>
     </div>
   </ion-footer-bar>

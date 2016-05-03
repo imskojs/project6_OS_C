@@ -11,8 +11,12 @@
 
   <ion-nav-title>
     <p class="zero">
-      <span ng-if="getParam('category') === 'user'">내 프로필</span>
-      <span ng-if="getParam('category') === 'pawnShop'">상인 프로필</span>
+      <span ng-if="getParam('category') === 'user'">
+        {{'MY_PROFILE' | translate}}
+      </span>
+      <span ng-if="getParam('category') === 'pawnShop'">
+        {{'PAWNSHOP_PROFILE' | translate}}
+      </span>
     </p>
   </ion-nav-title>
 
@@ -36,10 +40,10 @@
           src="img/slidemenu_icon05.png"
         >
         <p class="zero center stable f18px mt20px">
-          닉네임: {{appStorage.user.nickname}}
+          {{'NICKNAME' | translate}}: {{appStorage.user.nickname}}
         </p>
         <p class="zero mt10px f18px stable center">
-          이메일: {{appStorage.user.email}}
+          {{'EMAIL' | translate}}: {{appStorage.user.email}}
         </p>
       </div>
 
@@ -48,7 +52,7 @@
         <div class="row zero flex-v lighter-bg radius mb15px">
           <div class="col-auto ml5p">
             <p class="zero positive f18px">
-              닉네임 변경
+              {{'CHANGE_NICKNAME' | translate}}
             </p>
           </div>
           <div class="col zero ml5p">
@@ -62,7 +66,7 @@
         <div class="row zero flex-v lighter-bg radius mb15px">
           <div class="col-auto ml5p">
             <p class="zero positive f18px">
-              이메일 변경
+              {{'CHANGE_EMAIL' | translate}}
             </p>
           </div>
           <div class="col zero ml5p">
@@ -78,7 +82,7 @@
         >
           <div class="col-auto ml5p">
             <p class="zero positive f18px">
-              비밀번호 재설정
+              {{'RESET_PASSWORD' | translate}}
             </p>
           </div>
           <div class="col zero ml5p pr5p right">
@@ -90,7 +94,7 @@
         <p class="zero center positive-bg radius f20px stable pt15px pb15px"
           ng-click="Profile.sendFormUser();"
         >
-          완료
+          {{'COMPLETE' | translate}}
         </p>
 
       </div>
