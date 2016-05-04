@@ -11,7 +11,7 @@
 
   <ion-nav-title>
     <p class="zero">
-      물품내역
+    {{'PRODUCT_DETAIL' | translate}}
     </p>
   </ion-nav-title>
 
@@ -42,7 +42,7 @@
           </p>
           <div class="row zero flex-v mt5px">
             <p class="col-25 zero f16px dark-grey">
-              금액
+            {{'PRICE' | translate}}
             </p>
             <p class="zero f16px ml5px">
               <span class="red">{{ product.price | number }}</span> 원
@@ -50,7 +50,7 @@
           </div>
           <div class="row zero flex-v mt5px">
             <p class="col-25 zero f16px dark-grey">
-              등록일
+            {{'CREATED_AT' | translate}}
             </p>
             <p class="zero f16px ml5px text-overflow">
               {{product.createdAt | date: 'yyyy.MM.dd'}}
@@ -61,7 +61,7 @@
           >
             <i class="ion-trash-b f18px"></i>
             <p class="zero ml5px f16px">
-              상태변경
+            {{'CHANGE_STATUS' | translate}}
             </p>
           </button>
         </div>

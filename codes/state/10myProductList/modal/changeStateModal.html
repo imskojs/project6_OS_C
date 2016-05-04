@@ -4,7 +4,7 @@
 
       <div class="pt30px stable-bg radius-top">
         <p class="zero bold f20px positive center">
-          상태변경
+        {{'CHANGE_STATUS' | translate}}
         </p>
         <p class="zero pb30px center stable-bg f18px radius-top dark-grey pre">
           제품 상태를 변경해주세요.
@@ -18,7 +18,7 @@
           ng-click="MyProductListPawnShop.changeState('selling')"
         >
           <p class="zero center pt15px pb15px stable f18px">
-            판매중
+          {{'ONSALE' | translate}}
           </p>
         </div>
 
@@ -26,7 +26,7 @@
           ng-click="MyProductListPawnShop.changeState('sold')"
         >
           <p class="zero center pt15px pb15px stable f18px stable-bl">
-            판매완료
+          {{'SOLD' | translate}}
           </p>
         </div>
 

@@ -11,11 +11,11 @@
 
   <ion-nav-title>
     <p class="zero">
-      <span ng-if="getParam('category') === 'user'">견적 요청하기</span>
+      <span ng-if="getParam('category') === 'user'">{{'REQUEST_BID' | translate}}</span>
       <span ng-if="getParam('category') === 'pawnShop' &&
-        getParam('method') === 'create'">상품등록</span>
+        getParam('method') === 'create'">{{'REGISTER_PRODUCT' | translate}}</span>
       <span ng-if="getParam('category') === 'pawnShop' &&
-        getParam('method') === 'update'">상품수정</span>
+        getParam('method') === 'update'">{{'UPDATE_PRODUCT' | translate}}</span>
     </p>
   </ion-nav-title>
 
@@ -29,7 +29,7 @@
         <!-- ng-if="getParam('step') === 2" -->
       <div>
         <p class="zero f16px center mt20px mb20px dark-grey">
-          제품 사진을 등록해주세요.
+        {{'UPLOAD_PRODUCT_PHOTOS' | translate}}
         </p>
 
         <div
@@ -51,7 +51,7 @@
             <div class="row zero flex-v h44px">
               <div class="col zero ml5p">
                 <p class="zero stable f16px bold">
-                  전면 사진
+                {{'FRONT_PHOTO' | translate}}
                 </p>
               </div>
               <div class="mr5p flex r50p w35px h35px stable-b"
@@ -85,7 +85,7 @@
             <div class="row zero flex-v h44px">
               <div class="col zero ml5p">
                 <p class="zero stable f16px bold">
-                  측면 사진
+                {{'SIDE_PHOTO' | translate}}
                 </p>
               </div>
               <div class="mr5p flex r50p w35px h35px stable-b"
@@ -119,7 +119,7 @@
             <div class="row zero flex-v h44px">
               <div class="col zero ml5p">
                 <p class="zero stable f16px bold">
-                  일련번호(태그)
+                {{'PRODUCT_TAG' | translate}}
                 </p>
               </div>
               <div class="mr5p flex r50p w35px h35px stable-b"
@@ -153,7 +153,7 @@
             <div class="row zero flex-v h44px">
               <div class="col zero ml5p">
                 <p class="zero stable f16px bold">
-                  부속품 전체
+                {{'ALL_PARTS' | translate}}
                 </p>
               </div>
               <div class="mr5p flex r50p w35px h35px stable-b"
@@ -187,7 +187,7 @@
             <div class="row zero flex-v h44px">
               <div class="col zero ml5p">
                 <p class="zero stable f16px bold">
-                  파손부분
+                {{'BROKEN_PARTS' | translate}}
                 </p>
               </div>
               <div class="mr5p flex r50p w35px h35px stable-b"

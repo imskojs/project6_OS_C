@@ -2,22 +2,21 @@
   <ion-content class="darker-bg70">
     <div class="auto w90p radius mt150px">
       <p class="zero pt30px pb50px center stable-bg f18px radius-top dark-grey pre">
-        미성년자는 전당포 방문시
-        거래가 불가능함을 알려드립니다.
+      {{'R18_TEXT' | translate}}
       </p>
       <div class="row zero positive-bg mt0px radius-bottom">
         <div class="col zero"
           ng-click="ProductList.goToRegisterHandler();"
         >
           <p class="zero center pt15px pb15px stable f18px">
-            다음
+          {{'NEXT' | translate}}
           </p>
         </div>
         <div class="col zero">
           <p class="zero center pt15px pb15px stable f18px stable-bl"
             ng-click="ProductList.beforeRegisterModal.hide();"
           >
-            취소
+          {{'CANCEL' | translate}}
           </p>
         </div>
       </div>

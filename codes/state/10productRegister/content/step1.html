@@ -12,12 +12,12 @@
   <ion-nav-title>
     <p class="zero">
 
-      <span ng-if="getParam('category') === 'user'">견적 요청하기</span>
+      <span ng-if="getParam('category') === 'user'">{{'REQUEST_BID' | translate}}</span>
 
       <span ng-if="getParam('category') === 'pawnShop' &&
-        getParam('method') === 'create'">상품등록</span>
+        getParam('method') === 'create'">{{'REGISTER_PRODUCT' | translate}}</span>
       <span ng-if="getParam('category') === 'pawnShop' &&
-        getParam('method') === 'update'">상품수정</span>
+        getParam('method') === 'update'">{{'UPDATE_PRODUCT' | translate}}</span>
     </p>
   </ion-nav-title>
 
@@ -29,23 +29,28 @@
     <div class="light-grey-bg pl5p pr5p pb40px pt1px">
       <div>
         <p class="zero f16px center mt20px mb20px dark-grey">
-          <span ng-if="getParam('method') === 'create'">제품 정보를 입력해주세요</span>
-          <span ng-if="getParam('method') === 'update'">제품 정보를 수정해주세요</span>
+          <span ng-if="getParam('method') === 'create'">
+          {{'WRITE_PRODUCT_DETAIL' | translate}}
+          </span>
+          <span ng-if="getParam('method') === 'update'">
+          {{'UPDATE_PRODUCT_DETAIL' | translate}}
+          </span>
         </p>
 
         <div class="positive-b pt15px pt10px stable-bg pb15px">
           <p class="zero f20px mb15px positive center bold">
-            <span ng-if="getParam('category') === 'user'">견적 요청서</span>
+            <span ng-if="getParam('category') === 'user'">
+            {{'REQUEST_FORM' | translate}}</span>
             <span ng-if="getParam('category') === 'pawnShop' &&
-              getParam('method') === 'create'">상품등록</span>
+              getParam('method') === 'create'">{{'REGISTER_PRODUCT' | translate}}</span>
             <span ng-if="getParam('category') === 'pawnShop' &&
-              getParam('method') === 'update'">상품수정</span>
+              getParam('method') === 'update'">{{'UPDATE_PRODUCT' | translate}}</span>
           </p>
 
           <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
             <div class="col-30">
               <p class="zero positive f18px bold">
-                제품명
+              {{'PRODUCT_NAME' | translate}}
               </p>
             </div>
             <div class="col zero">
@@ -59,7 +64,7 @@
           <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
             <div class="col-30">
               <p class="zero positive f18px bold">
-                품목
+              {{'CATEGORY' | translate}}
               </p>
             </div>
             <div class="col zero">
@@ -73,7 +78,7 @@
           <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
             <div class="col-30">
               <p class="zero positive f18px bold">
-                브랜드
+              {{'BRAND' | translate}}
               </p>
             </div>
             <div class="col zero">
@@ -87,7 +92,7 @@
           <div class="row zero grey-b mb5px mt0px w90p auto pl5p pr5p flex-v">
             <div class="col-30">
               <p class="zero positive f18px bold">
-                구입시기
+              {{'BOUGHT_AT' | translate}}
               </p>
             </div>
             <div class="col zero">
@@ -103,7 +108,7 @@
           >
             <div class="col-30">
               <p class="zero positive f18px bold">
-                가격
+              {{'PRICE' | translate}}
               </p>
             </div>
             <div class="col zero">
@@ -119,7 +124,7 @@
 
           <div class="grey-b mb5px mt0px w90p auto pl5p pr5p">
             <p class="zero positive f18px mt8px mb8px bold">
-              상태선택
+            {{'SELECT_STATUS' | translate}}
             </p>
             <div class="row zero mb8px">
 
@@ -133,7 +138,7 @@
                     }"
                   ></div>
                 </div>
-                <p class="zero f16px ml5px">상</p>
+                <p class="zero f16px ml5px">{{'HIGH' | translate}}</p>
               </button>
 
               <button class="col button-icon zero flex-v"
@@ -146,7 +151,7 @@
                     }"
                   ></div>
                 </div>
-                <p class="zero f16px ml5px">중</p>
+                <p class="zero f16px ml5px">{{'MID' | translate}}</p>
               </button>
 
               <button class="col button-icon zero flex-v"
@@ -159,7 +164,7 @@
                     }"
                   ></div>
                 </div>
-                <p class="zero f16px ml5px">하</p>
+                <p class="zero f16px ml5px">{{'LOW' | translate}}</p>
               </button>
 
             </div>
@@ -170,7 +175,7 @@
             ng-if="getParam('category') === 'user'"
           >
             <p class="zero positive f18px mt8px mb8px bold">
-              견적서 공개선택
+            {{'SELECT_PUBLIC_BID' | translate}}
             </p>
             <div class="row zero mb8px">
 
@@ -184,7 +189,7 @@
                     }"
                   ></div>
                 </div>
-                <p class="zero f16px ml5px">공개</p>
+                <p class="zero f16px ml5px">{{'PUBLIC' | translate}}</p>
               </button>
 
               <button class="col button-icon zero flex-v mr33p"
@@ -197,7 +202,7 @@
                     }"
                   ></div>
                 </div>
-                <p class="zero f16px ml5px">비공개</p>
+                <p class="zero f16px ml5px">{{'PRIVATE' | translate}}</p>
               </button>
 
             </div>
@@ -205,7 +210,7 @@
 
           <div class="grey-b mb5px mt0px w90p auto pl5p pr5p">
             <p class="zero positive f18px mt8px mb8px bold">
-              특이사항 입력
+            {{'WRITE_EXTRA_ORDINARY' | translate}}
             </p>
             <textarea class="placeholder-grey placeholder-f12px placeholder-para h150px f14px"
               placeholder="[Hint!]\n스마트폰 액정 잔상\n맥북싸이클 수 00회\nDSLR 셔터수 00회\n금(GOLD)24K 2.5돈 등\n제품에 따른 상세정보 및 특이사항을 입력해주세요."

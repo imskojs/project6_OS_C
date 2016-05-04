@@ -11,7 +11,7 @@
   </ion-nav-buttons>
   <ion-nav-title>
     <p class="zero">
-      요청받은 견적
+    {{'RECEIVED_REQUEST_BID' | translate}}
     </p>
   </ion-nav-title>
 
@@ -40,7 +40,7 @@
           </p>
           <div class="row zero flex-v mt5px">
             <p class="zero f16px dark-grey">
-              요청자
+            {{'REQUESTED_BY' | translate}}
             </p>
             <p class="zero f16px ml5px">
               {{bid.createdBy.nickname}}
@@ -48,7 +48,7 @@
           </div>
           <div class="row zero flex-v mt5px">
             <p class="zero f16px dark-grey">
-              요청일
+            {{'REQUESTED_AT' | translate}}
             </p>
             <p class="zero f16px ml5px">
               {{bid.createdAt | date: 'yyyy.MM.dd'}}

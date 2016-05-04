@@ -47,7 +47,7 @@
       <div class="row zero flex-v mb10px">
         <div class="col zero">
           <p class="zero positive f20px bold">
-            업체정보
+          {{'PAWNSHOP_DETAIL' | translate}}
           </p>
         </div>
         <button class="button-icon col-auto flex pr10px pl10px pt2px pb2px positive-bg radius"
@@ -55,7 +55,7 @@
         >
           <i class="ion-map f20px stable"></i>
           <p class="zero f14px stable ml5px">
-            지도보기
+          {{'LOOK_MAP' | translate}}
           </p>
         </button>
       </div>
@@ -63,7 +63,7 @@
       <div class="row zero mt0px">
         <div class="col-25 f16px dark-grey">
           <p class="zero">
-            점포주소
+          {{'PAWNSHOP_ADDRESS' | translate}}
           </p>
         </div>
         <div class="col zero f16px ml5p">
@@ -76,7 +76,7 @@
       <div class="row zero mt10px">
         <div class="col-25 f16px dark-grey">
           <p class="zero">
-            핸드폰번호
+          {{'MOBILE_NUMBER' | translate}}
           </p>
         </div>
         <div class="col zero f16px ml5p">
@@ -89,7 +89,7 @@
       <div class="row zero mt10px">
         <div class="col-25 f16px dark-grey">
           <p class="zero">
-            전화번호
+          {{'PHONE_NUMBER' | translate}}
           </p>
         </div>
         <div class="col zero f16px ml5p">
@@ -102,7 +102,7 @@
       <div class="row zero mt10px">
         <div class="col-25 f16px dark-grey">
           <p class="zero">
-            영업시간
+          {{'OPENING_HOURS' | translate}}
           </p>
         </div>
         <div class="col zero f16px">
@@ -136,7 +136,7 @@
 
     <div class="w95p auto mt10px mb20px pt10px pl5p pb10px pr5p stable-bg radius shadow">
       <p class="zero positive f20px bold">
-        취급물품
+      {{'HANDLING_PRODUCTS' | translate}}
       </p>
       <p class=" f16px pre">
         {{PlaceDetail.Model.place.description}}
@@ -152,14 +152,14 @@
         >
           <i class="ion-ios-telephone f28px stable"></i>
           <p class="zero stable f20px bold ml10px">
-            전화하기
+          {{'CALL' | translate}}
           </p>
         </div>
         <div class="col zero flex"
           ng-click="PlaceDetail.preloadToProductListByPlace()"
         >
           <p class="zero stable f20px bold ml10px">
-            품매물품 <span ng-if="!PlaceDetail.Model.place.showPhone">보러가기</span>
+            {{'HANDLING_PRODUCTS' | translate}} <span ng-if="!PlaceDetail.Model.place.showPhone">{{'LOOK' | translate}}</span>
           </p>
         </div>
       </div>

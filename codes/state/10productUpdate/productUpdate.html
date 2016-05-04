@@ -9,7 +9,7 @@
         ng-click="goToState('main.productUpdate.info', {category: 'pawnShop', method: 'update', step: 1, section: 'info'}, 'back')"
       >
         <p class="zero positive f18px center bold">
-          제품정보입력
+        {{'WRITE_PRODUCT_DETAIL' | translate}}
         </p>
       </div>
       <div class="col zero flex"
@@ -18,7 +18,7 @@
         ng-click="goToState('main.productUpdate.photo', {category: 'pawnShop', method: 'update', step: 2, section: 'photo'}, 'forward')"
       >
         <p class="zero positive f18px center bold">
-          사진재등록
+        {{'UPDATE_PRODUCT_PHOTOS' | translate}}
         </p>
       </div>
     </div>
@@ -32,7 +32,7 @@
       ng-click="ProductUpdate.sendUpdate()"
     >
       <p class="zero center stable f16px bold">
-        수정 완료
+      {{'UPDATE_COMPLETE' | translate}}
       </p>
     </div>
   </ion-footer-bar>

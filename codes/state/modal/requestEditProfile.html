@@ -6,7 +6,7 @@
         <div class="row zero row-header">
           <div class="col-60 flex col-header">
             <p class="zero header-text">
-              알림
+            {{'INFO' | translate}}
             </p>
           </div>
 <!--
@@ -19,15 +19,16 @@
         </div>
         <div class="request-content">
           <p class="zero auto content-text center pre">
-            프로필을 설정해주세요
-            <span class="small">(사진, 닉네임, 전화번호는 필수 등록 사항입니다)</span>
+          {{'SELECT_PROFILE_TEXT' | translate}}
+
+            <span class="small">({{'REQUIRED_INPUTS' | translate}})</span>
           </p>
           <div class="row zero row-button flex">
             <div class="col-80 col-button radius"
               ng-click="handleCloseEditProfileModal();"
             >
               <p class="zero button-text center">
-                확인
+              {{'CONFIRM' | translate}}
               </p>
             </div>
           </div>
