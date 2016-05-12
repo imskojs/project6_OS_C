@@ -231,8 +231,8 @@
         console.log(query);
         console.log("HAS TYPE: " + typeof query);
 
-        if (appStorage.address === '전체보기') {
-          console.log('전체보기');
+        if (appStorage.address === 'SEEALL') {
+          console.log('SEEALL');
           query.sort = {
             '_id': -1
           };

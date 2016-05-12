@@ -61,7 +61,8 @@
       //====================================================
       function setInitialState() {
         // Set default current location
-        appStorage.address = '전체보기';
+        // appStorage.address = '전체보기';
+        appStorage.address = 'SEEALL';
         if (!appStorage.geoJSON) {
           appStorage.geoJSON = {
             type: 'Point',
@@ -227,8 +228,17 @@
           LOGIN_TEXT: '로그인하기',
           CURRENT_PASSWORD: '현재 비밀번호',
           NEW_PASSWORD: '새로운 비밀번호',
-
-
+          SEEALL: '전체보기',
+          SMARTPHONE_TABLET: '스마트폰/테블릿',
+          CAMERA: '카메라',
+          JEWELRY: '귀금속',
+          LAPTOP_DESKTOP: '노트북/데스크탑',
+          SPORTS_LEISURE: '스포츠/레저',
+          WATCH: '시계',
+          BAG: '가방',
+          CAR_MOTORCYCLE: '자동차/오토바이',
+          INSTRUMENT: '악기',
+          ETC: '기타'
         })
         .translations('vi', {
           LOGIN: 'đăng nhập',
@@ -357,6 +367,17 @@
           LOGIN_TEXT: 'Đăng nhập',
           CURRENT_PASSWORD: 'mật khẩu hiện tại',
           NEW_PASSWORD: 'mật khẩu mới',
+          SEEALL: 'Xem tất cả',
+          SMARTPHONE_TABLET: 'Smartphone/Tablet',
+          CAMERA: 'máy chụp ảnh',
+          JEWELRY: 'Các kim loại quý',
+          LAPTOP_DESKTOP: 'Laptop/Desktop',
+          SPORTS_LEISURE: 'Thể thao/Giải trí',
+          WATCH: 'đồng hồ',
+          BAG: 'túi',
+          CAR_MOTORCYCLE: 'xe hơi/xe đạp',
+          INSTRUMENT: 'nhạc cụ',
+          ETC: 'vân vân.'
 
         });
       $translateProvider.preferredLanguage('ko');

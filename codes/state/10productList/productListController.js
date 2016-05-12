@@ -148,7 +148,7 @@
           limit: 10,
           populates: ['photos', 'place']
         };
-        if (appStorage.address === '전체보기') {
+        if (appStorage.address === 'SEEALL') {
           query.distance = 999999;
           query.sort = {
             '_id': -1

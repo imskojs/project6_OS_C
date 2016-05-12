@@ -67,7 +67,7 @@
     >
       <div class="col zero ml5p">
         <p class="zero f16px stable text-overflow bold">
-          {{appStorage.address || '서울시 강남구 역삼동'}}
+          {{(appStorage.address | translate) || '서울시 강남구 역삼동'}}
         </p>
       </div>
       <button class="button button-icon col-auto h34px flex-v pr10px pl10px stable-b mr5p stable radius"
