@@ -1,51 +1,73 @@
 //====================================================
 //  Variables
 //====================================================
-$lighter:                         #d8edfe !default;
-$light:                           #90caf9 !default;
-$stable:                          #fff !default;
-$positive:                        #2196f3 !default;
-$calm:                            #0f489e !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #e1053e !default;
-$royal:                           #886aea !default;
-$dark:                            #104e80 !default;
-$darker:                          #000 !default;
-
-$lighter-grey:                    #f0f0f0 !default;
-$light-grey:                      #f0f0f0 !default;
-$grey:                            #a2a2a2 !default;
-$dark-grey:                       #666 !default;
-$darker-grey:                     #666 !default;
-
-$red:                             red !default;
-$green:                           green !default;
-$blue:                            blue !default;
-
-$color0:                          white !default;
-$color1:                          pink !default;
-$color2:                          pink !default;
-$color3:                          pink !default;
-$color4:                          pink !default;
-$color5:                          pink !default;
-$color6:                          pink !default;
-$color7:                          pink !default;
-$color8:                          pink !default;
-$color9:                          pink !default;
-
+$lighter: #d8edfe !default;
+$light: #90caf9 !default;
+$stable: #fff !default;
+$positive: #454858 !default;
+// $positive:                        #2196f3 !default;
+$calm: #438bc5 !default;
+$balanced: #2196f3 !default;
+$energized: #ffc900 !default;
+$assertive: #e1053e !default;
+$royal: #886aea !default;
+$dark: #104e80 !default;
+$darker: #000 !default;
+$lighter-grey: #f0f0f0 !default;
+$light-grey: #f0f0f0 !default;
+$grey: #a2a2a2 !default;
+$dark-grey: #666 !default;
+$darker-grey: #666 !default;
+$red: red !default;
+$green: green !default;
+$blue: blue !default;
+$color0: white !default;
+$color1: pink !default;
+$color2: pink !default;
+$color3: pink !default;
+$color4: pink !default;
+$color5: pink !default;
+$color6: pink !default;
+$color7: pink !default;
+$color8: pink !default;
+$color9: pink !default;
 $img: '../img';
-$app-directions: 'top', 'right', 'bottom', 'left';
-$app-directions-vertical: 'top', 'bottom';
-$app-directions-horizontal: 'bottom', 'left';
-$app-colors: 'lighter', 'light', 'stable', 'positive', 'calm',
-  'balanced', 'energized', 'assertive', 'royal', 'dark', 'darker',
-  'lighter-grey', 'light-grey', 'grey', 'dark-grey', 'darker-grey',
-  'red', 'green', 'blue', 'color0', 'color1', 'color2',
-  'color3', 'color4', 'color5', 'color6', 'color7',
-  'color8', 'color9';
-
-
+$app-directions: 'top',
+'right',
+'bottom',
+'left';
+$app-directions-vertical: 'top',
+'bottom';
+$app-directions-horizontal: 'bottom',
+'left';
+$app-colors: 'lighter',
+'light',
+'stable',
+'positive',
+'calm',
+'balanced',
+'energized',
+'assertive',
+'royal',
+'dark',
+'darker',
+'lighter-grey',
+'light-grey',
+'grey',
+'dark-grey',
+'darker-grey',
+'red',
+'green',
+'blue',
+'color0',
+'color1',
+'color2',
+'color3',
+'color4',
+'color5',
+'color6',
+'color7',
+'color8',
+'color9';
 $ionicons-font-path: "../fonts" !default;
 @import "codes/lib/ionic/scss/ionic";
-

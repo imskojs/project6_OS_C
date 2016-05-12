@@ -309,6 +309,8 @@
     }
 
     function onAfterEnter() {
+      // ProductList.beforeBeforeRegisterModal = modal;
+      // ProductList.beforeBeforeRegisterModal.show();
       console.log("---------- $state.params.category ----------");
       console.log($state.params.category);
       console.log("HAS TYPE: " + typeof $state.params.category);
@@ -372,6 +374,18 @@
     }).then(function(modal) {
       ProductList.beforeRegisterModal = modal;
     });
+
+    $ionicModal.fromTemplateUrl('state/10productList/modal/beforeBeforeRegisterModal.html', {
+      scope: $scope,
+      animation: 'mh-slide'
+    }).then(function(modal) {
+      ProductList.beforeBeforeRegisterModal = modal;
+    });
+
+    ProductList.hideBeforeBefore = function() {
+      ProductList.beforeBeforeRegisterModal.hide();
+      ProductList.beforeRegisterModal.show();
+    };
 
   } //end
 })();

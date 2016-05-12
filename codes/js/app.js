@@ -160,7 +160,6 @@
           WRITE_BID_TO_SEND: '보낼견적서를 작성해주세요',
           PICKUP_OK: '출장가능',
           PICKUP_NO: '출장불가능',
-
           SENT_BID_CONTENT: '보낸 견적 내역',
           SENT_BID: '보낸 견적',
           RECEIVED_REQUEST_BID: '요청받은 견적',
@@ -225,7 +224,9 @@
           SELECT_PROFILE_TEXT: '프로필을 설정해주세요',
           REQUIRED_INPUTS: '사진, 닉네임, 전화번호는 필수 등록 사항입니다',
           REQUIRE_LOGIN: '로그인이 필요한 메뉴입니다',
-          LOGIN_TEXT: '로그인하기'
+          LOGIN_TEXT: '로그인하기',
+          CURRENT_PASSWORD: '현재 비밀번호',
+          NEW_PASSWORD: '새로운 비밀번호',
 
 
         })
@@ -289,7 +290,6 @@
           WRITE_BID_TO_SEND: 'Xin vui lòng gửi một báo bằng văn bản',
           PICKUP_OK: 'có thể đi du lịch',
           PICKUP_NO: 'đi du lịch không thể',
-
           SENT_BID_CONTENT: 'Trích Từ Lịch sử',
           SENT_BID: 'từ quote',
           RECEIVED_REQUEST_BID: 'Trích dẫn yêu cầu',
@@ -354,7 +354,9 @@
           SELECT_PROFILE_TEXT: 'Hãy thiết lập hồ sơ của bạn',
           REQUIRED_INPUTS: 'Hình ảnh, biệt hiệu, đăng ký số điện thoại là cần thiết',
           REQUIRE_LOGIN: 'Một đơn yêu cầu đăng nhập',
-          LOGIN_TEXT: 'Đăng nhập'
+          LOGIN_TEXT: 'Đăng nhập',
+          CURRENT_PASSWORD: 'mật khẩu hiện tại',
+          NEW_PASSWORD: 'mật khẩu mới',
 
         });
       $translateProvider.preferredLanguage('ko');

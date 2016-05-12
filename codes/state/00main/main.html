@@ -32,7 +32,7 @@
                     >
                     <div class="col-20 flex">
                         <img  class="w70p"
-                        src="img/slidemenu_icon01.png"
+                            src="img/slidemenu_icon01.png"
                         >
                     </div>
                     <div class="col zero ml5p">
@@ -51,18 +51,29 @@
                     <div class="col zero flex pt20px pb20px"
                         ng-click="Main.preloadToMyProductListUser();"
                         >
-                        <img class="w60p"
-                        src="img/slidemenu_icon02.png"
-                        alt="내 견적서"
-                        >
+                        <div>
+                            <img class="w60p ml20p"
+                            src="img/icon_price.png"
+                            alt="내 견적서"
+                            >
+                            <p class="zero center f16px" style="color: white;">
+                                {{'MY_QUOTE' | translate}}
+                            </p>
+                        </div>
+
                     </div>
                     <div class="col zero flex pt20px pb20px stable-bl"
                         ng-click="Main.preloadToFavoriteProductList();"
                         >
-                        <img class="w60p"
-                        src="img/slidemenu_icon03.png"
-                        alt="찜한 내역"
-                        >
+                        <div>
+                            <img class="w60p ml20p"
+                            src="img/icon_favorite.png"
+                            alt="찜한 내역"
+                            >
+                            <p class="zero center f16px" style="color: white;">
+                                {{'FAVORITE_CONTENT' | translate}}
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="shadow"
@@ -129,6 +140,41 @@
                 >
                     {{'TERMS' | translate}}
                 </p>
+
+                <div class="row mt20px title-row positive-bg">
+                  <div class="col">
+                    <p class="title center">Language setting</p>
+                  </div>
+                </div>
+
+                <div class="row mt1px h44px flex-v"
+                  ng-click="Main.selectLanguage('ko')"
+                >
+                  <div class="col-25 ml20p zero">
+                    <img class="w30px"
+                      src="img/ic_ko.png" alt="Korean flag"
+                    >
+                  </div>
+                  <div class="col zero">
+                    <p class="zero  bold">
+                      대한민국
+                    </p>
+                  </div>
+                </div>
+                <div class="row h44px flex-v light-bg"
+                  ng-click="Main.selectLanguage('vi')"
+                >
+                  <div class="col-25 ml20p zero">
+                    <img class="block w30px"
+                      src="img/ic_vt.png" alt="Vietname flag"
+                    >
+                  </div>
+                  <div class="col zero">
+                    <p class="zero bold">
+                      Vietnam
+                    </p>
+                  </div>
+                </div>
             </ion-content>
             <ion-footer-bar class="bar-stable zero">
                 <div class="row zero flex-v light-grey-bt"

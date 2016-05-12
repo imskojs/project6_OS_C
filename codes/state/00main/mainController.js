@@ -5,13 +5,13 @@
 
   MainController.$inject = [
     'Products', 'MainModel', '$scope', 'appStorage', '$state',
-    '$ionicSideMenuDelegate', '$ionicModal', '$stateParams',
+    '$ionicSideMenuDelegate', '$ionicModal', '$stateParams', '$translate',
     'Message', 'U', 'AppService', 'Preload', '$localStorage', 'appName'
   ];
 
   function MainController(
     Products, MainModel, $scope, appStorage, $state,
-    $ionicSideMenuDelegate, $ionicModal, $stateParams,
+    $ionicSideMenuDelegate, $ionicModal, $stateParams, $translate,
     Message, U, AppService, Preload, $localStorage, appName
   ) {
 
@@ -25,6 +25,7 @@
     Main.preloadToBidListPawnShopPending = preloadToBidListPawnShopPending;
     Main.preloadToBidListPawnShopResponded = preloadToBidListPawnShopResponded;
     Main.preloadToFavoriteProductList = preloadToFavoriteProductList;
+    Main.selectLanguage = $translate.use;
     //====================================================
     //  Implementation
     //====================================================
@@ -42,6 +43,10 @@
       $ionicSideMenuDelegate.toggleLeft(false);
       $state.go(stateAfterLogout);
     }
+
+    // function selectLanguage(lang) {
+    //   $translate.use(lang);
+    // }
 
     function getMyPawnShopProducts() {
       return AppService.getMyPawnShopProducts()

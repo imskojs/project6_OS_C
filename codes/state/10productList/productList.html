@@ -80,9 +80,10 @@
       </button>
     </div>
 
+      <!-- ng-click="appStorage.user.role === 'user' ? ProductList.beforeRegisterModal.show() : ProductList.onlyForUser();" -->
     <div class="row zero flex"
       ng-if="getParam('category') === 'pawnShop'"
-      ng-click="appStorage.user.role === 'user' ? ProductList.beforeRegisterModal.show() : ProductList.onlyForUser();"
+      ng-click="appStorage.user.role === 'user' ? ProductList.beforeBeforeRegisterModal.show() : ProductList.onlyForUser();"
     >
       <p class="zero f16px bold center">
       {{ 'REQUEST_BID' | translate }}

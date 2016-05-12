@@ -1,54 +1,76 @@
 //====================================================
 //  Variables
 //====================================================
-$lighter:                         #d8edfe !default;
-$light:                           #90caf9 !default;
-$stable:                          #fff !default;
-$positive:                        #2196f3 !default;
-$calm:                            #0f489e !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #e1053e !default;
-$royal:                           #886aea !default;
-$dark:                            #104e80 !default;
-$darker:                          #000 !default;
-
-$lighter-grey:                    #f0f0f0 !default;
-$light-grey:                      #f0f0f0 !default;
-$grey:                            #a2a2a2 !default;
-$dark-grey:                       #666 !default;
-$darker-grey:                     #666 !default;
-
-$red:                             red !default;
-$green:                           green !default;
-$blue:                            blue !default;
-
-$color0:                          white !default;
-$color1:                          pink !default;
-$color2:                          pink !default;
-$color3:                          pink !default;
-$color4:                          pink !default;
-$color5:                          pink !default;
-$color6:                          pink !default;
-$color7:                          pink !default;
-$color8:                          pink !default;
-$color9:                          pink !default;
-
+$lighter: #d8edfe !default;
+$light: #90caf9 !default;
+$stable: #fff !default;
+$positive: #454858 !default;
+// $positive:                        #2196f3 !default;
+$calm: #438bc5 !default;
+$balanced: #2196f3 !default;
+$energized: #ffc900 !default;
+$assertive: #e1053e !default;
+$royal: #886aea !default;
+$dark: #104e80 !default;
+$darker: #000 !default;
+$lighter-grey: #f0f0f0 !default;
+$light-grey: #f0f0f0 !default;
+$grey: #a2a2a2 !default;
+$dark-grey: #666 !default;
+$darker-grey: #666 !default;
+$red: red !default;
+$green: green !default;
+$blue: blue !default;
+$color0: white !default;
+$color1: pink !default;
+$color2: pink !default;
+$color3: pink !default;
+$color4: pink !default;
+$color5: pink !default;
+$color6: pink !default;
+$color7: pink !default;
+$color8: pink !default;
+$color9: pink !default;
 $img: '../img';
-$app-directions: 'top', 'right', 'bottom', 'left';
-$app-directions-vertical: 'top', 'bottom';
-$app-directions-horizontal: 'bottom', 'left';
-$app-colors: 'lighter', 'light', 'stable', 'positive', 'calm',
-  'balanced', 'energized', 'assertive', 'royal', 'dark', 'darker',
-  'lighter-grey', 'light-grey', 'grey', 'dark-grey', 'darker-grey',
-  'red', 'green', 'blue', 'color0', 'color1', 'color2',
-  'color3', 'color4', 'color5', 'color6', 'color7',
-  'color8', 'color9';
-
-
+$app-directions: 'top',
+'right',
+'bottom',
+'left';
+$app-directions-vertical: 'top',
+'bottom';
+$app-directions-horizontal: 'bottom',
+'left';
+$app-colors: 'lighter',
+'light',
+'stable',
+'positive',
+'calm',
+'balanced',
+'energized',
+'assertive',
+'royal',
+'dark',
+'darker',
+'lighter-grey',
+'light-grey',
+'grey',
+'dark-grey',
+'darker-grey',
+'red',
+'green',
+'blue',
+'color0',
+'color1',
+'color2',
+'color3',
+'color4',
+'color5',
+'color6',
+'color7',
+'color8',
+'color9';
 $ionicons-font-path: "../fonts" !default;
 @import "codes/lib/ionic/scss/ionic";
-
 
 //====================================================
 //  Functions
@@ -818,31 +840,59 @@ progress[value]::-webkit-progress-bar{
 //====================================================
 //  Touched
 //====================================================
-.platform-ios, .platform-android {
-  .activated {
-      opacity: 0.7 !important;
-  }
+.platform-ios,
+.platform-android {
+    .activated {
+        opacity: 0.7 !important;
+    }
 }
 
 .tab-selected {
-  @extend .positive-bb3px;
-  @extend .pt3px
+    @extend .positive-bb3px;
+    @extend .pt3px
 }
 
 .dark-grey-selected {
-  @extend .dark-grey-bg;
+    @extend .dark-grey-bg;
 }
 
 .loading {
-  & > .scroll {
-    height: 100%;
-  }
+    & > .scroll {
+        height: 100%;
+    }
 }
 
 .terms-agreed {
-  .check-box{
-    background-color: $positive !important;
-  }
+    .check-box {
+        background-color: $positive !important;
+    }
+}
+
+#before-before-register-modal {
+    .com-column {
+        background: white;
+        padding: 15px 5px;
+        margin: 2% 1%;
+        border-radius: 5px;
+        .com-column__text--heading {
+            font-size: 14px;
+            font-weight: 800;
+        }
+        .com-column__text--summary {
+            color: $grey;
+            font-size: 12px;
+        }
+    }
+    .img--long {
+        height: 40px;
+    }
+    .img--short {
+        height: 25px
+    }
+    .align-right {
+        margin-left: auto;
+        margin-right: 10px;
+    }
 }
 
 #main {
@@ -947,6 +997,111 @@ progress[value]::-webkit-progress-bar{
 
 #place-list {
 
+}
+
+// Dependencies:
+//  daum map <script> with places library
+
+#daum-map {
+  // .row-daum-map {
+  //   height: 100%;
+  //   .c1 {
+  //     height: 100%;
+  //     [daum-map] {
+  //       height: 100%;
+  //       width: 100%;
+  //     }
+  //   }
+  // }
+}
+
+#daum-map-modal {
+
+
+    .sold-out-text-container {
+      width: 100%;
+      height: 100%;
+      top:0;
+      left: 0;
+      background: rgba(0,0,0,0.6);
+      .sold-out-text {
+        font-size: 18px;
+        border: {
+          bottom: 1px solid $stable;
+        }
+      }
+    }
+
+
+    .row + .row {
+        margin: 0;
+    }
+    p {
+        margin: 0;
+    }
+    background: rgba(0, 0, 0, 0.6);
+    .daum-map-modal-container {
+        width: 80vw;
+        margin: 0 auto {
+            top: 40vw;
+        };
+
+        .r1.row-title {
+            color: $stable;
+            height: 8.5vw;
+            background: $positive;
+            border-radius: 5px 5px 0 0 ;
+            .c1 {
+                padding-left: 10vw;
+                text-align: center;
+                p {
+                    font-size: 4vw;
+                    line-height: 4vw;
+                }
+            }
+            .c2 {
+                font-size: 10vw;
+                margin-right: 2%;
+            }
+        }
+        .r2.row-content {
+            height: 54vw;
+            .c1 {
+                width: 100%;
+                height: 100%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                .description {
+                    width: 100%;
+                    height: 9.5vw;
+                    left: 0;
+                    bottom: 0;
+                    .row.row-description {
+                        height: 100%;
+                        background: rgba(255,255,255, 0.5);
+                        .c1 {
+                            img {
+                                height: 5vw;
+                                width: 3vw;
+                            }
+                        }
+                        .c2 {
+                            color: $positive;
+                            font-size: 3.5vw;
+                            line-height: 120%;
+                        }
+                        .c3 {
+                            color: $positive;
+                            font-size: 3.5vw;
+                            line-height: 120%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .prompt-like-modal {
@@ -1077,108 +1232,3 @@ progress[value]::-webkit-progress-bar{
 
 
 
-
-// Dependencies:
-//  daum map <script> with places library
-
-#daum-map {
-  // .row-daum-map {
-  //   height: 100%;
-  //   .c1 {
-  //     height: 100%;
-  //     [daum-map] {
-  //       height: 100%;
-  //       width: 100%;
-  //     }
-  //   }
-  // }
-}
-
-#daum-map-modal {
-
-
-    .sold-out-text-container {
-      width: 100%;
-      height: 100%;
-      top:0;
-      left: 0;
-      background: rgba(0,0,0,0.6);
-      .sold-out-text {
-        font-size: 18px;
-        border: {
-          bottom: 1px solid $stable;
-        }
-      }
-    }
-
-
-    .row + .row {
-        margin: 0;
-    }
-    p {
-        margin: 0;
-    }
-    background: rgba(0, 0, 0, 0.6);
-    .daum-map-modal-container {
-        width: 80vw;
-        margin: 0 auto {
-            top: 40vw;
-        };
-
-        .r1.row-title {
-            color: $stable;
-            height: 8.5vw;
-            background: $positive;
-            border-radius: 5px 5px 0 0 ;
-            .c1 {
-                padding-left: 10vw;
-                text-align: center;
-                p {
-                    font-size: 4vw;
-                    line-height: 4vw;
-                }
-            }
-            .c2 {
-                font-size: 10vw;
-                margin-right: 2%;
-            }
-        }
-        .r2.row-content {
-            height: 54vw;
-            .c1 {
-                width: 100%;
-                height: 100%;
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-                .description {
-                    width: 100%;
-                    height: 9.5vw;
-                    left: 0;
-                    bottom: 0;
-                    .row.row-description {
-                        height: 100%;
-                        background: rgba(255,255,255, 0.5);
-                        .c1 {
-                            img {
-                                height: 5vw;
-                                width: 3vw;
-                            }
-                        }
-                        .c2 {
-                            color: $positive;
-                            font-size: 3.5vw;
-                            line-height: 120%;
-                        }
-                        .c3 {
-                            color: $positive;
-                            font-size: 3.5vw;
-                            line-height: 120%;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
