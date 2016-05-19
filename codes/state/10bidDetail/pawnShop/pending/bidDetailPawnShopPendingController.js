@@ -1,11 +1,15 @@
-(function () {
+(function() {
   'use strict';
   angular.module('app')
     .controller('BidDetailPawnShopPendingController', BidDetailPawnShopPendingController);
 
-  BidDetailPawnShopPendingController.$inject = ['BidDetailPawnShopPendingModel', 'Bids', '$state', 'U', 'Message', 'Preload'];
+  BidDetailPawnShopPendingController.$inject = [
+    'BidDetailPawnShopPendingModel', 'Bids', '$state', 'U', 'Message', 'Preload', '$filter'
+  ];
 
-  function BidDetailPawnShopPendingController(BidDetailPawnShopPendingModel, Bids, $state, U, Message, Preload) {
+  function BidDetailPawnShopPendingController(
+    BidDetailPawnShopPendingModel, Bids, $state, U, Message, Preload, $filter
+  ) {
 
     var BidDetailPawnShopPending = this;
     BidDetailPawnShopPending.Model = BidDetailPawnShopPendingModel;
@@ -21,18 +25,21 @@
 
       return Bids
         .update({}, query).$promise
-        .then(function (bid) {
+        .then(function(bid) {
           console.log(bid);
           return Preload.stateWithBids('main.bidListPawnShopResponded', {
             category: 'pawnShop',
             status: 'responded'
           }, false);
         })
-        .then(function () {
+        .then(function() {
           Message.hide();
-          return Message.alert('견적보내기 알림', '견적을 성공적으로 보냈습니다.');
+          return Message.alert(
+            $filter('translate')('SEND_BID_ALERT'),
+            $filter('translate')('BID_SENT')
+          );
         })
-        .then(function () {
+        .then(function() {
           U.goToState('main.bidListPawnShopResponded', {
             category: 'pawnShop',
             status: 'responded'

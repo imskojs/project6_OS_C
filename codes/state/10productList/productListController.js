@@ -4,12 +4,15 @@
     .controller('ProductListController', ProductListController);
 
   ProductListController.$inject = [
-    'U', '$scope', 'Products', 'ProductListModel', 'Message', '$ionicHistory', '$stateParams', '$ionicModal', '$timeout', '$state', 'AppService', 'Preload', 'Dom', 'appStorage', 'Photos', '$ionicSlideBoxDelegate'
+    'U', '$scope', 'Products', 'ProductListModel', 'Message', '$ionicHistory',
+    '$stateParams', '$ionicModal', '$timeout', '$state', 'AppService', 'Preload',
+    'Dom', 'appStorage', 'Photos', '$ionicSlideBoxDelegate', '$filter'
   ];
 
   function ProductListController(
-    U, $scope, Products, ProductListModel, Message, $ionicHistory, $stateParams, $ionicModal, $timeout, $state, AppService, Preload, Dom, appStorage, Photos,
-    $ionicSlideBoxDelegate
+    U, $scope, Products, ProductListModel, Message, $ionicHistory,
+    $stateParams, $ionicModal, $timeout, $state, AppService, Preload,
+    Dom, appStorage, Photos, $ionicSlideBoxDelegate, $filter
   ) {
 
     var ProductList = this;
@@ -45,7 +48,10 @@
     //  Implementation
     //====================================================
     function onlyForUser() {
-      return Message.alert('견적요청 알림', '일반유저만 견적을 요청할수있습니다.');
+      return Message.alert(
+        $filter('translate')('REQUEST_BID_ALERT'),
+        $filter('translate')('NORMAL_USER_REQUEST')
+      );
     }
 
     function searchProduct() {
@@ -162,7 +168,10 @@
             console.log(productsWrapper);
             if (productsWrapper && productsWrapper.products && productsWrapper.products.length === 0) {
               $scope.$broadcast('scroll.refreshComplete');
-              return Message.alert('새로고침 알림', '주위 상품이 없습니다');
+              return Message.alert(
+                $filter('translate')('REFRESH_ALERT'),
+                $filter('translate')('NO_PRODUCT_AROUND')
+              );
             }
             ProductListModel.market.products = productsWrapper.products;
             ProductListModel.market.more = productsWrapper.more;
@@ -260,7 +269,10 @@
         .then(function(productsWrapper) {
           console.log(productsWrapper);
           if (productsWrapper.products && productsWrapper.products.length === 0) {
-            return Message.alert('새로고침 알림', '주위 상품이 없습니다');
+            return Message.alert(
+              $filter('translate')('REFRESH_ALERT'),
+              $filter('translate')('NO_PRODUCT_AROUND')
+            );
           }
           angular.forEach(productsWrapper.products, function(product) {
             ProductListModel.placeId.products.unshift(product);

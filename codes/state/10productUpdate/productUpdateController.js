@@ -4,11 +4,11 @@
     .controller('ProductUpdateController', ProductUpdateController);
 
   ProductUpdateController.$inject = ['U', '$scope', 'Products', 'ProductUpdateModel', 'Message',
-    '$state', '$ionicModal', '$timeout', 'ImageService', 'appStorage', 'Preload'
+    '$state', '$ionicModal', '$timeout', 'ImageService', 'appStorage', 'Preload', '$filter'
   ];
 
   function ProductUpdateController(U, $scope, Products, ProductUpdateModel, Message,
-    $state, $ionicModal, $timeout, ImageService, appStorage, Preload
+    $state, $ionicModal, $timeout, ImageService, appStorage, Preload, $filter
   ) {
 
     var ProductUpdate = this;
@@ -30,10 +30,10 @@
       delete ProductUpdateModel.product.$promise;
       delete ProductUpdateModel.product.$resolved;
       ImageService.post({
-        url: '/product',
-        dataUris: ProductUpdateModel.dataUris,
-        fields: ProductUpdateModel.product
-      }, 'PUT')
+          url: '/product',
+          dataUris: ProductUpdateModel.dataUris,
+          fields: ProductUpdateModel.product
+        }, 'PUT')
         .then(function(productData) {
           console.log(productData);
           return Preload.stateWithProducts('main.myProductListPawnShop', {
@@ -43,7 +43,10 @@
         .then(function(photos) {
           console.log(photos);
           Message.hide();
-          return Message.alert('상품이 성공적으로 수정되었습니다', '나의 상품목록으로 이동하겠습니다.');
+          return Message.alert(
+            $filter('translate')('PRODUCT_UPDATE_SUCCESS'),
+            $filter('translate')('MOVE_TO_MY_PRODUCT')
+          );
         })
         .then(function() {
           U.goToState('main.myProductListPawnShop', {

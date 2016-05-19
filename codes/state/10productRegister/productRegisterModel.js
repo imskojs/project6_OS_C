@@ -4,9 +4,9 @@
   angular.module('app')
     .factory('ProductRegisterModel', ProductRegisterModel);
 
-  ProductRegisterModel.$inject = ['U', 'Message', '$state'];
+  ProductRegisterModel.$inject = ['U', 'Message', '$state', '$filter'];
 
-  function ProductRegisterModel(U, Message, $state) {
+  function ProductRegisterModel(U, Message, $state, $filter) {
 
     var model = {
       // product properties
@@ -41,51 +41,51 @@
         this.fileUris = [null, null, null, null, null];
       },
       validate: function() {
-        var alert = Message.alert.bind(null, '상품등록 알림');
+        var alert = Message.alert.bind(null, $filter('translate')('REGISTER_PRODUCT_ALERT'));
         var form = this.form;
         if ($state.params.category === 'user') {
           if (!form.name) {
-            alert('제품명을 입력해주세요.');
+            alert($filter('translate')('INPUT_PRODUCT_NAME'));
             return false;
           } else if (!form.productCategory) {
-            alert('품목을 입력해주세요.');
+            alert($filter('translate')('INPUT_PRODUCT_CATEGORY'));
             return false;
           } else if (!form.brand) {
-            alert('브랜드를 일력해주세요.');
+            alert($filter('translate')('INPUT_BRAND'));
             return false;
           } else if (!form.boughtAt) {
-            alert('구입시기를 입력해주세요.');
+            alert($filter('translate')('INPUT_BOUGHTAT'));
             return false;
           } else if (!form.condition) {
-            alert('상태를 선택해 주세요.');
+            alert($filter('translate')('INPUT_CONDITION'));
             return false;
           } else if (typeof form.showBid !== 'boolean') {
-            alert('견적서 공개여부를 선택해주세요');
+            alert($filter('translate')('INPUT_SHOW_BID'));
             return false;
           } else if (!form.description) {
-            alert('특이사항을 입력해주세요.');
+            alert($filter('translate')('INPUT_EXTRA_ORDINARY'));
             return false;
           } else {
             return true;
           }
         } else if ($state.params.category === 'pawnShop') {
           if (!form.name) {
-            alert('제품명을 입력해주세요.');
+            alert($filter('translate')('INPUT_PRODUCT_NAME'));
             return false;
           } else if (!form.productCategory) {
-            alert('품목을 입력해주세요.');
+            alert($filter('translate')('INPUT_PRODUCT_CATEGORY'));
             return false;
           } else if (!form.brand) {
-            alert('브랜드를 일력해주세요.');
+            alert($filter('translate')('INPUT_BRAND'));
             return false;
           } else if (!form.boughtAt) {
-            alert('구입시기를 입력해주세요.');
+            alert($filter('translate')('INPUT_BOUGHTAT'));
             return false;
           } else if (!form.condition) {
-            alert('상태를 선택해 주세요.');
+            alert($filter('translate')('INPUT_CONDITION'));
             return false;
           } else if (!form.description) {
-            alert('특이사항을 입력해주세요.');
+            alert($filter('translate')('INPUT_EXTRA_ORDINARY'));
             return false;
           } else {
             return true;

@@ -6,13 +6,13 @@
   SignUpController.$inject = [
     '$scope', 'Users', 'Places', 'SignUpModel', 'Message', 'U',
     '$state', 'daum', '$ionicScrollDelegate', 'appStorage', '$q',
-    'Preload', 'Devices'
+    'Preload', 'Devices', '$filter'
   ];
 
   function SignUpController(
     $scope, Users, Places, SignUpModel, Message, U,
     $state, daum, $ionicScrollDelegate, appStorage, $q,
-    Preload, Devices
+    Preload, Devices, $filter
   ) {
 
     var SignUp = this;
@@ -35,10 +35,16 @@
         .then(function(data) {
           if (data.isAvailable) {
             SignUpModel.checkedEmail = true;
-            Message.alert('비밀번호 중복확인 알림', '사용가능한 이메일 입니다.');
+            Message.alert(
+              $filter('translate')('DUPLICATE_PASSWORD'),
+              $filter('translate')('AVAILABLE_EMAIL')
+            );
           } else {
             SignUpModel.checkedEmail = false;
-            Message.alert('비밀번호 중복확인 알림', '이미 사용중인 이메일 입니다.');
+            Message.alert(
+              $filter('translate')('DUPLICATE_PASSWORD'),
+              $filter('translate')('NOT_AVAILABLE_EMAIL')
+            );
           }
         })
         .catch(function(err) {
@@ -62,8 +68,8 @@
         Message.hide();
         if (data.places[0] === undefined) {
           Message.alert(
-            '요청하신 장소가 없습니다',
-            '다시검색해주세요'
+            $filter('translate')('NO_PLACE_EXIST'),
+            $filter('translate')('SEARCH_AGAIN')
           );
           return false;
         }
@@ -110,7 +116,10 @@
         .then(function(userData) {
           console.log(userData);
           Message.hide();
-          return Message.alert('회원가입 성공', '회원가입을 성공하였습니다.');
+          return Message.alert(
+            $filter('translate')('USER_REGISTERATION_COMPLETE'),
+            $filter('translate')('USER_REGISTERATION_COMPLETE')
+          );
         })
         .then(function(alertResponse) {
           console.log(alertResponse);
@@ -120,7 +129,10 @@
           console.log(err);
           Message.hide();
           reset();
-          return Message.alert('가입실패', '다시 입력해주세요');
+          return Message.alert(
+            $filter('translate')('SIGNUP_FAILED'),
+            $filter('translate')('REINPUT')
+          );
         });
     }
 
@@ -212,62 +224,62 @@
       var form = SignUpModel.form;
       if (category === 'user') {
         if (!form.nickname) {
-          alert('닉네임을 입력해주세요.');
+          alert($filter('translate')('INPUT_NICKNAME'));
           return false;
         } else if (form.nickname.length < 4) {
-          alert('닉네임은 4자 이상이여야합니다.');
+          alert($filter('translate')('NICKNAME_4_REQUIRED'));
           return false;
         } else if (!form.email) {
-          alert('이메일을 입력해주세요.');
+          alert($filter('translate')('INPUT_EMAIL'));
           return false;
         } else if (!SignUpModel.checkedEmail) {
-          alert('이메일 중복확인을 해주세요.');
+          alert($filter('translate')('CHECK_DUPLICATE_EMAIL'));
           return false;
         } else if (!form.password) {
-          alert('비밀번호를 입력해주세요.');
+          alert($filter('translate')('INPUT_PASSWORD'));
           return false;
         } else if (form.password !== SignUpModel.confirmPassword) {
-          alert('비밀번호가 다릅니다 다시 입력해주세요.');
+          alert($filter('translate')('REINPUT_PASSWORD'));
           return false;
         } else if (!SignUpModel.termsAgreed) {
-          alert('약관 동의를 해주세요');
+          alert($filter('translate')('AGREE_TERMS'));
           return false;
         } else {
           return true;
         }
       } else if (category === 'pawnShop') {
         if (!form.name) {
-          alert('점포명을 입력해주세요.');
+          alert($filter('translate')('INPUT_PAWNSHOPNAME'));
           return false;
         } else if (!form.email) {
-          alert('이메일을 입력해주세요.');
+          alert($filter('translate')('INPUT_EMAIL'));
           return false;
         } else if (!SignUpModel.checkedEmail) {
-          alert('이메일 중복확인을 해주세요.');
+          alert($filter('translate')('CHECK_DUPLICATE_EMAIL'));
           return false;
         } else if (!form.password) {
-          alert('비밀번호를 입력해주세요.');
+          alert($filter('translate')('INPUT_PASSWORD'));
           return false;
         } else if (form.password !== SignUpModel.confirmPassword) {
-          alert('비밀번호가 다릅니다 다시 입력해주세요.');
+          alert($filter('translate')('REINPUT_PASSWORD'));
           return false;
         } else if (!form.cellPhone) {
-          alert('핸드폰 번호를 입력해주세요.');
+          alert($filter('translate')('INPUT_PHONE'));
           return false;
         } else if (!form.phone) {
-          alert('전화번호를 입력해주세요.');
+          alert($filter('translate')('INPUT_PHONE'));
           return false;
         } else if (!form.companyNumber) {
-          alert('대부업등록번호를 입력해주세요.');
+          alert($filter('translate')('INPUT_COMPANY_NUMBER'));
           return false;
         } else if (!form.address) {
-          alert('주소를 입력해주세요.');
+          alert($filter('translate')('INPUT_ADDRESS'));
           return false;
         } else if (!form.geoJSON) {
-          alert('주소를 검색하여 골라주세요.');
+          alert($filter('translate')('CHOOSE_ADDRESS'));
           return false;
         } else if (!SignUpModel.termsAgreed) {
-          alert('약관 동의를 해주세요');
+          alert($filter('translate')('AGREE_TERMS'));
           return false;
         } else {
           return true;

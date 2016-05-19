@@ -306,7 +306,10 @@
       } else if (state === 'main.productDetail.market') {
         if (appStorage.user.lookAround) {
           Message.hide();
-          return Message.alert('둘러보기 알림.', '로그인을 하셔야 보실수있는 내용입니다.')
+          return Message.alert(
+              '둘러보기 알림.',
+              '로그인을 하셔야 보실수있는 내용입니다.'
+            )
             .then(function() {
               $state.go('main.login');
             });

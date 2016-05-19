@@ -3,9 +3,9 @@
   angular.module('app')
     .controller('ProductUpdatePhotoController', ProductUpdatePhotoController);
 
-  ProductUpdatePhotoController.$inject = ['ProductUpdateModel', 'Message', 'U', '$scope'];
+  ProductUpdatePhotoController.$inject = ['ProductUpdateModel', 'Message', 'U', '$scope', '$filter'];
 
-  function ProductUpdatePhotoController(ProductUpdateModel, Message, U, $scope) {
+  function ProductUpdatePhotoController(ProductUpdateModel, Message, U, $scope, $filter) {
 
     var ProductUpdatePhoto = this;
     ProductUpdatePhoto.Model = ProductUpdateModel;
@@ -28,20 +28,31 @@
       }
     }
 
+
+
     function validateImage(length) {
-      var alert = Message.alert.bind(null, '사진등록 알림');
+      var alert = Message.alert.bind(null,
+        $filter('translate')('PHOTO_REGISTER_ALERT'));
       if (length !== 1 && !ProductUpdateModel.dataUris[length - 2]) {
         if (length === 2) {
-          alert('전면사진을 먼저 등록해주세요.');
+          alert(
+            $filter('translate')('REGISTER_FRONT_PHOTO')
+          );
           return false;
         } else if (length === 3) {
-          alert('측면사진을 먼저 등록해주세요.');
+          alert(
+            $filter('translate')('REGISTER_SIDE_PHOTO')
+          );
           return false;
         } else if (length === 4) {
-          alert('일련번호(태그)를 먼저 등록해주세요.');
+          alert(
+            $filter('translate')('REGISTER_TAG_PHOTO')
+          );
           return false;
         } else if (length === 5) {
-          alert('부속품 전체를 먼저 등록해주세요.');
+          alert(
+            $filter('translate')('REGISTER_ALL_PARTS_PHOTO')
+          );
           return false;
         }
       }

@@ -5,14 +5,14 @@
 
   ProductRegisterController.$inject = [
     '$scope', '$stateParams', '$state', '$ionicModal', '$timeout', '$q',
-    '$cordovaGeolocation',
+    '$cordovaGeolocation', '$filter',
     'U', 'Products', 'ProductRegisterModel', 'Message', 'ImageService',
     'appStorage', 'Preload', 'DaumMapModel'
   ];
 
   function ProductRegisterController(
     $scope, $stateParams, $state, $ionicModal, $timeout, $q,
-    $cordovaGeolocation,
+    $cordovaGeolocation, $filter,
     U, Products, ProductRegisterModel, Message, ImageService,
     appStorage, Preload, DaumMapModel
   ) {
@@ -39,8 +39,8 @@
           Message.hide();
           if (position.coords == null) {
             Message.alert(
-              '위치 공유가 꺼져있습니다.',
-              '위치 공유를 켜주세요.'
+              $filter('translate')('GPS_IS_OFF'),
+              $filter('translate')('TURN_ON_GPS')
             );
             return false;
           }
@@ -54,13 +54,16 @@
           ];
           ProductRegisterModel.locationSelected = true;
           ProductRegister.stepTwoModal.hide();
-          Message.alert('현재위치 알림', '현재위치로 장소가 설정되었습니다. 완료버튼을 눌러주세요.');
+          Message.alert(
+            $filter('translate')('CURRENT_LOCATION_ALERT'),
+            $filter('translate')('CURRENT_LOCATION_SET')
+          );
         })
         .catch(function error(err) {
           console.log(err);
           return Message.alert(
-            '위치 공유가 꺼져있습니다.',
-            '위치 공유를 켜주세요.'
+            $filter('translate')('GPS_IS_OFF'),
+            $filter('translate')('TURN_ON_GPS')
           );
         });
     }
@@ -139,7 +142,10 @@
 
     function sendForm() {
       if (!validateStep2Form()) {
-        return Message.alert('상품등록 알림', '사진을 최소한 1개이상 등록해주셔야합니다.');
+        return Message.alert(
+          $filter('translate')('REGISTER_PRODUCT_ALERT'),
+          $filter('translate')('ONLY_1_PHOTO')
+        );
       }
 
       if ($state.params.category === 'user') {
@@ -167,7 +173,10 @@
             console.log(photos);
             Message.hide();
             ProductRegisterModel.locationSelected = false;
-            return Message.alert('견적등록이 완료 되었습니다.', '등록된 견적은 내견적서에서 확인 하실수 있습니다.');
+            return Message.alert(
+              $filter('translate')('REGISTERATION_COMPLETE'),
+              $filter('translate')('CONFIRM_AT_MY_BIDS')
+            );
           })
           .then(function(alertResponse) {
             console.log(alertResponse);
@@ -180,7 +189,10 @@
             console.log(err);
             if (err.data.numberOfBidsSent === 0) {
               Message.hide();
-              return Message.alert('주위에 전당포가 없습니다', '지역을 다시 설정해주십시요.')
+              return Message.alert(
+                  $filter('translate')('THERE_IS_NO_PAWNSHOP'),
+                  $filter('translate')('RE_SELECT_PLACE')
+                )
                 .then(U.goToState.bind(null, 'main.daumMap'));
             }
             Message.hide();
@@ -209,7 +221,10 @@
           .then(function(photos) {
             console.log(photos);
             Message.hide();
-            return Message.alert('상품이 성공적으로 등록되었습니다', '나의 상품목록으로 이동하겠습니다.');
+            return Message.alert(
+              $filter('translate')('REGISTER_PROUCT_COMPLETE'),
+              $filter('translate')('MOVE_TO_MY_PRODUCT')
+            );
           })
           .then(function(alertResponse) {
             console.log(alertResponse);

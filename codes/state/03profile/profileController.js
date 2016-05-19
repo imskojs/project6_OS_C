@@ -6,13 +6,13 @@
   ProfileController.$inject = [
     'U', '$scope', 'Places', 'Users', 'ProfileModel', 'Message',
     'ImageService', '$ionicSlideBoxDelegate', '$timeout',
-    'appStorage', '$state', 'Preload', '$q', 'daum'
+    'appStorage', '$state', 'Preload', '$q', 'daum', '$filter'
   ];
 
   function ProfileController(
     U, $scope, Places, Users, ProfileModel, Message,
     ImageService, $ionicSlideBoxDelegate, $timeout,
-    appStorage, $state, Preload, $q, daum
+    appStorage, $state, Preload, $q, daum, $filter
   ) {
 
     var Profile = this;
@@ -75,7 +75,9 @@
           appStorage.user.nickname = user.nickname;
           appStorage.user.email = user.email;
           appStorage.user.username = user.username;
-          Message.alert('프로필 수정 알림', '업데이트가 완료 되었습니다.');
+          Message.alert(
+            $filter('translate')('PROFILE_UPDATE_ALERT'),
+            $filter('translate')('UPDATE_COMPLETE'));
         })
         .catch(U.error);
     }
@@ -226,7 +228,10 @@
           }
           ProfileModel.dataUris = [];
           ProfileModel.fileUris = [];
-          return Message.alert('프로필 수정 알림', '업데이트가 완료 되었습니다.');
+          return Message.alert(
+            $filter('translate')('PROFILE_UPDATE_ALERT'),
+            $filter('translate')('UPDATE_COMPLETE')
+          );
         })
         .catch(function(err) {
           console.log(err);

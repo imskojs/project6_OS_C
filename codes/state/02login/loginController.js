@@ -6,13 +6,13 @@
   LoginController.$inject = [
     '$scope', '$state', '$q', '$ionicModal', '$translate',
     'Users', 'Places', 'LoginModel', 'Message', 'appStorage',
-    'Preload', 'U', 'Devices'
+    'Preload', 'U', 'Devices', '$filter'
   ];
 
   function LoginController(
     $scope, $state, $q, $ionicModal, $translate,
     Users, Places, LoginModel, Message, appStorage,
-    Preload, U, Devices
+    Preload, U, Devices, $filter
   ) {
 
     var Login = this;
@@ -87,7 +87,10 @@
           console.log('err');
           console.log(err);
           Message.hide();
-          Message.alert('로그인 알림', '이메일이나 암호가 잘못 되었습니다.')
+          Message.alert(
+              $filter('translate')('LOGIN_ALERT'),
+              $filter('translate')('EMAIL_PASSWORD_WRONG')
+            )
             .then(function() {
               LoginModel.form = {};
             });

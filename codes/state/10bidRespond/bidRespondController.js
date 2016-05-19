@@ -3,9 +3,15 @@
   angular.module('app')
     .controller('BidRespondController', BidRespondController);
 
-  BidRespondController.$inject = ['U', '$scope', 'Bids', 'BidRespondModel', 'Message', '$stateParams', '$ionicSlideBoxDelegate'];
+  BidRespondController.$inject = [
+    'U', '$scope', 'Bids', 'BidRespondModel', 'Message', '$stateParams',
+    '$ionicSlideBoxDelegate', '$filter'
+  ];
 
-  function BidRespondController(U, $scope, Bids, BidRespondModel, Message, $stateParams, $ionicSlideBoxDelegate) {
+  function BidRespondController(
+    U, $scope, Bids, BidRespondModel, Message, $stateParams,
+    $ionicSlideBoxDelegate, $filter
+  ) {
 
     var BidRespond = this;
     BidRespond.Model = BidRespondModel;
@@ -74,22 +80,22 @@
     }
 
     function alert(message) {
-      return Message.alert.bind(null, '견적보네기 알림')(message);
+      return Message.alert.bind(null, $filter('translate')('SEND_BID_ALERT'))(message);
     }
 
     function validateBid() {
       var form = BidRespondModel.form;
       if (!form.price) {
-        alert('가격을 입력해주세요.');
+        alert($filter('translate')('INPUT_PRICE'));
         return false;
       } else if (!form.monthlyInterest) {
-        alert('월이율을 입력해주세요.');
+        alert($filter('translate')('MONTHLY_INTEREST'));
         return false;
       } else if (!form.duration) {
-        alert('기간을 입력해주세요.');
+        alert($filter('translate')('INPUT_DURATION'));
         return false;
       } else if (typeof form.canPickUp !== 'boolean') {
-        alert('출장가능 여부를 입력해주세요.');
+        alert($filter('translate')('INPUT_DELIVERY'));
         return false;
       }
       return true;
@@ -97,7 +103,10 @@
 
     function respondToBidSuccess(bid) {
       console.log(bid);
-      Message.alert('견적 보네기 알림', '견적이 보네졌습니다.');
+      Message.alert(
+        $filter('translate')('SEND_BID_ALERT'),
+        $filter('translate')('BID_SENT')
+      );
     }
 
     function updateBidError(err) {

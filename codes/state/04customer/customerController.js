@@ -4,12 +4,12 @@
     .controller('CustomerController', CustomerController);
 
   CustomerController.$inject = [
-    '$scope', '$state',
+    '$scope', '$state', '$filter',
     'CustomerModel', 'Message', 'appStorage', 'Contacts'
   ];
 
   function CustomerController(
-    $scope, $state,
+    $scope, $state, $filter,
     CustomerModel, Message, appStorage, Contacts
   ) {
 
@@ -28,19 +28,25 @@
 
     function sendForm() {
       if (!appStorage.token) {
-        return Message.alert('고객센터 알림', '로그인/회원가입을 하셔야 합니다.')
+        return Message.alert(
+            $filter('translate')('CUSTOMER_CENTER_ALERT'),
+            $filter('translate')('LOGIN_SIGNUP_NEEDED')
+          )
           .then(function() {
             $state.go('main.login');
           });
       }
       Message.loading();
       Contacts.contactAdmin({},
-        CustomerModel.form
-      ).$promise
+          CustomerModel.form
+        ).$promise
         .then(function success() {
           CustomerModel.form = {};
           Message.hide();
-          Message.alert('고객문의 알림', '고객문의가 성공적으로 접수 되었습니다. 가입하신 이메일로 연락 드리겠습니다.')
+          Message.alert(
+              $filter('translate')('CUSTOMER_CENTER_ALERT'),
+              $filter('translate')('QUERY_SENT_WAIT_REPLY')
+            )
             .then(function() {
               $state.go('main.productList.market');
             });
@@ -50,7 +56,10 @@
           console.log(err);
           console.log("HAS TYPE: " + typeof err);
           Message.hide();
-          Message.alert('고객문의 알림', '제목과 내용은 필수 사항입니다.');
+          Message.alert(
+            $filter('translate')('QUERY_ALERT'),
+            $filter('translate')('TITLE_CONTENT_NEEDED')
+          );
 
         });
 
